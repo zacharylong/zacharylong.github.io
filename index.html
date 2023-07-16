@@ -1,44 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iam16bit</title>
-  <style>
-    /* Add your custom CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-    }
-    main {
-      padding: 20px;
-    }
-  </style>
+    <title>16-bit Game Portfolio</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
 </head>
 <body>
-  <header>
-    <h1>iam16bit</h1>
-  </header>
-  <main>
-    <h2><a href="/projects/index.html">Start Game</a></h2>
-    (View portfolio)
+    <div id="logo">
+        <!-- Add your logo here -->
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="#portfolio">Start Game</a></li>
+            <li><a href="#projects">Select Level</a></li>
+            <li><a href="#achievements">High Scores</a></li>
+        </ul>
+    </div>
+    <audio id="menu-sound" src="menu-sound.mp3"></audio>
+    <audio id="bg-sound" src="bg-sound.mp3" loop></audio>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Add your JavaScript code here
+        var cheatCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'b', 'a', 'b', 'a', 'Enter'];
+        var cheatCodePosition = 0;
 
-    <h2>Select Level</h2>
-    (choose a project to view)
+        $(document).ready(function() {
+            // Start background sound
+            $('#bg-sound')[0].play();
 
-    <h2>High Scores</h2>
-    (Achievements)
-    
-  </main>
+            // Menu hover sound effect
+            $('#menu li a').hover(function() {
+                $('#menu-sound')[0].play();
+            });
+
+            // Cheat code
+            $(document).keydown(function(e) {
+                if (e.key === cheatCode[cheatCodePosition]) {
+                    cheatCodePosition++;
+                    if (cheatCodePosition === cheatCode.length) {
+                        // Cheat code successfully entered!
+                        cheatCodePosition = 0;
+                        // Show special graphic
+                        $('#special-graphic').show();
+                    }
+                } else {
+                    cheatCodePosition = 0;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
