@@ -21,7 +21,7 @@ repository               : "zacharylong.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/ZacharyLong.jpeg"
+  avatar           : "ZacharyLong.jpeg"
   name             : "Zachary Long"
   pronouns         : # example: "she/her"  
   bio              : "NYU MS in Business Analytics '24, Auburn BS in Computer Science '20"
