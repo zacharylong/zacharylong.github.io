@@ -81,35 +81,35 @@ Work experience
   
 Selected Coursework
 ======
-* MS in Business Analytics
-  * Python
-  * R
-  * Power BI
-  * Tableau
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+* [MS in Business Analytics and AI, NYU Stern Coursework](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai/academics/course-index)
+  * Digital Marketing Analytics - Statistical and econometric issues in data analytics and causal inference. Multivariate regressions, linear and non-linear probability models, count data models, cross-sectional models vs. panel data models.  
+  * Statistics Using R
+  * Big Data - Google Cloud Platform for big data analytics: BigQuery, PySpark, Dataproc (Hadoop clusters), Apache Sqoop, Apache Pig and Apache Hive.
+  * Databases & Dealing with Data using SQL and Python
+  * Python Programming
+  * Data Mining in R
+  * Data-Driven Decision Making
+  * Data Visualization
+  * Network Analytics
+  * Machine Learning in Python
+  * Strategy, Change, & Analytics
+  * Modern Artificial Intelligence
+* BS in Computer Science, Auburn University
+  * CPSC1213 Introduction to Computer Science I (Java I)
+  * CPSC1223 Introduction to Computer Science II (Java II)
+  * CPSC3243 Discrete Structures (Discrete Mathematics)
+  * CPSC1233 Data Structures
+  * CPSC3273 Algorithms I
+  * CPSC3283 Algorithms II
+  * CPSC3353 Networking I
+  * CPSC4973 Cloud Computing (AWS/Docker/Ansible)
+  * CPSC5123 Databases I (SQL)
+  * CPSC5133 Databases II (SQL)
+  * CPSC5203 Web Development I (HTML/CSS/JavaScript)
+  * CPSC5213 Web Development II (HTML/CSS/JavaScript)
+  * CPSC5333 Mobile App Development I (Swift)
+  * CPSC5343 Mobile App Development II (Swift)
+  * CPSC2713 Software Construction Fundamentals (C#)
+  * CPSC3303 Computer Organization and Assembly Language Programming (MASM Assembly)
+  * CPSC3703 Software Modeling & Design
+  * CPSC3343 Parallel Programming (OpenACC)
