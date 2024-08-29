@@ -11,30 +11,81 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* M.S. in Business Analytics, New York University Stern School of Business, 2024
+* B.S. in Computer Science, Auburn University, 2020
+* B.S. in Hospitality Management, University of Central Florida, 2005
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Institutional Research Technical Analyst, [SUNY Farmingdale State College](https://www.farmingdale.edu/)
+  * January 2024 - Present
+  * Develop and maintain interactive self-service data dashboards in PowerBI for internal and external use stakeholders. 
+  * Clean and process academic assessment data in python and Power Query. 
+  * Optimize data engineering and ETL operations from Ellucian Banner database using Python, SQL, Power Query. 
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Master of Science in Business Analytics Candidate, [New York University Stern School of Business](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai)
+  * May 2023 - May 2024
+  * Capstone: Digital Marketing Analytics for advertising campaign on Amazon Ads using Multi-Touch Attribution and Marketing Mix Modeling.
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Human Resources Manager, [Wipro](https://www.wipro.com/)
+  * July 2022 - June 2023
+  * US Inclusion & Diversity Program Manager
+  * Working with internal stakeholders in a highly matrixed global organization, developed and launched a US-focused Employee Resource Group program to increase employee engagement and reduce turnover.
+  * Promote global and US DEI communications internally and externally via newsletters, speaking engagements, and social media increasing employer brand for Wipro.
+  * Developed key diversity metrics presentations and reports, utilizing Power BI to track and communicate DEI progress to senior management in cross-functional teams and external stakeholders.
+  * Produce in-person events for executives at Wipro offices throughout the US (California, Texas, New Jersey, New York) and India for global Human Resources initiatives.
+  * Script, record, and edit video interview content of employee stories to highlight US DEI events such as Veterans Day stories distributed to 250,000+ global employees.
+
+* Project Manager, [Capgemini](https://www.capgemini.com/)
+  * January 2022 - July 2022
+  * For international quick service restaurant franchisor, collaborated with cross-functional teams to synthesize stakeholder needs into a unified Power BI dashboard, enhancing decision-making insights for client's SVP of Finance.
+  * Instituted a client co-innovation strategy that resulted in the co-creation of new market offerings, demonstrating a strong consultative approach to client engagement.
+  * Onboard new college hires to account and serve as point of contact for mentoring.
+  * Create employer branding content through podcast-style video interviews highlighting employee stories for Cloud & Custom Applications business unit. 
+
+* National Lead - CREATE Employee Resource Group, [Capgemini](https://www.capgemini.com/)
+  * December 2021 - July 2022
+  * Winner: ERG of the Year
+  * Plan and execute events in-person and virtually for 800+ member CREATE (Collaborating to Reach Excellence in Asian Talent & Expertise) Employee Resource Group.
+  * As Marketing & Communications Lead, increased engagement of members by developing quarterly email newsletter and lead chat discussions on internal Teams channels.
+  * Develop and post content on internal channels as well as externally on LinkedIn to promote employer branding and marketing.
+  * Collaborated across the entire organization for events, including securing funding from executive sponsors for external guest speakers for marquee events.
+
+* Business Analyst, [Capgemini](https://www.capgemini.com/)
+  * September 2021 - January 2022
+  * Led strategic workshops for cloud readiness, collaborating with client stakeholders to identify applications for migration, enhancing Capgemini's Go to Market offerings with data-driven insights.
+  * Coordinated with an India-based team to analyze application data, refining and elevating the narrative flow of PowerPoint presentations to ensure clarity, aesthetic coherence, and error-free delivery for high-stakes orals presentations.
+  * Assist Learning & Development team with new employee onboarding week as featured speaker on personal branding and team coach for case study presentations.
+
+* Software Developer, [Capgemini](https://www.capgemini.com/)
+  * February 2021 - January 2022
+  * For government energy client, developed and deployed database migration tool in C# for Sitefinity to Azure SQL, meeting all client specifications and contributing to 100% client satisfaction.
+  * Gathered and analyzed requirements from 10+ client stakeholders for 3 high-value IT projects, achieving 95% client satisfaction rate and SLA compliance.
+
+* Professional Photographer, FengLong Photography
+  * September 2009 - July 2022
+  * Full-time boutique wedding photography & videography company telling stories through artistic photojournalism for the South Asian wedding market for 12+ years.
+  * Increased operating revenue 250% year over year through improved SEO and social media campaigns (blog posts, YouTube videos, Instagram posts) and customer referrals, reducing advertising Marketing Mix of Facebook Ads & Google Ad campaigns.
+  * 3x [Fearless Photographers](http://www.fearlessphotographers.com) winner, a peer-nominated award for excellence and creativity in wedding photography.
+
+* Head of Operations, Camera Concierge, LLC
+  * September 2009 - May 2014
+  * Launched & operated startup camera equipment rental website servicing local photographers & filmmakers in Orlando in 2009-2010, restarted business from zero in Atlanta market in 2011-2014.
+  * Grew through Google Ads, Facebook Ads, social media, and partnerships with local photography clubs.
+  * Launched & operated startup camera equipment rental website servicing local photographers & filmmakers in Orlando in 2009-2010, restarted business from zero in Atlanta market in 2011-2014. 
+  * Grew through Google Ads, Facebook Ads, social media, and partnerships with local photography clubs.
+
+* Front Office Manager, Marriott International
+  * June 2003 - February 2011
+  * Atlanta Marriott Airport Gateway, Orlando World Center Marriott, Orlando Airport Marriott
   
-Skills
+Selected Coursework
 ======
-* Skill 1
+* MS in Business Analytics
+  * Python
+  * R
+  * Power BI
+  * Tableau
 * Skill 2
   * Sub-skill 2.1
   * Sub-skill 2.2
