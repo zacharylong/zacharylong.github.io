@@ -34,7 +34,7 @@ Fun Facts!
 ======
 💪 2x Ironman Finisher - [2.4 Mile Swim, 112 Mile Bike, 26.2 Mile Run](https://www.coachcox.co.uk/imstats/athlete/374729/)  
 🚴🏻 Avid Mountain Biker - [Strava Stats](https://www.strava.com/athletes/59082456)  
-🎥 Content Creator - [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) & [YouTube](https://www.youtube.com/@ZacharyLong) & [More YouTube](https://www.youtube.com/@zacharylongcareerchangepro7269) & [More YouTube](https://www.youtube.com/@everythingbookclub)  
+🎥 Content Creator - [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) & [YouTube](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) & [More YouTube](http://youtube.com/channel/UCyDVbQPbas1gx7VvwE4bj_w) & [More YouTube](http://youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA)  
 📚 Content Consumer - [Goodreads](https://www.goodreads.com/zacharylong)
 
 Life before death. Strength before weakness. Journey before destination.  
