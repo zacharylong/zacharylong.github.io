@@ -9,7 +9,7 @@ redirect_from:
 
 I live at the intersection of creativity, technology, and business, driven by a passion for using data to enhance human experiences. 
 
-With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller](https://www.youtube.com/@ZacharyLong) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.
+With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller]([https://www.youtube.com/@ZacharyLong](https://youtube.com/@zacharylong?si=diWWyl75uao3t4ZF)) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.
 
 Currently I am a Technical Analyst specializing in business intelligence dashboards primarily in PowerBI. This experience, combined with my previous roles as a Human Resources Program Manager at Wipro and a Software Developer and Business Analyst at Capgemini, has honed my ability to leverage data insights to develop and implement people-centric strategies that drive organizational success.
 
@@ -22,7 +22,7 @@ Professional Highlights
 
 🔑 SUNY Farmingdale: Developing Power BI dashboards enhancing stakeholder engagement & promoting data-driven decision-making across the university.
 
-🔑 Wipro: HR Program Manager, led the launch of Employee Resource Groups for over 14,000 associates, boosting engagement and driving DEI initiatives that improved employee experience and employer brand.
+🔑 Wipro: HR DEI Program Manager, led the launch of Employee Resource Groups for over 14,000 associates, boosting engagement and driving DEI initiatives that improved employee experience and employer brand.
 
 🔑 Capgemini: Project Manager, Business Analyst & Software Developer for clients including Government Energy Producer and an International Fast-Food Restaurant Franchisor.
 
@@ -34,7 +34,7 @@ Fun Facts!
 ======
 💪 2x Ironman Finisher - [2.4 Mile Swim, 112 Mile Bike, 26.2 Mile Run](https://www.coachcox.co.uk/imstats/athlete/374729/)  
 🚴🏻 Avid Mountain Biker - [Strava Stats](https://www.strava.com/athletes/59082456)  
-🎥 Content Creator - LinkedIn & [YouTube](https://www.youtube.com/@ZacharyLong)  
+🎥 Content Creator - [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) & [YouTube](https://www.youtube.com/@ZacharyLong) & [More YouTube](https://www.youtube.com/@zacharylongcareerchangepro7269) & [More YouTube](https://www.youtube.com/@everythingbookclub)  
 📚 Content Consumer - [Goodreads](https://www.goodreads.com/zacharylong)
 
 Life before death. Strength before weakness. Journey before destination.  
