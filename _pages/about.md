@@ -9,7 +9,7 @@ redirect_from:
 
 I live at the intersection of creativity, technology, and business, driven by a passion for using data to enhance human experiences. 
 
-With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller]([https://www.youtube.com/@ZacharyLong](https://youtube.com/@zacharylong?si=diWWyl75uao3t4ZF)) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.
+With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.
 
 Currently I am a Technical Analyst specializing in business intelligence dashboards primarily in PowerBI. This experience, combined with my previous roles as a Human Resources Program Manager at Wipro and a Software Developer and Business Analyst at Capgemini, has honed my ability to leverage data insights to develop and implement people-centric strategies that drive organizational success.
 
@@ -34,8 +34,8 @@ Fun Facts!
 ======
 💪 2x Ironman Finisher - [2.4 Mile Swim, 112 Mile Bike, 26.2 Mile Run](https://www.coachcox.co.uk/imstats/athlete/374729/)  
 🚴🏻 Avid Mountain Biker - [Strava Stats](https://www.strava.com/athletes/59082456)  
-🎥 Content Creator - [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) & [YouTube](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) & [More YouTube](http://youtube.com/channel/UCyDVbQPbas1gx7VvwE4bj_w) & [More YouTube](http://youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA)  
-📚 Content Consumer - [Goodreads](https://www.goodreads.com/zacharylong)
+🎥 Content Creator - [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) & [YouTube (Weddings)](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) & [More YouTube (Career)](http://youtube.com/channel/UCyDVbQPbas1gx7VvwE4bj_w) & [More YouTube (Book Reviews)](http://youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA)  
+📚 Content Consumer - [Goodreads!](https://www.goodreads.com/zacharylong)
 
 Life before death. Strength before weakness. Journey before destination.  
 —The First Ideal of the [Knights Radiant](https://www.brandonsanderson.com/pages/the-stormlight-archive-series)
