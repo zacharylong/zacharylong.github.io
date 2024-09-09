@@ -12,7 +12,7 @@ title                    : "Zachary Long / Business Data Analyst"
 title_separator          : "-"
 name                     : &name "Zachary Long"
 description              : &description "Business Data Analyst at SUNY Farmingdale"
-url                      : https://zacharylong.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://zacharylong.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "zacharylong.github.io"
 
