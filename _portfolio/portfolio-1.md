@@ -1,6 +1,6 @@
 ---
 title: "Optimizing XYZ Company's Marketing Strategies on Rainforest Advertising Platform"
-excerpt: "NYU MSBA Capstone Project: Utilizing advanced marketing analytics to enhance XYZ Company’s Rainforest advertising strategy.<br/><img src='/images/500x300.png'>"
+excerpt: "NYU MSBA Capstone Project: Utilizing advanced marketing analytics to enhance XYZ Company’s Rainforest advertising strategy.<br/><img src='/images/CapstoneMarkov.png'>"
 collection: portfolio
 ---
 
