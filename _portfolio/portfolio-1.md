@@ -1,11 +1,16 @@
 ---
-title: "Optimizing XYZ Company's Marketing Strategies on Rainforest Advertising Platform"
-excerpt: "NYU MSBA Capstone Project: Utilizing advanced marketing analytics to enhance XYZ Company’s Rainforest advertising strategy.<br/><img src='/images/CapstoneMarkov.png'>"
+title: "Capstone Project: Optimizing Nintendo's Marketing Strategies on Amazon"
+excerpt: "NYU MSBA Capstone Project: Utilizing marketing analytics to enhance online advertising.<br/><img src='/images/CapstoneMarkov.png'>"
 collection: portfolio
 ---
-# Capstone Project: Optimizing Nintendo's Marketing Strategies on Amazon
 
 This project focuses on analyzing and optimizing Nintendo's advertising strategies on the Amazon Advertising platform. Recognizing the complexities of the digital marketing landscape, the project employed a dual-pronged analytical approach, leveraging both Multi-Touch Attribution (MTA) and Marketing Mix Modeling (MMM) to extract actionable insights from two distinct datasets provided by Nintendo. The aim was to provide data-driven recommendations to enhance Nintendo's revenue, brand visibility, and overall marketing ROI on the Amazon platform.
+
+## Datasets and Exploratory Data Analysis: Overview  
+
+The first dataset, used for Multi-Touch Attribution (MTA), tracks customer journeys and helps understand how different touchpoints contribute to conversions. Exploratory analysis for this dataset involved calculating conversion rates, analyzing path frequencies, and creating a transition matrix to understand customer flow between channels.  
+
+The second dataset, used for Marketing Mix Modeling (MMM), covers Nintendo's marketing spend, competitor sales data, and external factors over time. Exploratory analysis for this dataset focused on identifying trends and correlations between marketing spend and sales, segmenting data by the marketing funnel stages, and assessing the impact of competitor actions and temporal variables like holidays. Both exploratory analyses were crucial in preparing the data for modeling and extracting meaningful insights.  
 
 ## Unraveling the Customer Journey and Channel Effectiveness Through MTA
 
