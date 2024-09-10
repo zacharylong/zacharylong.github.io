@@ -3,16 +3,55 @@ title: "Optimizing XYZ Company's Marketing Strategies on Rainforest Advertising 
 excerpt: "NYU MSBA Capstone Project: Utilizing advanced marketing analytics to enhance XYZ Company’s Rainforest advertising strategy.<br/><img src='/images/CapstoneMarkov.png'>"
 collection: portfolio
 ---
+# Capstone Project: Optimizing Nintendo's Marketing Strategies on Amazon
 
-Project Overview  
-As part of my NYU MS in Business Analytics capstone project, my team and I analyzed XYZ Company’s marketing strategies on Rainforest, focusing on identifying the most effective channels driving conversions. Analyzing the customer journey in path to purchase using eploratory data analysis and statistics, we employed advanced analytic models like Multi-Touch Attribution (MTA) and Markov Models in python and R to optimize marketing spend and enhance customer targeting.  
+This project focuses on analyzing and optimizing Nintendo's advertising strategies on the Amazon Advertising platform. Recognizing the complexities of the digital marketing landscape, the project employed a dual-pronged analytical approach, leveraging both Multi-Touch Attribution (MTA) and Marketing Mix Modeling (MMM) to extract actionable insights from two distinct datasets provided by Nintendo. The aim was to provide data-driven recommendations to enhance Nintendo's revenue, brand visibility, and overall marketing ROI on the Amazon platform.
 
-Key Insights  
-MTA Analysis: Using the Python package channelattribution.io, we performed detailed multi-touch attribution (MTA) modeling to identify the touchpoints that most influenced customer purchases.  
-Markov Model: Provided a probabilistic view of customer journey paths and attributed conversions to specific ad channels.  
-MMM Analysis: Leveraged Facebook's Robyn tool for Marketing Mix Modeling (MMM), assessing how marketing efforts impacted overall revenue while accounting for external factors.  
-Budget Optimization: Recommended strategic shifts in marketing budget towards high-ROI channels like Sponsored Product Ads, Awareness Straming TV and Purchase O&O Display Ads.  
+## Unraveling the Customer Journey and Channel Effectiveness Through MTA
 
+The MTA analysis aimed to understand how different marketing touchpoints contributed to conversions, guiding customers toward a purchase. The project utilized the `ChannelAttribution` library in Python, applying four attribution models to a dataset tracking over 7 million customer journeys on Amazon.
 
-Conclusion  
-Our project delivered actionable insights for XYZ Company, suggesting more effective ad spend allocation and identifying channels with the highest impact on sales. The final output included a real-time dashboard allowing for continuous monitoring and optimization.
+- **First-Touch, Last-Touch, and Linear Models**: These models provided a foundational understanding of channel attribution, highlighting the initial and final touchpoints in the customer journey, as well as the overall contribution of each channel.
+- **Markov Model**: This model provided a more nuanced perspective by assessing the change in conversion probability if a particular channel was removed. This approach helped quantify each channel's unique importance in driving conversions, considering the interconnectedness of the customer journey.
+
+This analysis revealed that **Purchase Sponsored Products Ads** consistently played a dominant role in driving conversions, emerging as the most influential channel across all models. Furthermore, the Markov model highlighted the often-overlooked significance of mid-funnel interactions, particularly those facilitated by **Purchase O&O Search Ads**, in guiding customers toward conversion.
+
+## Quantifying Marketing Spend Impact with MMM
+
+Complementing the MTA analysis, the project employed MMM to evaluate the effectiveness of Nintendo's marketing spend across different channels and its impact on sales. Meta's **Robyn**, an open-source probabilistic machine learning tool, was chosen for its automated nature, ability to handle uncertainty, and flexibility in integrating various data sources. The MMM analysis focused on a dataset encompassing weekly data from 2022 to 2023, including sales figures, marketing spends across various channels, competitor sales data, and temporal variables like holidays and weekends.
+
+The model utilized a comprehensive set of variables:
+
+- **Prophet Variables**: These variables, incorporating time trends, seasonal variations, and holiday effects, ensured a more accurate assessment of marketing-driven sales changes.
+- **Context Variables**: By including competitor sales data, the model contextualized Nintendo's performance within the competitive landscape, distinguishing between market-driven and marketing-driven sales fluctuations.
+- **Paid Media Variables & Spends**: Detailed data on impressions and spending across various advertising channels, including Fire TV Display, Sponsored Ads, and Online Video, allowed for evaluating the reach, frequency, and cost-effectiveness of each channel.
+- **Geometric Adstock Transformation**: This transformation captured the lingering effects of advertising spend, providing a more realistic representation of marketing impact over time.
+
+## Data-Driven Recommendations for Business Impact
+
+The combined insights from MTA and MMM provided a comprehensive view of Nintendo's marketing performance on Amazon, leading to actionable recommendations designed to maximize ROI and drive business growth.
+
+### Channel Optimization:
+- **Prioritize Purchase Sponsored Products Ads**: Given their consistent dominance in driving conversions, increasing investment in this channel emerged as a key recommendation.
+- **Optimize Mid-Funnel Strategies**: The Markov model's insights suggested reevaluating and refining strategies for mid-funnel channels, such as **Purchase O&O Search Ads**, to better capitalize on their influence in the customer journey.
+- **Reassess Consideration Online Video Ads**: The minimal impact of these ads on conversions called for a strategic review of their content, targeting, and placement to improve effectiveness.
+
+### Budget Allocation:
+- **Shift Resources Based on Response-to-Spending Curves**: The MMM analysis, particularly the response-to-spending curves generated by the Robyn model, provided clear guidance on optimizing budget allocation across channels. Shifting resources from underperforming channels like **Purchase DSP Display Ads** to those with steeper response curves, like **Awareness Streaming TV** and **Purchase O&O Display**, was recommended to maximize ROI.
+
+### Dynamic Optimization:
+- **Continuously Monitor and Adjust**: The project emphasized the importance of a dynamic approach to marketing, advocating for continuous monitoring of channel performance, real-time budget adjustments, and ongoing refinement of the models and strategies based on evolving market conditions.
+
+### Advanced Modeling:
+- **Incorporate Revenue Data and Linear Programming**: The project proposed enhancing the MTA model by integrating revenue data, enabling a more direct evaluation of ROI. Implementing a linear programming approach for budget allocation was suggested to determine the optimal investment in each channel to maximize total conversions within budget constraints.
+
+## Real-World Implications and Business Outcomes
+
+The project's data-driven insights offered a roadmap for Nintendo to achieve significant business impact on Amazon:
+
+- **Increased Sales and Revenue**: By strategically prioritizing high-performing channels and optimizing budget allocation based on data-driven insights, Nintendo could expect a significant increase in conversion rates and overall sales revenue.
+- **Enhanced ROI**: The project's focus on measuring and optimizing marketing spend across channels, particularly by leveraging response-to-spending curves, positioned Nintendo to maximize its return on advertising investment.
+- **Stronger Brand Presence**: A data-driven approach to advertising, informed by customer journey insights, would enable Nintendo to reach the right audience segments with more targeted messaging, leading to enhanced brand visibility and recall.
+- **Competitive Advantage**: By understanding the competitive landscape and adapting strategies based on competitor actions and evolving consumer behaviors, Nintendo could solidify its position as a market leader in the highly competitive e-commerce environment.
+
+By embracing a data-driven marketing approach, empowered by the insights from MTA and MMM, Nintendo can make informed decisions, optimize its marketing investments, and drive sustainable business growth on the Amazon platform. The project serves as a testament to the transformative power of data analytics in navigating the complexities of the digital advertising landscape, enabling businesses to achieve a significant competitive advantage and maximize their marketing ROI.
