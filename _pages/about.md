@@ -11,7 +11,7 @@ I live at the intersection of creativity, technology, and business, driven by a 
 
 With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics and AI](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.  
 
-I am enthusiastic about opportunities where I can combine my expertise in business analytics, stakeholder management, and creative problem-solving to support meaningful initiatives within purpose-driven organizations.  
+🤩 I am enthusiastic about opportunities where I can combine my expertise in business analytics, stakeholder management, and creative problem-solving to support meaningful initiatives within purpose-driven organizations.  
 
 Currently I am a Technical Analyst in the Cffice of Institutional Research and Effectiveness, specializing in business intelligence dashboards in PowerBI. This experience, combined with my previous roles as a Human Resources Program Manager at Wipro and a Software Developer and Business Analyst at Capgemini, has honed my ability to leverage data insights to develop and implement people-centric strategies that drive organizational success.
 
