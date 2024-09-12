@@ -9,7 +9,9 @@ redirect_from:
 
 I live at the intersection of creativity, technology, and business, driven by a passion for using data to enhance human experiences. 
 
-With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.
+With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.  
+
+I am enthusiastic about opportunities where I can combine my expertise in business analytics, stakeholder management, and creative problem-solving to support meaningful initiatives within purpose-driven organizations.  
 
 Currently I am a Technical Analyst specializing in business intelligence dashboards primarily in PowerBI. This experience, combined with my previous roles as a Human Resources Program Manager at Wipro and a Software Developer and Business Analyst at Capgemini, has honed my ability to leverage data insights to develop and implement people-centric strategies that drive organizational success.
 
@@ -27,8 +29,6 @@ Professional Highlights
 🔑 Capgemini: Project Manager, Business Analyst & Software Developer for clients including Government Energy Producer and an International Fast-Food Restaurant Franchisor.
 
 🔑 Entrepreneur: 12+ years building and running a business from Sales and Marketing and SEO, to execution, outsourcing, and scaling through establishing long-lasting customer relationships.
-
-I am enthusiastic about opportunities where I can combine my expertise in business analytics, stakeholder management, and creative problem-solving to support meaningful initiatives within purpose-driven organizations. 
 
 Fun Facts!
 ======
