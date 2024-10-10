@@ -17,29 +17,41 @@ Education
 
 Work experience
 ======
-* Institutional Research Technical Analyst, [SUNY Farmingdale State College](https://www.farmingdale.edu/)
+* Technical Business Analyst, [SUNY Farmingdale State College](https://www.farmingdale.edu/)
   * January 2024 - Present
-  * Develop and maintain interactive self-service data dashboards in PowerBI for internal and external use stakeholders. 
-  * Clean and process academic assessment data in python and Power Query. 
-  * Optimize data engineering and ETL operations from Ellucian Banner database using Python, SQL, Power Query. 
+  * Design and build self-service Power BI reporting dashboards to visualize student data insights and trends to stakeholders across departments. Utilized Power Query and DAX for data cleaning, automated SQL queries in python. Reduced ad hoc data requests by 50%.  
+  * Collaborated with cross-functional departments to assess reporting needs and develop customized data solutions to uncover and highlight relevant metrics. 
+  * Automated daily reporting process for student enrollment using a Power Automate to Power BI pipeline, increasing reporting efficiency and allowing the team to focus on strategic initiatives by reducing workload 10%.
 
 * Master of Science in Business Analytics Candidate, [New York University Stern School of Business](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai)
   * May 2023 - May 2024
-  * Capstone: Digital Marketing Analytics for advertising campaign on Amazon Ads using Multi-Touch Attribution and Marketing Mix Modeling.
+  * Class Representative ✌️🎉
+  * Capstone: AdFlow+ Multi-Touch Attribution and Digital Marketing Analytics for international consumer electronics brand on digital advertising marketplace platform. Cleaned and analyzed 100K+ rows of digital marketing data, generating insights on budget allocation and path to purchase attribution using Meta Robyn and ChannelAttribution.io in R.
+
+Selected Coursework:
+  * Digital Marketing Analytics - Statistical and econometric issues in data analytics and causal inference. Multivariate regressions, linear and non-linear probability models, count data models, cross-sectional models vs. panel data models.
+  * Machine Learning - supervised & unsupervised techniques for solving business problems using R, focusing on descriptive, predictive (binary & numeric), and causal analysis, including topics like algorithmic bias and text analysis (topic modeling).
+  * Statistics Using R
+  * Big Data - Google Cloud Platform for big data analytics: BigQuery, PySpark, Dataproc (Hadoop clusters), Apache Sqoop, Apache Pig and Apache Hive.
+  * Modern Artificial Intelligence - Principles & applications of deep neural networks for tasks such as image recognition, text processing, and sequence prediction.
+  * Business Analytics - Leveraging data science & advanced analytics (predictive modeling), to identify and solve business problems, formulate data-driven solutions, and effectively evaluate their impact on business outcomes.
+  * Strategy, Change, & Analytics
+  * Data-Driven Decision Making
 
 * Human Resources Manager, [Wipro](https://www.wipro.com/)
   * July 2022 - June 2023
   * US Inclusion & Diversity Program Manager
-  * Working with internal stakeholders in a highly matrixed global organization, developed and launched a US-focused Employee Resource Group program to increase employee engagement and reduce turnover.
-  * Promote global and US DEI communications internally and externally via newsletters, speaking engagements, and social media increasing employer brand for Wipro.
+  * Developed and launched an Employee Resource Group program for 14,000+ associates to increase employee engagement and reduce turnover.
+  * Promote global and US DEI communications internally and externally via newsletters, client speaking engagements, and social media increasing employer brand for Wipro.
   * Developed key diversity metrics presentations and reports, utilizing Power BI to track and communicate DEI progress to senior management in cross-functional teams and external stakeholders.
+  Developed key diversity metrics presentations and reports, utilizing Power BI to track and communicate DEI progress to senior management in cross-functional teams and external stakeholders.
   * Produce in-person events for executives at Wipro offices throughout the US (California, Texas, New Jersey, New York) and India for global Human Resources initiatives.
   * Script, record, and edit video interview content of employee stories to highlight US DEI events such as Veterans Day stories distributed to 250,000+ global employees.
 
 * Project Manager, [Capgemini](https://www.capgemini.com/)
   * January 2022 - July 2022
-  * For international quick service restaurant franchisor, collaborated with cross-functional teams to synthesize stakeholder needs into a unified Power BI dashboard, enhancing decision-making insights for client's SVP of Finance.
-  * Instituted a client co-innovation strategy that resulted in the co-creation of new market offerings, demonstrating a strong consultative approach to client engagement.
+  * Led a team to develop and deliver a Power BI Finance dashboard for client VP, collaborating with stakeholders to gather requirements, overseeing design & development, and providing daily executive updates to ensure alignment with goals.
+  * Developed a client Innovation Program, resulting in new market offerings and generating 20+ upsell opportunities.
   * Onboard new college hires to account and serve as point of contact for mentoring.
   * Create employer branding content through podcast-style video interviews highlighting employee stories for Cloud & Custom Applications business unit. 
 
