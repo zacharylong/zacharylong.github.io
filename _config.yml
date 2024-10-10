@@ -23,7 +23,7 @@ author:
   # Biographic information
   avatar           : "ZacharyLong.jpeg"
   name             : "Zachary Long"
-  pronouns         : # example: "she/her"  
+  pronouns         : "he/him" # example: "she/her"  
   bio              : "NYU MS in Business Analytics '24, Auburn BS in Computer Science '20"
   location         : "Long Island, New York"
   employer         : "SUNY Farmingdale State College"
