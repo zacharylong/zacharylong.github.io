@@ -24,9 +24,11 @@ The team utilized two datasets obtained from Amazon to evaluate Nintendo's marke
 * Purchase O&O Search Ads (P_OO-SA): These search ads, placed on Amazon's search engine, promote products sold directly by Amazon.
 
 * A sample record from the first dataset is as follows:
+
 | path_id | converters | nonconverters | str_path                              |
 |---------|------------|---------------|---------------------------------------|
 | 1600    | 2          | 8             | 3&P_OO-SA@1&P_SP@4&P_SP@2&P_SP        |
+
 
 
 This record illustrates the shopping journey of 10 users, two of whom converted. The sequence "str_path" depicts the four touchpoints in their journey, starting with Purchase Sponsored Product Ads.
