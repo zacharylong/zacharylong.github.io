@@ -6,27 +6,21 @@ redirect_from:
   - /about/
   - /about.html
 ---
+I help institutions make faster, better decisions with analytics that leaders actually use. 
+My story runs from management and creative entrepreneurship to IT consulting and now, data. I translate student academic and HR data into clear data stories and governed data models that leaders and stakeholders trust.
 
-I live at the intersection of creativity, technology, and business, driven by a passion for using data to enhance human experiences and tell stories. I am enthusiastic about opportunities where I can combine my expertise in business analytics, business intelligence, stakeholder management, human resources and creative problem-solving to support meaningful initiatives within purpose-driven organizations. 🤩
+Now: At SUNY Farmingdale State (Institutional Research) I build enrollment, retention and academic assessment dashboards in Power BI, modeling Ellucian Banner student data with SQL, star schemas, and DAX so stakeholders can set schedules, allocate sections, and track student outcomes with confidence.
 
-With years of entrepreneurial success as a [professional photographer](http://www.fenglongphoto.com/) & [multimedia storyteller](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) and a pivot into IT Consulting and Human Resources through a [BS in Computer Science from Auburn University](https://eng.auburn.edu/csse/) and [MS in Business Analytics and AI](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai) from [NYU Stern School of Business](https://www.stern.nyu.edu/), I bring a unique visual and creative perspective to deriving impactful insights from data that move organizations forward.  
+What shaped me:
+✔ Program Management (Wipro): Launched Employee Resource Groups and drove KPIs focused on outcomes over activity for HR leaders.
+✔ IT Consulting (Capgemini): Deliverables delivered across Project Management + BI + coding (C#, .NET, Java) workstreams.
+✔ Founder, Photo & Video for 11+ years ([FengLongPhoto, LLC](http://www.fenglongphoto.com/)): Planned and executed complex multiday wedding events, led on-site crews, delivered on deadlines and grew market share. Secret sauce: customer empathy + award-winning creative [storytellinh](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA).
+✔ Hotel Operations (8 yrs, Marriott): 24/7 front-of-house management operations: staffing, scheduling, service recovery, and daily performance.
 
-Currently I am a Technical Business Analyst specializing in student data dashboards & reporting. This experience, combined with my previous roles as a Human Resources Program Manager at Wipro and a Software Developer and Business Analyst at Capgemini, has honed my ability to leverage data insights to develop and implement people-centric strategies.
+I live at the intersection of creativity, technology, and business. I am driven by a passion for using data to enhance human experiences and tell stories.
 
-Professional Highlights
-======
-
-🔑 NYU Stern: MS in Business Analytics and AI curriculum in machine learning, predictive analytics, artificial intelligence, and data-driven decision making with a [capstone project on digital marketing attribution](https://capstone9895332.gitlab.io/adflow/) using [Multi-Touch Attribution (MTA)](https://channelattribution.io/) and [Marketing Mix Modeling (MMM)](https://facebookexperimental.github.io/Robyn/) for an international consumer electronics brand.
-
-🔑 Auburn University: BS, Computer Science with a focus on Algorithms, Data Structures, Java, and Python.
-
-🔑 SUNY Farmingdale: Developing Power BI dashboards enhancing stakeholder engagement & promoting data-driven decision-making across the university.
-
-🔑 Wipro: HR DEI Program Manager, led the launch of Employee Resource Groups for over 14,000 associates, boosting engagement and driving DEI initiatives that improved employee experience and employer brand.
-
-🔑 Capgemini: Project Manager, Business Analyst & Software Developer for clients including Government Energy Producer and an International Fast-Food Restaurant Franchisor.
-
-🔑 Entrepreneur: 12+ years building and running a business from Sales and Marketing and SEO, to execution, outsourcing, and scaling through establishing long-lasting customer relationships.
+🔑 NYU Stern:[MS in Business Analytics and AI](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai). Machine Learning, Generative AI, Predictive Analytics, Artificial Intelligence, Causal Inference, and Data-driven Decision Making with a capstone on Digital Marketing Attribution using Multi-Touch Attribution (MTA) and Marketing Mix Modeling (MMM) analysis. Class Rep!! 🎉
+🔑 Auburn University: BS, Computer Science. Rigorous academic focus on Algorithms, Data Structures, Java, SQL, and Python fundamentals.
 
 Fun Facts!
 ======
