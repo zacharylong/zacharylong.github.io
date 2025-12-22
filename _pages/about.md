@@ -34,7 +34,7 @@ I live at the intersection of creativity, technology, and business. I’m driven
 - 💪 **2x Ironman Finisher** — [2.4 Mile Swim, 112 Mile Bike, 26.2 Mile Run](https://www.coachcox.co.uk/imstats/athlete/374729/)
 - 🚴🏻 **Avid Mountain Biker** — [Strava Stats](https://www.strava.com/athletes/59082456)
 - 🎥 **Content Creator** — [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) • [YouTube (Weddings)](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) • [YouTube (Career)](http://youtube.com/channel/UCyDVbQPbas1gx7VvwE4bj_w) • [YouTube (Book Reviews)](http://youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA)
-- 📚 **Content Consumer** — [Goodreads](https://www.goodreads.com/zacharylong)
+- 📚 **Content Consumer** — [Goodreads](https://www.goodreads.com/zacharylong) • [Letterboxd](https://letterboxd.com/zarrsadus/diary/)
 
 Life before death. Strength before weakness. Journey before destination.  
 —The First Ideal of the [Knights Radiant](https://www.brandonsanderson.com/pages/the-stormlight-archive-series)
