@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Zachary Long / Business Data Analyst"
+title                    : "Zachary Long / Data Analyst"
 title_separator          : "-"
 name                     : &name "Zachary Long"
-description              : &description "Business Data Analyst at SUNY Farmingdale"
+description              : &description "Data Analyst at SUNY Farmingdale"
 url                      : "https://zacharylong.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "zacharylong.github.io"
@@ -24,7 +24,7 @@ author:
   avatar           : "ZacharyLong.jpeg"
   name             : "Zachary Long"
   pronouns         : "he/him" # example: "she/her"  
-  bio              : "NYU MS in Business Analytics '24, Auburn BS in Computer Science '20"
+  bio              : "NYU MS in Business Analytics & AI '24, Auburn BS in Computer Science '20"
   location         : "Long Island, New York"
   employer         : "SUNY Farmingdale State College"
   uri              : "https://www.farmingdale.edu/institutional-research/" # URL
@@ -57,6 +57,7 @@ author:
   keybase          : # Username
   instagram        : "zacharylong" # Username
   lastfm           : # Username
+  letterboxd       : "zarrsadus" #Manual add
   linkedin         : "zaclong" # Username
   mastodon         : # URL
   medium           : # URL
