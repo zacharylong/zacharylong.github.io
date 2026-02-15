@@ -1,40 +1,53 @@
 ---
 permalink: /
-title: "Zachary Long - Business Data Analyst"
+title: "Zachary Long | Data Analyst"
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
 ---
 
-I help institutions make faster, better decisions with analytics that leaders actually use.
+I help higher-ed leaders make faster, better decisions with analytics they actually use.
 
-My story runs from management and creative entrepreneurship to IT consulting and now, data. I translate student academic and HR data into clear data stories and governed data models that leaders and stakeholders trust.
+I am a Data Analyst in Institutional Research at SUNY Farmingdale State College, where I build enrollment, retention, and academic assessment dashboards in Power BI using SQL, star schemas, and DAX.
 
-## Now
+[View Resume](/cv/){: .btn .btn--primary}
+[Connect on LinkedIn](https://www.linkedin.com/in/zaclong/){: .btn .btn--info}
 
-At SUNY Farmingdale State (Institutional Research), I build enrollment, retention, and academic assessment dashboards in Power BI—modeling Ellucian Banner student data with SQL, star schemas, and DAX—so stakeholders can set schedules, allocate sections, and track student outcomes with confidence.
+## What I Do
 
-## What shaped me
+- Build governed reporting models from Ellucian Banner data.
+- Translate complex data into clear, decision-ready stories.
+- Partner with stakeholders on scheduling, section planning, and student outcomes.
 
-- **Program Management (Wipro):** Launched Employee Resource Groups and drove KPIs focused on outcomes over activity for HR leaders.
-- **IT Consulting (Capgemini):** Delivered across Project Management + BI + coding (C#, .NET, Java) workstreams.
-- **Founder, Photo & Video (11+ years):** [FengLongPhoto, LLC](http://www.fenglongphoto.com/) — Planned and executed complex multi-day wedding events, led on-site crews, delivered on deadlines, and grew market share. Secret sauce: customer empathy + award-winning creative [storytelling](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA).
-- **Hotel Operations (8 yrs, Marriott):** 24/7 front-of-house management: staffing, scheduling, service recovery, and daily performance.
+## Experience Snapshot
 
-I live at the intersection of creativity, technology, and business. I’m driven by a passion for using data to enhance human experiences and tell stories.
+- **SUNY Farmingdale State College (Institutional Research):** Enrollment, retention, and assessment analytics in Power BI.
+- **Wipro (Program Management):** Launched Employee Resource Groups and KPI reporting focused on measurable outcomes.
+- **Capgemini (IT Consulting):** Delivered across project management, BI, and software workstreams.
+- **FengLongPhoto, LLC (Founder):** Led an 11+ year creative business focused on storytelling, operations, and client delivery.
+- **Marriott (Hotel Operations):** Managed high-volume, 24/7 service and staffing operations.
+
+## Tools and Skills
+
+- Power BI
+- SQL
+- DAX
+- Data modeling (star schemas)
+- Analytics storytelling
+- Stakeholder communication
 
 ## Education
 
-- 🔑 **NYU Stern:** [MS in Business Analytics and AI](https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai). Machine Learning, Generative AI, Predictive Analytics, Artificial Intelligence, Causal Inference, and Data-driven Decision Making, with a capstone on Digital Marketing Attribution using Multi-Touch Attribution (MTA) and Marketing Mix Modeling (MMM). Class Rep!! 🎉
-- 🔑 **Auburn University:** BS, Computer Science. Algorithms, Data Structures, Java, SQL, and Python fundamentals.
+- **NYU Stern:** MS in Business Analytics and AI
+- **Auburn University:** BS in Computer Science
 
-## Fun Facts
+## Outside Work
 
-- 💪 **2x Ironman Finisher** — [2.4 Mile Swim, 112 Mile Bike, 26.2 Mile Run](https://www.coachcox.co.uk/imstats/athlete/374729/)
-- 🚴🏻 **Avid Mountain Biker** — [Strava Stats](https://www.strava.com/athletes/59082456)
-- 🎥 **Content Creator** — [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) • [YouTube (Weddings)](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) • [YouTube (Career)](http://youtube.com/channel/UCyDVbQPbas1gx7VvwE4bj_w) • [YouTube (Book Reviews)](http://youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA)
-- 📚 **Content Consumer** — [Goodreads](https://www.goodreads.com/zacharylong) • [Letterboxd](https://letterboxd.com/zarrsadus/diary/)
-
-Life before death. Strength before weakness. Journey before destination.  
-—The First Ideal of the [Knights Radiant](https://www.brandonsanderson.com/pages/the-stormlight-archive-series)
+- 2x Ironman finisher
+- Avid mountain biker ([Strava](https://www.strava.com/athletes/59082456))
+- Content creator and reviewer:
+  [LinkedIn](https://www.linkedin.com/in/zaclong/recent-activity/all/) |
+  [YouTube](http://youtube.com/channel/UC7uLYA0CK60EZjW6AiWc7sA) |
+  [Goodreads](https://www.goodreads.com/zacharylong) |
+  [Letterboxd](https://letterboxd.com/ZarrSadus/)
