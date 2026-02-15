@@ -14,8 +14,6 @@ I help institutions make faster, better decisions with analytics that leaders ac
 
 I am a Data Analyst in Institutional Research at SUNY Farmingdale State College, where I build enrollment, retention, and academic assessment dashboards in Power BI using SQL, star schemas, and DAX.
 
-## Now
-
 [View Resume](/cv/){: .btn .btn--primary}
 [Connect on LinkedIn](https://www.linkedin.com/in/zaclong/){: .btn .btn--info}
 
@@ -44,5 +42,5 @@ I live at the intersection of creativity, technology, and business. I’m driven
 Life before death. Strength before weakness. Journey before destination.  
 —The First Ideal of the [Knights Radiant](https://www.brandonsanderson.com/pages/the-stormlight-archive-series)
 
-"First In, Last Out."
--Motto of the Bridgeburners
+"First In, Last Out."  
+—Motto of the [Bridgeburners](https://en.wikipedia.org/wiki/Malazan_Book_of_the_Fallen)
