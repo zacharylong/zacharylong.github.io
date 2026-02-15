@@ -148,7 +148,18 @@
         <li><a href="https://www.xing.com/profile/{{ author.xing }}"><i class="fab fa-fw fa-xing icon-pad-right" aria-hidden="true"></i>XING</a></li>
       {% endif %}
       {% if author.youtube %}
-        <li><a href="https://www.youtube.com/user/{{ author.youtube }}"><i class="fab fa-fw fa-youtube icon-pad-right" aria-hidden="true"></i>YouTube</a></li>
+        {% assign youtube_url = author.youtube %}
+        {% unless youtube_url contains "://" %}
+          {% assign youtube_prefix = youtube_url | slice: 0, 2 %}
+          {% if youtube_url contains "@" or youtube_url contains "channel/" or youtube_url contains "user/" or youtube_url contains "c/" %}
+            {% assign youtube_url = youtube_url | prepend: "https://www.youtube.com/" %}
+          {% elsif youtube_prefix == "UC" %}
+            {% assign youtube_url = youtube_url | prepend: "https://www.youtube.com/channel/" %}
+          {% else %}
+            {% assign youtube_url = youtube_url | prepend: "https://www.youtube.com/@" %}
+          {% endif %}
+        {% endunless %}
+        <li><a href="{{ youtube_url }}"><i class="fab fa-fw fa-youtube icon-pad-right" aria-hidden="true"></i>YouTube</a></li>
       {% endif %}
       {% if author.zhihu %}
       <li><a href="{{ author.zhihu }}"><i class="fab fa-fw fa-zhihu icon-pad-right" aria-hidden="true"></i>Zhihu</a></li>

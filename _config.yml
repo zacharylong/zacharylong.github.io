@@ -71,7 +71,7 @@ author:
   weibo            : # Username
   wikipedia        : # Username
   xing             : # Username
-  youtube          : "zacharylong" # Username
+  youtube          : "https://www.youtube.com/@EverydayDataWithPnZ" # URL, handle, channel path, or channel ID
   zhihu            : # URL
 
 # Publication Category - The following the list of publication categories and their headings
