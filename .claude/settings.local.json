@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npx astro build)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -L -o /dev/null -w \"%{http_code}\" \"https://www.goodreads.com/review/list_rss/zacharylong?shelf=read\")",
+      "Bash(curl -s -L \"https://www.goodreads.com/review/list_rss/zacharylong?shelf=read\")",
+      "Bash(curl -s -L \"https://www.goodreads.com/zacharylong\")",
+      "Bash(curl -s -L \"https://www.goodreads.com/review/list_rss/43383319?shelf=read&per_page=3\")",
+      "Bash(curl -s \"https://www.youtube.com/@EverydayDataWithPnZ\")",
+      "Bash(curl -s \"https://www.youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA\")",
+      "Bash(curl -s -L \"https://www.youtube.com/@EverydayDataWithPnZ\")",
+      "Bash(git add .gitignore package.json astro.config.mjs tsconfig.json public/ src/ .github/workflows/deploy.yml)",
+      "Bash(git add -u)",
+      "Bash(git commit:*)",
+      "Bash(git push origin master)"
+    ]
+  }
+}
