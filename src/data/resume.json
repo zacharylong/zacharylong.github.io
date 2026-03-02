@@ -1,0 +1,161 @@
+{
+  "name": "Zachary Long",
+  "title": "Technical Business Analyst",
+  "tagline": "I help institutions make faster, better decisions with analytics that leaders actually use.",
+  "email": "zwl216@stern.nyu.edu",
+  "location": "Long Island, New York",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/zaclong/",
+    "github": "https://github.com/zacharylong",
+    "goodreads": "https://www.goodreads.com/zacharylong",
+    "letterboxd": "https://letterboxd.com/zarrsadus/diary/",
+    "strava": "https://www.strava.com/athletes/59082456"
+  },
+  "education": [
+    {
+      "degree": "M.S. in Business Analytics and AI",
+      "school": "New York University, Stern School of Business",
+      "year": "2024",
+      "details": "Class Representative. Capstone: Digital Marketing Analytics using MMM & MTA for path to purchase. Coursework: Machine Learning, Generative AI, Data-Driven Decision Making, Big Data (GCP, AWS), Network Analytics, Statistics, Data Mining, Modern Artificial Intelligence."
+    },
+    {
+      "degree": "B.S. in Computer Science",
+      "school": "Auburn University",
+      "year": "2020",
+      "details": "Algorithms, Data Structures, Databases, Web Development, Mobile Development, Cloud Computing (AWS/Docker), Parallel Programming."
+    },
+    {
+      "degree": "B.S. in Hospitality Management",
+      "school": "University of Central Florida",
+      "year": "2005",
+      "details": ""
+    }
+  ],
+  "experience": [
+    {
+      "title": "Technical Business Analyst",
+      "company": "SUNY Farmingdale State College",
+      "url": "https://www.farmingdale.edu/",
+      "dates": "January 2024 - Present",
+      "highlights": [
+        "Design, build, and maintain institutional research dashboards in Power BI (enrollment, retention, major migration, faculty teaching history) using data from Ellucian Banner (Oracle/PL-SQL).",
+        "Partner with senior leaders (Provost, Deans, Chairs) to translate strategic questions into data-informed analyses.",
+        "Lead the transition from Tableau to Power BI, reducing ad hoc data requests by 50% and improving timeliness of executive decision making.",
+        "Develop automated reporting pipelines with Power BI and Power Automate, improving data integrity and reproducibility.",
+        "Presenter for the SUNY Power BI User Group on best practices."
+      ]
+    },
+    {
+      "title": "M.S. in Business Analytics Candidate",
+      "company": "New York University, Stern School of Business",
+      "url": "https://www.stern.nyu.edu/programs-admissions/ms-business-analytics-ai",
+      "dates": "May 2023 - May 2024",
+      "highlights": [
+        "Class Representative for 2024 MSBAi cohort.",
+        "Capstone: Digital Marketing Analytics using Marketing Mix Modeling (MMM) & Multi-Touch Attribution (MTA) for path to purchase.",
+        "Coursework: Machine Learning, Generative AI, Data-Driven Decision Making, Big Data (GCP, AWS), Network Analytics, Statistics, Data Mining."
+      ]
+    },
+    {
+      "title": "Human Resources Program Manager",
+      "company": "Wipro",
+      "url": "https://www.wipro.com/",
+      "dates": "July 2022 - June 2023",
+      "highlights": [
+        "Designed and launched a national Employee Resource Group (ERG) framework for 14,000+ US associates.",
+        "Planned and executed virtual, hybrid, and in-person programs across the US and India.",
+        "Developed DEI communications and reports, aligning messaging with organizational strategy and metrics."
+      ]
+    },
+    {
+      "title": "Project Manager",
+      "company": "Capgemini",
+      "url": "https://www.capgemini.com/",
+      "dates": "January 2022 - July 2022",
+      "highlights": [
+        "Led a team to develop and deliver a Power BI Finance dashboard for client VP.",
+        "Developed a client Innovation Program, generating 20+ upsell opportunities.",
+        "Created employer branding content through podcast-style video interviews."
+      ]
+    },
+    {
+      "title": "National Lead - CREATE Employee Resource Group",
+      "company": "Capgemini",
+      "url": "https://www.capgemini.com/",
+      "dates": "December 2021 - July 2022",
+      "highlights": [
+        "Winner: ERG of the Year.",
+        "Plan and execute events for 800+ member CREATE Employee Resource Group.",
+        "Increased engagement through quarterly newsletter and internal channels."
+      ]
+    },
+    {
+      "title": "Business Analyst",
+      "company": "Capgemini",
+      "url": "https://www.capgemini.com/",
+      "dates": "September 2021 - January 2022",
+      "highlights": [
+        "Led strategic workshops for cloud readiness, collaborating with client stakeholders.",
+        "Coordinated with India-based team to analyze application data for high-stakes presentations."
+      ]
+    },
+    {
+      "title": "Software Developer",
+      "company": "Capgemini",
+      "url": "https://www.capgemini.com/",
+      "dates": "February 2021 - January 2022",
+      "highlights": [
+        "Developed and deployed database migration tool in C# for Sitefinity to Azure SQL.",
+        "Gathered requirements from 10+ client stakeholders for 3 high-value IT projects, achieving 95% client satisfaction."
+      ]
+    },
+    {
+      "title": "Professional Photographer & Founder",
+      "company": "FengLong Photography",
+      "url": "http://www.fenglongphoto.com/",
+      "dates": "September 2009 - July 2022",
+      "highlights": [
+        "Full-time boutique wedding photography & videography company for 12+ years.",
+        "Increased operating revenue 250% year over year through SEO and social media campaigns.",
+        "3x Fearless Photographers winner for excellence and creativity in wedding photography."
+      ]
+    },
+    {
+      "title": "Head of Operations",
+      "company": "Camera Concierge, LLC",
+      "dates": "September 2009 - May 2014",
+      "highlights": [
+        "Launched & operated startup camera equipment rental website servicing local photographers & filmmakers.",
+        "Grew through Google Ads, Facebook Ads, social media, and local partnerships."
+      ]
+    },
+    {
+      "title": "Front Office Manager",
+      "company": "Marriott International",
+      "dates": "June 2003 - February 2011",
+      "highlights": [
+        "Atlanta Marriott Airport Gateway, Orlando World Center Marriott, Orlando Airport Marriott.",
+        "24/7 front-of-house management: staffing, scheduling, service recovery, and daily performance."
+      ]
+    }
+  ],
+  "skills": {
+    "Analytics & BI": ["Power BI", "DAX", "Star Schemas", "Tableau", "Power Automate"],
+    "Programming": ["Python", "SQL", "R", "C#", ".NET", "Java", "JavaScript"],
+    "Data & Cloud": ["Oracle/PL-SQL", "GCP BigQuery", "AWS", "Azure SQL", "PySpark"],
+    "AI & ML": ["Machine Learning", "Generative AI", "Predictive Analytics", "NLP"],
+    "Business": ["Project Management", "Stakeholder Communication", "Data-Driven Decision Making", "DEI Strategy"]
+  },
+  "funFacts": [
+    {
+      "icon": "ironman",
+      "text": "2x Ironman Finisher — 2.4 Mile Swim, 112 Mile Bike, 26.2 Mile Run",
+      "url": "https://www.coachcox.co.uk/imstats/athlete/374729/"
+    },
+    {
+      "icon": "bike",
+      "text": "Avid Mountain Biker",
+      "url": "https://www.strava.com/athletes/59082456"
+    }
+  ]
+}

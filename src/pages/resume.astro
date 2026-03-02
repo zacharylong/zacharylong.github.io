@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import resumeData from '../data/resume.json';
+---
+
+<BaseLayout title="Zachary Long | Resume" location="Narshe">
+  <main class="page-content container">
+
+    <!-- Page header -->
+    <header class="page-header">
+      <h1>Resume</h1>
+      <p class="page-header-sub">Technical Business Analyst &bull; Long Island, NY</p>
+    </header>
+
+    <!-- Contact bar -->
+    <div class="ff-box" style="margin-bottom: var(--sp-8); text-align: center;">
+      <div class="contact-bar" style="font-size: 14px; color: var(--ff-text-dim); text-align: center; line-height: 2;">
+        <a href={`mailto:${resumeData.email}`}>{resumeData.email}</a>
+        <span class="separator">&nbsp;&bull;&nbsp;</span>
+        <a href={resumeData.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <span class="separator">&nbsp;&bull;&nbsp;</span>
+        <a href={resumeData.links.github} target="_blank" rel="noopener">GitHub</a>
+        <span class="separator">&nbsp;&bull;&nbsp;</span>
+        <span>{resumeData.location}</span>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <section class="resume-section">
+      <h2>Experience</h2>
+      <div class="ff-box">
+        {resumeData.experience.map((job) => (
+          <div class="exp-entry">
+            <div class="exp-header">
+              <div class="exp-title">{job.title}</div>
+              <div class="exp-company">
+                {job.url ? (
+                  <a href={job.url} target="_blank" rel="noopener">{job.company}</a>
+                ) : (
+                  job.company
+                )}
+              </div>
+              <div class="exp-dates">{job.dates}</div>
+            </div>
+            <ul class="exp-highlights">
+              {job.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="resume-section">
+      <h2>Education</h2>
+      <div class="ff-box">
+        {resumeData.education.map((edu) => (
+          <div class="edu-entry">
+            <div class="edu-degree">{edu.degree}</div>
+            <div class="edu-school">{edu.school}</div>
+            <div class="edu-year">{edu.year}</div>
+            {edu.details && <p class="edu-details">{edu.details}</p>}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="resume-section">
+      <h2>Skills</h2>
+      <div class="ff-box">
+        <div class="skills-grid">
+          {Object.entries(resumeData.skills).map(([category, skills]) => (
+            <div class="skill-category">
+              <h3>{category}</h3>
+              <div class="skill-tags">
+                {(skills as string[]).map((skill) => (
+                  <span class="skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Fun Facts -->
+    <section class="resume-section">
+      <h2>Fun Facts</h2>
+      <div class="ff-box">
+        <ul class="fun-facts">
+          {resumeData.funFacts.map((fact) => (
+            <li class="fun-fact">
+              <span class="fun-fact-icon">▸</span>
+              {fact.url ? (
+                <a href={fact.url} target="_blank" rel="noopener">{fact.text}</a>
+              ) : (
+                <span>{fact.text}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

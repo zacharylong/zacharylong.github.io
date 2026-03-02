@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Zachary Long | Data Analyst • Creator • Explorer" showNav={false}>
+  <main class="landing">
+
+    <!-- World map background (desktop only — image optional) -->
+    <div class="world-map-bg" aria-hidden="true"></div>
+
+    <div class="landing-content">
+      <!-- Terra sprite -->
+      <div class="terra-wrap fade-in">
+        <img
+          src="/images/terra-human.png"
+          alt=""
+          class="terra-sprite pixel"
+          width="48"
+          height="48"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <!-- Intro dialog box -->
+      <div class="ff-box intro-box fade-in fade-in-delay-1">
+        <h1>Zachary Long</h1>
+        <p class="intro-subtitle">Data Analyst &bull; Creator &bull; Explorer</p>
+        <p class="intro-text">
+          I help institutions make faster, better decisions
+          with analytics that leaders actually use.
+        </p>
+        <p class="intro-text" style="margin-top: var(--sp-3);">
+          I live at the intersection of creativity, technology,
+          and business — driven by a passion for using data to
+          enhance human experiences and tell stories.
+        </p>
+      </div>
+
+      <!-- Navigation menu -->
+      <nav class="world-nav fade-in fade-in-delay-2" aria-label="Site sections">
+        <div class="ff-box">
+          <ul class="ff-menu">
+            <li>
+              <a href="/resume" class="ff-menu-item">
+                <span class="ff-menu-label">Narshe</span>
+                <span class="ff-menu-sub">Resume</span>
+              </a>
+            </li>
+            <li>
+              <a href="/library" class="ff-menu-item">
+                <span class="ff-menu-label">Opera House</span>
+                <span class="ff-menu-sub">Library</span>
+              </a>
+            </li>
+            <li>
+              <a href="/theater" class="ff-menu-item">
+                <span class="ff-menu-label">Jidoor</span>
+                <span class="ff-menu-sub">Theater</span>
+              </a>
+            </li>
+            <li>
+              <a href="/creations" class="ff-menu-item">
+                <span class="ff-menu-label">The Blackjack</span>
+                <span class="ff-menu-sub">Creations</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Quotes -->
+      <div class="ff-box quote-box fade-in fade-in-delay-3">
+        <p class="quote">
+          &ldquo;Life before death. Strength before weakness. Journey before destination.&rdquo;
+        </p>
+        <p class="quote-attr">&mdash; The First Ideal of the Knights Radiant</p>
+        <hr />
+        <p class="quote">
+          &ldquo;First In, Last Out.&rdquo;
+        </p>
+        <p class="quote-attr">&mdash; Motto of the Bridgeburners</p>
+      </div>
+
+      <!-- Social links -->
+      <div class="social-row fade-in fade-in-delay-4">
+        <a href="https://www.linkedin.com/in/zaclong/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/zacharylong" class="social-link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.goodreads.com/zacharylong" class="social-link" target="_blank" rel="noopener">Goodreads</a>
+        <a href="https://letterboxd.com/zarrsadus/diary/" class="social-link" target="_blank" rel="noopener">Letterboxd</a>
+        <a href="https://www.strava.com/athletes/59082456" class="social-link" target="_blank" rel="noopener">Strava</a>
+      </div>
+
+      <!-- Desktop hint -->
+      <p class="desktop-hint">Best experienced on desktop &bull; Sound ON recommended</p>
+    </div>
+  </main>
+</BaseLayout>

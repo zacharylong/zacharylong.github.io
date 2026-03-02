@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { fetchGoodreadsBooks, ratingToStars } from '../utils/rss';
+
+// Fetch books from Goodreads at build time
+// Goodreads numeric user ID for zacharylong
+const GOODREADS_ID = '43383319';
+const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-reading', 5);
+const recentlyRead = await fetchGoodreadsBooks(GOODREADS_ID, 'read', 12);
+---
+
+<BaseLayout title="Zachary Long | The Library" location="Opera House">
+  <main class="page-content container">
+
+    <header class="page-header">
+      <h1>The Library</h1>
+      <p class="page-header-sub">Science Fiction &bull; Fantasy &bull; Everything In Between</p>
+    </header>
+
+    <!-- Currently Reading -->
+    {currentlyReading.length > 0 && (
+      <section class="resume-section">
+        <h2>Currently Reading</h2>
+        <div class="feed-grid">
+          {currentlyReading.map((book) => (
+            <div class="feed-card">
+              <a href={book.link} target="_blank" rel="noopener">
+                {book.imageUrl && (
+                  <img
+                    src={book.imageUrl}
+                    alt={book.title}
+                    class="feed-card-img"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                )}
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{book.title}</div>
+                  <div class="feed-card-meta">{book.author}</div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Recently Read -->
+    {recentlyRead.length > 0 ? (
+      <section class="resume-section">
+        <h2>Recently Read</h2>
+        <div class="feed-grid">
+          {recentlyRead.map((book) => (
+            <div class="feed-card">
+              <a href={book.link} target="_blank" rel="noopener">
+                {book.imageUrl && (
+                  <img
+                    src={book.imageUrl}
+                    alt={book.title}
+                    class="feed-card-img"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                )}
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{book.title}</div>
+                  <div class="feed-card-meta">{book.author}</div>
+                  {book.rating > 0 && (
+                    <div class="feed-card-rating">{ratingToStars(book.rating)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    ) : (
+      <div class="feed-empty">
+        <div class="ff-box">
+          <p>The library shelves are being stocked...</p>
+          <p style="margin-top: var(--sp-3);">
+            Visit my <a href="https://www.goodreads.com/zacharylong" target="_blank" rel="noopener">Goodreads</a> to see what I'm reading.
+          </p>
+        </div>
+      </div>
+    )}
+
+    <!-- Goodreads link -->
+    <div style="text-align: center; margin-top: var(--sp-8);">
+      <a
+        href="https://www.goodreads.com/zacharylong"
+        target="_blank"
+        rel="noopener"
+        class="ff-menu-item"
+        style="display: inline-flex; justify-content: center;"
+      >
+        <span class="ff-menu-label">View full library on Goodreads</span>
+      </a>
+    </div>
+
+  </main>
+</BaseLayout>

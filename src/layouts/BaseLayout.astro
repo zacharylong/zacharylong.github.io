@@ -1,0 +1,158 @@
+---
+import '../styles/ff6.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  location?: string;   // FF6 location name shown in nav bar
+  showNav?: boolean;    // Show top nav bar (false on landing page)
+}
+
+const {
+  title,
+  description = 'Zachary Long — Data Analyst, Creator, Explorer. A Final Fantasy VI inspired personal website.',
+  location,
+  showNav = true,
+} = Astro.props;
+
+const isLanding = Astro.url.pathname === '/';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#060618" />
+  <title>{title}</title>
+
+  <!-- Preconnect for pixel font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url.href} />
+</head>
+<body>
+  <!-- Starfield background -->
+  <div class="starfield" aria-hidden="true"></div>
+
+  <!-- Top navigation bar (inner pages only) -->
+  {showNav && !isLanding && (
+    <nav class="site-nav">
+      <a href="/" class="nav-back">World Map</a>
+      {location && <span class="nav-title">{location}</span>}
+      <button class="audio-toggle" id="audioToggle" data-playing="false" aria-label="Toggle music">
+        <span class="audio-icon" id="audioIcon">♪</span>
+        <span id="audioLabel">OFF</span>
+      </button>
+    </nav>
+  )}
+
+  <!-- Page content -->
+  <slot />
+
+  <!-- Audio toggle on landing page (positioned fixed) -->
+  {isLanding && (
+    <button class="audio-toggle" id="audioToggle" data-playing="false" aria-label="Toggle music">
+      <span class="audio-icon" id="audioIcon">♪</span>
+      <span id="audioLabel">OFF</span>
+    </button>
+  )}
+
+  <!-- Audio System -->
+  <script is:inline>
+    (function() {
+      // Audio state
+      let bgm = null;
+      let isPlaying = false;
+      const STORAGE_KEY = 'ff6-audio-pref';
+
+      function initAudio() {
+        const toggle = document.getElementById('audioToggle');
+        if (!toggle) return;
+
+        toggle.addEventListener('click', function() {
+          if (!bgm) {
+            bgm = new Audio('/audio/terras-theme.mp3');
+            bgm.loop = true;
+            bgm.volume = 0.3;
+          }
+
+          if (isPlaying) {
+            bgm.pause();
+            isPlaying = false;
+            localStorage.setItem(STORAGE_KEY, 'off');
+          } else {
+            bgm.play().catch(() => {});
+            isPlaying = true;
+            localStorage.setItem(STORAGE_KEY, 'on');
+          }
+          updateToggleUI();
+        });
+
+        // Auto-play if user previously had it on
+        if (localStorage.getItem(STORAGE_KEY) === 'on') {
+          // Attempt autoplay on user interaction
+          document.addEventListener('click', function autoplay() {
+            if (!bgm) {
+              bgm = new Audio('/audio/terras-theme.mp3');
+              bgm.loop = true;
+              bgm.volume = 0.3;
+            }
+            bgm.play().then(() => {
+              isPlaying = true;
+              updateToggleUI();
+            }).catch(() => {});
+            document.removeEventListener('click', autoplay);
+          }, { once: true });
+        }
+      }
+
+      function updateToggleUI() {
+        const toggle = document.getElementById('audioToggle');
+        const icon = document.getElementById('audioIcon');
+        const label = document.getElementById('audioLabel');
+        if (!toggle) return;
+
+        toggle.setAttribute('data-playing', isPlaying ? 'true' : 'false');
+        if (icon) icon.textContent = isPlaying ? '♫' : '♪';
+        if (label) label.textContent = isPlaying ? 'ON' : 'OFF';
+      }
+
+      // Menu SFX
+      function playSFX(type) {
+        const sfx = new Audio(type === 'select' ? '/audio/select.mp3' : '/audio/cursor.mp3');
+        sfx.volume = 0.2;
+        sfx.play().catch(() => {});
+      }
+
+      // Attach SFX to menu items
+      function initSFX() {
+        document.querySelectorAll('.ff-menu-item').forEach(function(item) {
+          item.addEventListener('mouseenter', function() { playSFX('cursor'); });
+          item.addEventListener('click', function() { playSFX('select'); });
+        });
+      }
+
+      // Init
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          initAudio();
+          initSFX();
+        });
+      } else {
+        initAudio();
+        initSFX();
+      }
+    })();
+  </script>
+</body>
+</html>
