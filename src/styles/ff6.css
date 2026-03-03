@@ -417,78 +417,67 @@ hr {
   gap: var(--sp-6);
 }
 
-/* Terra sprite container */
-.terra-wrap {
+/* Hero sprite area — Terra + Mog */
+.hero-sprites {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+  gap: var(--sp-4);
   padding: var(--sp-4) 0;
-  min-height: 100px;
+  min-height: 80px;
 }
 
-/* CSS pixel-art Terra sprite (box-shadow technique — no image needed) */
-.terra-pixel-sprite {
-  width: 1px;
-  height: 1px;
-  transform: scale(3.5);
-  transform-origin: top left;
-  margin: 24px auto 0;
-  animation: terra-float 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(88, 216, 216, 0.45));
-  /* 16x16 pixel grid — green hair, red cape, skin face */
-  box-shadow:
-    /* Row 0: hair top */
-    6px 0 0 #2dd24b, 7px 0 0 #2dd24b, 8px 0 0 #2dd24b, 9px 0 0 #2dd24b,
-    /* Row 1: hair wider */
-    5px 1px 0 #2dd24b, 6px 1px 0 #25c043, 7px 1px 0 #2dd24b, 8px 1px 0 #25c043, 9px 1px 0 #2dd24b, 10px 1px 0 #2dd24b,
-    /* Row 2: hair + face top */
-    4px 2px 0 #2dd24b, 5px 2px 0 #2dd24b, 6px 2px 0 #f0c0a0, 7px 2px 0 #f0c0a0, 8px 2px 0 #f0c0a0, 9px 2px 0 #f0c0a0, 10px 2px 0 #2dd24b, 11px 2px 0 #2dd24b,
-    /* Row 3: face + eyes */
-    4px 3px 0 #2dd24b, 5px 3px 0 #f0c0a0, 6px 3px 0 #202040, 7px 3px 0 #f0c0a0, 8px 3px 0 #f0c0a0, 9px 3px 0 #202040, 10px 3px 0 #f0c0a0, 11px 3px 0 #2dd24b,
-    /* Row 4: lower face */
-    5px 4px 0 #f0c0a0, 6px 4px 0 #f0c0a0, 7px 4px 0 #e0a888, 8px 4px 0 #e0a888, 9px 4px 0 #f0c0a0, 10px 4px 0 #f0c0a0,
-    /* Row 5: neck + cape top */
-    4px 5px 0 #d04040, 5px 5px 0 #d04040, 6px 5px 0 #f0c0a0, 7px 5px 0 #f0c0a0, 8px 5px 0 #f0c0a0, 9px 5px 0 #f0c0a0, 10px 5px 0 #d04040, 11px 5px 0 #d04040,
-    /* Row 6: cape + shoulders */
-    3px 6px 0 #d04040, 4px 6px 0 #d04040, 5px 6px 0 #c03838, 6px 6px 0 #d04040, 7px 6px 0 #d8d0c8, 8px 6px 0 #d8d0c8, 9px 6px 0 #d04040, 10px 6px 0 #c03838, 11px 6px 0 #d04040, 12px 6px 0 #d04040,
-    /* Row 7: torso */
-    3px 7px 0 #c03838, 4px 7px 0 #d04040, 5px 7px 0 #d04040, 6px 7px 0 #d8d0c8, 7px 7px 0 #e8e0d8, 8px 7px 0 #e8e0d8, 9px 7px 0 #d8d0c8, 10px 7px 0 #d04040, 11px 7px 0 #d04040, 12px 7px 0 #c03838,
-    /* Row 8: waist */
-    3px 8px 0 #d04040, 4px 8px 0 #c03838, 5px 8px 0 #d04040, 6px 8px 0 #d04040, 7px 8px 0 #e8b830, 8px 8px 0 #e8b830, 9px 8px 0 #d04040, 10px 8px 0 #d04040, 11px 8px 0 #c03838, 12px 8px 0 #d04040,
-    /* Row 9: belt + dress */
-    4px 9px 0 #d04040, 5px 9px 0 #d04040, 6px 9px 0 #c03838, 7px 9px 0 #d04040, 8px 9px 0 #d04040, 9px 9px 0 #c03838, 10px 9px 0 #d04040, 11px 9px 0 #d04040,
-    /* Row 10: skirt */
-    3px 10px 0 #d04040, 4px 10px 0 #c03838, 5px 10px 0 #d04040, 6px 10px 0 #d04040, 7px 10px 0 #c03838, 8px 10px 0 #c03838, 9px 10px 0 #d04040, 10px 10px 0 #d04040, 11px 10px 0 #c03838, 12px 10px 0 #d04040,
-    /* Row 11: skirt lower */
-    3px 11px 0 #c03838, 4px 11px 0 #d04040, 5px 11px 0 #c03838, 6px 11px 0 #c03838, 7px 11px 0 #d04040, 8px 11px 0 #d04040, 9px 11px 0 #c03838, 10px 11px 0 #c03838, 11px 11px 0 #d04040, 12px 11px 0 #c03838,
-    /* Row 12: legs */
-    5px 12px 0 #f0c0a0, 6px 12px 0 #d04040, 7px 12px 0 #c03838, 8px 12px 0 #c03838, 9px 12px 0 #d04040, 10px 12px 0 #f0c0a0,
-    /* Row 13: legs lower */
-    5px 13px 0 #f0c0a0, 6px 13px 0 #f0c0a0, 7px 13px 0 #c03838, 8px 13px 0 #c03838, 9px 13px 0 #f0c0a0, 10px 13px 0 #f0c0a0,
-    /* Row 14: boots */
-    4px 14px 0 #604020, 5px 14px 0 #705030, 6px 14px 0 #604020, 9px 14px 0 #604020, 10px 14px 0 #705030, 11px 14px 0 #604020,
-    /* Row 15: boot soles */
-    4px 15px 0 #503018, 5px 15px 0 #604020, 6px 15px 0 #503018, 9px 15px 0 #503018, 10px 15px 0 #604020, 11px 15px 0 #503018;
-}
-
-@keyframes terra-float {
-  0%, 100% { transform: scale(3.5) translateY(0); }
-  50% { transform: scale(3.5) translateY(-6px); }
-}
-
-.terra-sprite {
-  width: 48px;
-  height: 48px;
+.hero-sprite {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   transform: scale(2.5);
-  transform-origin: center;
-  animation: terra-float-img 3s ease-in-out infinite;
+  transform-origin: bottom center;
   filter: drop-shadow(0 0 8px rgba(88, 216, 216, 0.4));
+  animation: hero-float 3s ease-in-out infinite;
 }
 
-@keyframes terra-float-img {
+.hero-sprite--mog {
+  animation-delay: 0.5s;
+  filter: drop-shadow(0 0 8px rgba(248, 248, 112, 0.35));
+}
+
+@keyframes hero-float {
   0%, 100% { transform: scale(2.5) translateY(0); }
-  50% { transform: scale(2.5) translateY(-6px); }
+  50% { transform: scale(2.5) translateY(-5px); }
+}
+
+/* ==========================================================
+   MENU CHARACTER SPRITES — animated GIFs in nav
+   ========================================================== */
+.menu-sprite {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(88, 216, 216, 0.3));
+  transition: filter 0.15s;
+}
+
+.ff-menu-item:hover .menu-sprite,
+.ff-menu-item:focus-visible .menu-sprite {
+  filter: drop-shadow(0 0 6px rgba(248, 248, 112, 0.5));
+}
+
+/* Compact menu label: "Narshe (Resume)" */
+.ff-menu-text {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  flex: 1;
+}
+
+.ff-menu-text .ff-menu-label {
+  flex: none;
+}
+
+.ff-menu-text .ff-menu-sub {
+  font-size: 9px;
 }
 
 /* ==========================================================
@@ -748,7 +737,7 @@ hr {
 }
 
 /* ==========================================================
-   WORLD MAP BG — CSS gradient horizon (replaces missing PNG)
+   WORLD MAP BACKGROUND
    ========================================================== */
 .world-map-bg {
   position: fixed;
@@ -756,14 +745,9 @@ hr {
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      transparent 55%,
-      rgba(12, 12, 60, 0.25) 70%,
-      rgba(18, 28, 80, 0.35) 82%,
-      rgba(10, 20, 50, 0.2) 100%
-    );
+    url('/images/sprites/world-of-balance.webp') center / cover no-repeat;
+  opacity: 0.18;
+  filter: blur(1.5px) saturate(1.2);
 }
 
 /* ==========================================================
@@ -794,27 +778,23 @@ hr {
     font-size: 22px;
   }
 
-  .terra-pixel-sprite {
-    transform: scale(5);
+  .hero-sprite {
+    transform: scale(3.5);
   }
 
-  @keyframes terra-float {
-    0%, 100% { transform: scale(5) translateY(0); }
-    50% { transform: scale(5) translateY(-8px); }
+  @keyframes hero-float {
+    0%, 100% { transform: scale(3.5) translateY(0); }
+    50% { transform: scale(3.5) translateY(-6px); }
   }
 
-  .terra-wrap {
+  .hero-sprites {
     min-height: 120px;
+    gap: var(--sp-8);
   }
 
-  .terra-sprite {
-    transform: scale(3);
-    animation-name: terra-float-lg;
-  }
-
-  @keyframes terra-float-lg {
-    0%, 100% { transform: scale(3) translateY(0); }
-    50% { transform: scale(3) translateY(-8px); }
+  .menu-sprite {
+    width: 40px;
+    height: 40px;
   }
 
   .world-nav {
@@ -828,11 +808,6 @@ hr {
 
   .ff-menu-sub {
     font-size: 10px;
-  }
-
-  .menu-icon {
-    width: 20px;
-    height: 20px;
   }
 
   .ff-divider {
@@ -1354,17 +1329,27 @@ hr {
     font-size: 9px;
   }
 
-  .terra-pixel-sprite {
-    transform: scale(2.8);
+  .hero-sprite {
+    transform: scale(2);
   }
 
-  .terra-wrap {
-    min-height: 72px;
+  @keyframes hero-float {
+    0%, 100% { transform: scale(2) translateY(0); }
+    50% { transform: scale(2) translateY(-4px); }
   }
 
-  .menu-icon {
-    width: 12px;
-    height: 12px;
+  .hero-sprites {
+    min-height: 56px;
+    gap: var(--sp-2);
+  }
+
+  .menu-sprite {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ff-menu-text .ff-menu-sub {
+    font-size: 7px;
   }
 
   .social-inventory .ff-menu-item {

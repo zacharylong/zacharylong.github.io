@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Zachary Long | Data Analyst • Creator • Explorer" showNav={false}>
   <main class="landing">
 
-    <!-- Gradient horizon background (CSS-only, no image needed) -->
+    <!-- World of Balance map background -->
     <div class="world-map-bg" aria-hidden="true"></div>
 
     <!-- Floating crystal sparkles -->
@@ -20,9 +20,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="landing-content">
 
-      <!-- Terra pixel-art sprite (CSS only — fallback to PNG if available) -->
-      <div class="terra-wrap fade-in">
-        <div class="terra-pixel-sprite" aria-hidden="true"></div>
+      <!-- Hero sprites: Terra + Mog -->
+      <div class="hero-sprites fade-in">
+        <img
+          src="/images/sprites/terra-walk.gif"
+          alt="Terra"
+          class="hero-sprite pixel"
+        />
+        <img
+          src="/images/sprites/mog-walk.gif"
+          alt="Mog"
+          class="hero-sprite hero-sprite--mog pixel"
+        />
       </div>
 
       <div class="ff-divider" aria-hidden="true"></div>
@@ -44,81 +53,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="ff-divider" aria-hidden="true"></div>
 
-      <!-- Navigation menu with pixel-art icons -->
+      <!-- Navigation menu with character sprites -->
       <nav class="world-nav fade-in fade-in-delay-2" aria-label="Site sections">
         <div class="ff-box">
           <ul class="ff-menu">
             <li>
               <a href="/resume" class="ff-menu-item">
-                <!-- Sword icon -->
-                <svg class="menu-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-                  <rect x="7" y="0" width="2" height="2" fill="#a0a0c0"/>
-                  <rect x="7" y="2" width="2" height="2" fill="#c0c0e0"/>
-                  <rect x="7" y="4" width="2" height="2" fill="#c0c0e0"/>
-                  <rect x="7" y="6" width="2" height="2" fill="#a0a0c0"/>
-                  <rect x="3" y="8" width="10" height="2" fill="#e8b830"/>
-                  <rect x="5" y="8" width="6" height="2" fill="#f8d848"/>
-                  <rect x="7" y="10" width="2" height="2" fill="#806030"/>
-                  <rect x="7" y="12" width="2" height="2" fill="#705028"/>
-                  <rect x="6" y="14" width="4" height="2" fill="#604020"/>
-                </svg>
-                <span class="ff-menu-label">Narshe</span>
-                <span class="ff-menu-sub">Resume</span>
+                <img src="/images/sprites/terra-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
+                <span class="ff-menu-text">
+                  <span class="ff-menu-label">Narshe</span>
+                  <span class="ff-menu-sub">(Resume)</span>
+                </span>
               </a>
             </li>
             <li>
               <a href="/library" class="ff-menu-item">
-                <!-- Book icon -->
-                <svg class="menu-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-                  <rect x="3" y="1" width="10" height="2" fill="#705028"/>
-                  <rect x="2" y="3" width="1" height="10" fill="#806030"/>
-                  <rect x="3" y="3" width="10" height="10" fill="#f0e8d0"/>
-                  <rect x="13" y="3" width="1" height="10" fill="#604020"/>
-                  <rect x="5" y="5" width="6" height="1" fill="#404060"/>
-                  <rect x="5" y="7" width="5" height="1" fill="#404060"/>
-                  <rect x="5" y="9" width="4" height="1" fill="#404060"/>
-                  <rect x="3" y="13" width="10" height="2" fill="#705028"/>
-                </svg>
-                <span class="ff-menu-label">Opera House</span>
-                <span class="ff-menu-sub">Library</span>
+                <img src="/images/sprites/edgar-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
+                <span class="ff-menu-text">
+                  <span class="ff-menu-label">Figaro Castle</span>
+                  <span class="ff-menu-sub">(Recent Books)</span>
+                </span>
               </a>
             </li>
             <li>
               <a href="/theater" class="ff-menu-item">
-                <!-- Film/star icon -->
-                <svg class="menu-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-                  <rect x="7" y="0" width="2" height="2" fill="#f8f870"/>
-                  <rect x="3" y="2" width="2" height="2" fill="#f8f870"/>
-                  <rect x="11" y="2" width="2" height="2" fill="#f8f870"/>
-                  <rect x="5" y="4" width="6" height="2" fill="#f8f870"/>
-                  <rect x="3" y="6" width="10" height="2" fill="#f8d848"/>
-                  <rect x="5" y="8" width="6" height="2" fill="#e8b830"/>
-                  <rect x="4" y="10" width="3" height="2" fill="#f8d848"/>
-                  <rect x="9" y="10" width="3" height="2" fill="#f8d848"/>
-                  <rect x="2" y="12" width="3" height="2" fill="#e8b830"/>
-                  <rect x="11" y="12" width="3" height="2" fill="#e8b830"/>
-                </svg>
-                <span class="ff-menu-label">Jidoor</span>
-                <span class="ff-menu-sub">Theater</span>
+                <img src="/images/sprites/celes-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
+                <span class="ff-menu-text">
+                  <span class="ff-menu-label">Opera House</span>
+                  <span class="ff-menu-sub">(Recent Films)</span>
+                </span>
               </a>
             </li>
             <li>
               <a href="/creations" class="ff-menu-item">
-                <!-- Airship icon -->
-                <svg class="menu-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-                  <rect x="6" y="1" width="4" height="2" fill="#a0a0c0"/>
-                  <rect x="4" y="3" width="8" height="2" fill="#c0c0e0"/>
-                  <rect x="3" y="5" width="10" height="2" fill="#8888b0"/>
-                  <rect x="2" y="7" width="12" height="2" fill="#a0a0c0"/>
-                  <rect x="1" y="9" width="14" height="2" fill="#7878a0"/>
-                  <rect x="6" y="9" width="4" height="2" fill="#d04040"/>
-                  <rect x="3" y="11" width="10" height="1" fill="#606088"/>
-                  <rect x="0" y="11" width="3" height="2" fill="#c0c0e0"/>
-                  <rect x="13" y="11" width="3" height="2" fill="#c0c0e0"/>
-                  <rect x="5" y="12" width="6" height="2" fill="#f8d848"/>
-                </svg>
-                <span class="ff-menu-label">The Blackjack</span>
-                <span class="ff-menu-sub">Creations</span>
+                <img src="/images/sprites/kefka-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
+                <span class="ff-menu-text">
+                  <span class="ff-menu-label">Kefka's Tower</span>
+                  <span class="ff-menu-sub">(Videos)</span>
+                </span>
               </a>
             </li>
           </ul>
@@ -133,7 +105,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <ul class="ff-menu">
           <li>
             <a href="https://www.linkedin.com/in/zaclong/" class="ff-menu-item" target="_blank" rel="noopener">
-              <!-- Chain link icon -->
               <svg class="item-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
                 <rect x="4" y="2" width="4" height="2" fill="#58d8d8"/>
                 <rect x="2" y="4" width="2" height="4" fill="#58d8d8"/>
@@ -147,7 +118,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </li>
           <li>
             <a href="https://github.com/zacharylong" class="ff-menu-item" target="_blank" rel="noopener">
-              <!-- Diamond/gem icon -->
               <svg class="item-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
                 <rect x="6" y="2" width="4" height="2" fill="#b0b0c8"/>
                 <rect x="4" y="4" width="8" height="2" fill="#c0c0e0"/>
@@ -161,7 +131,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </li>
           <li>
             <a href="https://www.goodreads.com/zacharylong" class="ff-menu-item" target="_blank" rel="noopener">
-              <!-- Small book icon -->
               <svg class="item-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
                 <rect x="4" y="2" width="8" height="2" fill="#58d858"/>
                 <rect x="3" y="4" width="1" height="8" fill="#408040"/>
@@ -174,7 +143,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </li>
           <li>
             <a href="https://letterboxd.com/zarrsadus/diary/" class="ff-menu-item" target="_blank" rel="noopener">
-              <!-- Film frame icon -->
               <svg class="item-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
                 <rect x="1" y="3" width="14" height="10" fill="#404060"/>
                 <rect x="3" y="5" width="10" height="6" fill="#808098"/>
@@ -188,7 +156,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </li>
           <li>
             <a href="https://www.strava.com/athletes/59082456" class="ff-menu-item" target="_blank" rel="noopener">
-              <!-- Mountain/chocobo feather icon -->
               <svg class="item-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
                 <rect x="7" y="2" width="2" height="2" fill="#f04848"/>
                 <rect x="6" y="4" width="4" height="2" fill="#f04848"/>
