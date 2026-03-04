@@ -45,8 +45,11 @@ function extractPoster(html: string): string {
                     {film.rating > 0 && (
                       <div class="feed-card-rating">{ratingToStars(film.rating)}</div>
                     )}
+                    {film.review && (
+                      <div class="feed-card-review">{film.review}</div>
+                    )}
                     {film.watchedDate && (
-                      <div class="feed-card-meta">
+                      <div class="feed-card-date">
                         Watched {new Date(film.watchedDate).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',

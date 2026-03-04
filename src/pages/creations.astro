@@ -1,80 +1,146 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { fetchYouTubeVideos } from '../utils/rss';
+
+// Fetch videos at build time
+const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
+const BOOK_REVIEW_CHANNEL = 'UCtTpv51SwEz7hGc11H9kbLA';
+
+const podcastEpisodes = await fetchYouTubeVideos(PODCAST_CHANNEL, 3);
+const bookReviewVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 6);
+
+function formatDate(dateStr: string): string {
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  } catch {
+    return '';
+  }
+}
+
+function truncateDesc(desc: string, maxLen: number = 200): string {
+  if (!desc || desc.length <= maxLen) return desc || '';
+  return desc.slice(0, maxLen).replace(/\s+\S*$/, '') + '...';
+}
 ---
 
 <BaseLayout title="Zachary Long | Creations" location="Kefka's Tower">
   <main class="page-content container">
 
     <header class="page-header">
-      <h1>The Blackjack</h1>
+      <h1>Kefka's Tower</h1>
       <p class="page-header-sub">Podcast &bull; Book Reviews &bull; Photography</p>
     </header>
 
     <!-- Podcast Section -->
-    <section class="creation-section">
+    <section class="resume-section">
       <h2>Everyday Data with PnZ</h2>
-      <div class="ff-box stack">
-        <p style="color: var(--ff-text-dim);">
-          A video podcast exploring data analytics, artificial intelligence,
-          and the intersection of technology and everyday life — hosted with
-          my NYU classmate.
-        </p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/videoseries?list=UUMtZjTRg5zKLJLDA1Cx8xGQ"
-            title="Everyday Data with PnZ"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+      <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
+        A video podcast exploring data analytics, artificial intelligence,
+        and the intersection of technology and everyday life.
+      </p>
+      {podcastEpisodes.length > 0 ? (
+        <div class="feed-grid">
+          {podcastEpisodes.map((video) => (
+            <div class="feed-card">
+              <a href={video.link} target="_blank" rel="noopener">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  class="feed-card-img"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{video.title}</div>
+                  {video.description && (
+                    <div class="feed-card-desc">{truncateDesc(video.description)}</div>
+                  )}
+                  {video.publishedDate && (
+                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
         </div>
-        <div style="text-align: center;">
-          <a
-            href="https://www.youtube.com/@EverydayDataWithPnZ"
-            target="_blank"
-            rel="noopener"
-            class="ff-menu-item"
-            style="display: inline-flex; justify-content: center;"
-          >
-            <span class="ff-menu-label">Watch on YouTube</span>
-          </a>
+      ) : (
+        <div class="ff-box" style="text-align: center;">
+          <p style="font-family: var(--ff-pixel); font-size: 10px; color: var(--ff-text-dim);">
+            Loading episodes...
+          </p>
         </div>
+      )}
+      <div style="text-align: center; margin-top: var(--sp-4);">
+        <a
+          href="https://www.youtube.com/@EverydayDataWithPnZ"
+          target="_blank"
+          rel="noopener"
+          class="ff-menu-item"
+          style="display: inline-flex; justify-content: center;"
+        >
+          <span class="ff-menu-label">Watch all episodes on YouTube</span>
+        </a>
       </div>
     </section>
 
     <!-- Book Reviews Section -->
-    <section class="creation-section">
+    <section class="resume-section">
       <h2>Sci-Fi &amp; Fantasy Book Reviews</h2>
-      <div class="ff-box stack">
-        <p style="color: var(--ff-text-dim);">
-          Video reviews and discussions of science fiction and fantasy books —
-          from epic series to hidden gems.
-        </p>
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube.com/embed/videoseries?list=UUtTpv51SwEz7hGc11H9kbLA"
-            title="Book Reviews"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+      <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
+        Video reviews and discussions of science fiction and fantasy books —
+        from epic series to hidden gems.
+      </p>
+      {bookReviewVideos.length > 0 ? (
+        <div class="feed-grid">
+          {bookReviewVideos.map((video) => (
+            <div class="feed-card">
+              <a href={video.link} target="_blank" rel="noopener">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  class="feed-card-img"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{video.title}</div>
+                  {video.description && (
+                    <div class="feed-card-desc">{truncateDesc(video.description)}</div>
+                  )}
+                  {video.publishedDate && (
+                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
         </div>
-        <div style="text-align: center;">
-          <a
-            href="https://www.youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA"
-            target="_blank"
-            rel="noopener"
-            class="ff-menu-item"
-            style="display: inline-flex; justify-content: center;"
-          >
-            <span class="ff-menu-label">Watch on YouTube</span>
-          </a>
+      ) : (
+        <div class="ff-box" style="text-align: center;">
+          <p style="font-family: var(--ff-pixel); font-size: 10px; color: var(--ff-text-dim);">
+            Loading reviews...
+          </p>
         </div>
+      )}
+      <div style="text-align: center; margin-top: var(--sp-4);">
+        <a
+          href="https://www.youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA"
+          target="_blank"
+          rel="noopener"
+          class="ff-menu-item"
+          style="display: inline-flex; justify-content: center;"
+        >
+          <span class="ff-menu-label">Watch all reviews on YouTube</span>
+        </a>
       </div>
     </section>
 
     <!-- Photography Section -->
-    <section class="creation-section">
+    <section class="resume-section">
       <h2>Photography</h2>
       <div class="ff-box stack">
         <p style="color: var(--ff-text-dim);">
@@ -97,7 +163,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <!-- Other Content -->
-    <section class="creation-section">
+    <section class="resume-section">
       <h2>More</h2>
       <div class="ff-box">
         <ul class="ff-menu">

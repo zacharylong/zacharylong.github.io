@@ -423,8 +423,8 @@ hr {
   justify-content: center;
   align-items: flex-end;
   gap: var(--sp-4);
-  padding: var(--sp-4) 0;
-  min-height: 80px;
+  padding: var(--sp-8) 0 var(--sp-4);
+  min-height: 100px;
 }
 
 .hero-sprite {
@@ -588,13 +588,20 @@ hr {
 }
 
 .item-icon {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
+  object-fit: contain;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  opacity: 0.7;
-  transition: opacity 0.12s;
+  opacity: 0.8;
+  transition: opacity 0.12s, filter 0.12s;
+}
+
+.ff-menu-item:hover .item-icon,
+.ff-menu-item:focus-visible .item-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px rgba(248, 248, 112, 0.4));
 }
 
 .ff-menu-item:hover .item-icon,
@@ -1065,6 +1072,38 @@ hr {
   font-family: var(--ff-pixel);
   font-size: 10px;
   color: var(--ff-text-yellow);
+  margin-top: var(--sp-1);
+}
+
+/* Review/description text on cards */
+.feed-card-review {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ff-text-dim);
+  margin-top: var(--sp-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Video description — slightly different treatment */
+.feed-card-desc {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ff-text-dim);
+  margin-top: var(--sp-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Video date */
+.feed-card-date {
+  font-family: var(--ff-pixel);
+  font-size: 7px;
+  color: var(--ff-text-grey);
   margin-top: var(--sp-1);
 }
 
