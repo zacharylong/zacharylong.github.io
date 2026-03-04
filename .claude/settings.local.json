@@ -25,7 +25,18 @@
       "Bash(curl -sL -o celes-walk.gif \"https://www.videogamesprites.net/FinalFantasy6/Party/Celes/Celes%20-%20Walk%20\\(Front\\).gif\")",
       "Bash(curl -sL -o kefka-walk.gif \"https://www.videogamesprites.net/FinalFantasy6/NPCs/Empire/Kefka%20-%20Walk%20\\(Front\\).gif\")",
       "Bash(ls -la *.gif)",
-      "Bash(curl -sL -o world-of-balance.png \"https://static.wikia.nocookie.net/finalfantasy/images/6/62/FFVIA_Wob.png\")"
+      "Bash(curl -sL -o world-of-balance.png \"https://static.wikia.nocookie.net/finalfantasy/images/6/62/FFVIA_Wob.png\")",
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(curl -sL \"https://www.youtube.com/feeds/videos.xml?channel_id=UCMtZjTRg5zKLJLDA1Cx8xGQ\")",
+      "Bash(curl -sL \"https://letterboxd.com/zarrsadus/rss/\")",
+      "Bash(curl -sL \"https://www.youtube.com/feeds/videos.xml?channel_id=UCtTpv51SwEz7hGc11H9kbLA\")",
+      "Bash(curl -sI \"https://www.videogamesprites.net/FinalFantasy6/Objects/Treasure%20Chest.gif\")",
+      "Bash(curl -sL -o treasure-chest.gif \"https://www.videogamesprites.net/FinalFantasy6/Objects/Treasure%20Chest.gif\")",
+      "Bash(curl -sL -o magicite.gif \"https://www.videogamesprites.net/FinalFantasy6/Objects/Magicite.gif\")",
+      "Bash(curl -sL -o ghost-train.gif \"https://www.videogamesprites.net/FinalFantasy6/Bosses/07%20-%20Ghost%20Train.gif\")",
+      "Bash(curl -sL -o falcon.gif \"https://www.videogamesprites.net/FinalFantasy6/Objects/Falcon.gif\")",
+      "Bash(curl -sL -o chocobo-walk.gif \"https://www.videogamesprites.net/FinalFantasy6/NPCs/Nonhuman/Chocobo%20-%20Walk%20\\(Front\\).gif\")",
+      "Bash(git add src/pages/creations.astro src/pages/index.astro src/pages/theater.astro src/styles/ff6.css src/utils/rss.ts public/images/sprites/chocobo-walk.gif public/images/sprites/falcon.gif public/images/sprites/ghost-train.gif public/images/sprites/magicite.gif public/images/sprites/treasure-chest.gif)"
     ]
   }
 }
