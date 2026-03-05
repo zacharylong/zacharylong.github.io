@@ -1,43 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
+
+const notFound = theme.pages.notFound;
 ---
 
-<BaseLayout title="404 — Zozo" showNav={false}>
+<BaseLayout title={notFound.title} showNav={false}>
   <main class="page-404">
 
-    <div class="zozo-title fade-in">404</div>
+    <div class="zozo-title fade-in">{notFound.heading}</div>
     <div class="zozo-subtitle fade-in fade-in-delay-1">
-      Z O Z O
+      {notFound.subtitle}
     </div>
 
     <div class="ff-box zozo-dialog fade-in fade-in-delay-2">
-      <p>
-        &ldquo;This place? It&rsquo;s called... er...
-        I&rsquo;ve never heard of it, actually.
-        Nobody lives here. Nope. Definitely not.&rdquo;
-      </p>
+      <p set:html={notFound.flavorHtml} />
       <hr />
-      <p style="color: var(--ff-text-dim);">
-        The page you&rsquo;re looking for doesn&rsquo;t exist.
-        The citizens of Zozo are known for their honesty, though,
-        so it probably never did.
-      </p>
+      <p style="color: var(--ff-text-dim);" set:html={notFound.explanationHtml} />
     </div>
 
     <nav class="fade-in fade-in-delay-3">
       <div class="ff-box" style="min-width: 260px;">
         <ul class="ff-menu">
-          <li>
-            <a href="/" class="ff-menu-item">
-              <span class="ff-menu-label">Return to World Map</span>
-            </a>
-          </li>
-          <li>
-            <a href="/resume" class="ff-menu-item">
-              <span class="ff-menu-label">Visit Narshe</span>
-              <span class="ff-menu-sub">Resume</span>
-            </a>
-          </li>
+          {notFound.navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="ff-menu-item">
+                <span class="ff-menu-label">{link.label}</span>
+                {link.sub && <span class="ff-menu-sub">{link.sub}</span>}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

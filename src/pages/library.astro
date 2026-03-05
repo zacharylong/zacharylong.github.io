@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
 import { fetchGoodreadsBooks, ratingToStars } from '../utils/rss';
 
 // Fetch books from Goodreads at build time
@@ -9,12 +10,12 @@ const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-read
 const recentlyRead = await fetchGoodreadsBooks(GOODREADS_ID, 'read', 12);
 ---
 
-<BaseLayout title="Zachary Long | The Library" location="Figaro Castle">
+<BaseLayout title="Zachary Long | The Library" location={theme.pages.library.location}>
   <main class="page-content container">
 
     <header class="page-header">
-      <h1>The Library</h1>
-      <p class="page-header-sub">Science Fiction &bull; Fantasy &bull; Everything In Between</p>
+      <h1>{theme.pages.library.title}</h1>
+      <p class="page-header-sub" set:html={theme.pages.library.headerSub} />
     </header>
 
     <!-- Currently Reading -->

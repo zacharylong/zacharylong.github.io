@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
 import { fetchYouTubeVideos } from '../utils/rss';
 
 // Fetch videos at build time
@@ -27,12 +28,12 @@ function truncateDesc(desc: string, maxLen: number = 200): string {
 }
 ---
 
-<BaseLayout title="Zachary Long | Creations" location="Kefka's Tower">
+<BaseLayout title="Zachary Long | Creations" location={theme.pages.creations.location}>
   <main class="page-content container">
 
     <header class="page-header">
-      <h1>Kefka's Tower</h1>
-      <p class="page-header-sub">Podcast &bull; Book Reviews &bull; Photography</p>
+      <h1>{theme.pages.creations.pageHeading}</h1>
+      <p class="page-header-sub" set:html={theme.pages.creations.headerSub} />
     </header>
 
     <!-- Podcast Section -->

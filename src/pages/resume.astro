@@ -1,15 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
 import resumeData from '../data/resume.json';
 ---
 
-<BaseLayout title="Zachary Long | Resume" location="Narshe">
+<BaseLayout title="Zachary Long | Resume" location={theme.pages.resume.location}>
   <main class="page-content container">
 
     <!-- Page header -->
     <header class="page-header">
-      <h1>Resume</h1>
-      <p class="page-header-sub">Technical Business Analyst &bull; Long Island, NY</p>
+      <h1>{theme.pages.resume.title}</h1>
+      <p class="page-header-sub" set:html={theme.pages.resume.headerSub} />
     </header>
 
     <!-- Contact bar -->

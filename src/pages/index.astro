@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
 ---
 
 <BaseLayout title="Zachary Long | Data Analyst • Creator • Explorer" showNav={false}>
   <main class="landing">
 
-    <!-- World of Balance map background -->
+    <!-- World map background -->
     <div class="world-map-bg" aria-hidden="true"></div>
 
-    <!-- Floating crystal sparkles -->
+    <!-- Floating particles -->
     <div class="sparkle-field" aria-hidden="true">
       <div class="sparkle s1"></div>
       <div class="sparkle s2"></div>
@@ -20,127 +21,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="landing-content">
 
-      <!-- Hero sprites: Terra + Mog -->
+      <!-- Hero sprites -->
       <div class="hero-sprites fade-in">
-        <img
-          src="/images/sprites/terra-walk.gif"
-          alt="Terra"
-          class="hero-sprite pixel"
-        />
-        <img
-          src="/images/sprites/mog-walk.gif"
-          alt="Mog"
-          class="hero-sprite hero-sprite--mog pixel"
-        />
+        {theme.landing.heroSprites.map((sprite) => (
+          <img
+            src={sprite.src}
+            alt={sprite.alt}
+            class={sprite.className}
+          />
+        ))}
       </div>
 
       <div class="ff-divider" aria-hidden="true"></div>
 
       <!-- Intro dialog box -->
       <div class="ff-box intro-box fade-in fade-in-delay-1">
-        <h1>Zachary Long</h1>
-        <p class="intro-subtitle">Data Analyst &bull; Creator &bull; Explorer</p>
-        <p class="intro-text">
-          I help organizations turn data into actionable insights
-          people trust — using analytics, storytelling, and
-          human-centered design.
-        </p>
-        <p class="intro-text" style="margin-top: var(--sp-3);">
-          Off the clock, I'm a sci-fi/fantasy book reviewer
-          obsessed with worldbuilding, a world-cinema writer with
-          a soft spot for East Asian film, and a podcast host
-          exploring what AI changes for work, culture, and
-          everyday life.
-        </p>
+        <h1>{theme.landing.siteTitle}</h1>
+        <p class="intro-subtitle" set:html={theme.landing.subtitle} />
+        <Fragment set:html={theme.landing.introHtml} />
       </div>
 
       <div class="ff-divider" aria-hidden="true"></div>
 
-      <!-- Navigation menu with character sprites -->
+      <!-- Navigation menu -->
       <nav class="world-nav fade-in fade-in-delay-2" aria-label="Site sections">
         <div class="ff-box">
           <ul class="ff-menu">
-            <li>
-              <a href="/resume" class="ff-menu-item">
-                <img src="/images/sprites/terra-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
-                <span class="ff-menu-text">
-                  <span class="ff-menu-label">Narshe</span>
-                  <span class="ff-menu-sub">(Resume)</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="/library" class="ff-menu-item">
-                <img src="/images/sprites/edgar-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
-                <span class="ff-menu-text">
-                  <span class="ff-menu-label">Figaro Castle</span>
-                  <span class="ff-menu-sub">(Recent Books)</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="/theater" class="ff-menu-item">
-                <img src="/images/sprites/celes-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
-                <span class="ff-menu-text">
-                  <span class="ff-menu-label">Opera House</span>
-                  <span class="ff-menu-sub">(Recent Films)</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="/creations" class="ff-menu-item">
-                <img src="/images/sprites/kefka-walk.gif" alt="" class="menu-sprite pixel" aria-hidden="true" />
-                <span class="ff-menu-text">
-                  <span class="ff-menu-label">Kefka's Tower</span>
-                  <span class="ff-menu-sub">(Videos)</span>
-                </span>
-              </a>
-            </li>
+            {theme.menu.map((item) => (
+              <li>
+                <a href={item.href} class="ff-menu-item">
+                  <img src={item.sprite} alt="" class="menu-sprite pixel" aria-hidden="true" />
+                  <span class="ff-menu-text">
+                    <span class="ff-menu-label">{item.label}</span>
+                    <span class="ff-menu-sub">{item.sub}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
 
       <div class="ff-divider" aria-hidden="true"></div>
 
-      <!-- Social links as FF6 "Items" inventory -->
+      <!-- Social links -->
       <div class="ff-box social-inventory fade-in fade-in-delay-3">
-        <p class="inventory-title">Items</p>
+        <p class="inventory-title">{theme.socialItems.title}</p>
         <ul class="ff-menu">
-          <li>
-            <a href="https://www.linkedin.com/in/zaclong/" class="ff-menu-item" target="_blank" rel="noopener">
-              <img src="/images/sprites/treasure-chest.gif" alt="" class="item-icon pixel" aria-hidden="true" />
-              <span class="ff-menu-label">LinkedIn</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/zacharylong" class="ff-menu-item" target="_blank" rel="noopener">
-              <img src="/images/sprites/magicite.gif" alt="" class="item-icon pixel" aria-hidden="true" />
-              <span class="ff-menu-label">GitHub</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.goodreads.com/zacharylong" class="ff-menu-item" target="_blank" rel="noopener">
-              <img src="/images/sprites/ghost-train.gif" alt="" class="item-icon pixel" aria-hidden="true" />
-              <span class="ff-menu-label">Goodreads</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://letterboxd.com/zarrsadus/diary/" class="ff-menu-item" target="_blank" rel="noopener">
-              <img src="/images/sprites/falcon.gif" alt="" class="item-icon pixel" aria-hidden="true" />
-              <span class="ff-menu-label">Letterboxd</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.strava.com/athletes/59082456" class="ff-menu-item" target="_blank" rel="noopener">
-              <img src="/images/sprites/chocobo-walk.gif" alt="" class="item-icon pixel" aria-hidden="true" />
-              <span class="ff-menu-label">Strava</span>
-            </a>
-          </li>
+          {theme.socialItems.items.map((item) => (
+            <li>
+              <a href={item.href} class="ff-menu-item" target="_blank" rel="noopener">
+                <img src={item.icon} alt="" class="item-icon pixel" aria-hidden="true" />
+                <span class="ff-menu-label">{item.label}</span>
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <!-- Blinking prompt -->
-      <p class="press-start fade-in fade-in-delay-4">— Select a destination —</p>
+      <p class="press-start fade-in fade-in-delay-4">{theme.prompt}</p>
     </div>
   </main>
 </BaseLayout>

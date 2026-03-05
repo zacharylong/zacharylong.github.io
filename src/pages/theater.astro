@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
 import { fetchLetterboxdFilms, ratingToStars } from '../utils/rss';
 
 // Fetch recent films from Letterboxd at build time
@@ -12,12 +13,12 @@ function extractPoster(html: string): string {
 }
 ---
 
-<BaseLayout title="Zachary Long | The Theater" location="Opera House">
+<BaseLayout title="Zachary Long | The Theater" location={theme.pages.theater.location}>
   <main class="page-content container">
 
     <header class="page-header">
-      <h1>The Theater</h1>
-      <p class="page-header-sub">Recent Watches &bull; Ratings &bull; Reviews</p>
+      <h1>{theme.pages.theater.title}</h1>
+      <p class="page-header-sub" set:html={theme.pages.theater.headerSub} />
     </header>
 
     {recentFilms.length > 0 ? (
