@@ -23,7 +23,7 @@ export const config: ThemeConfig = {
   landing: {
     heroSprites: [
       { src: '/images/smb3/mario/raccoon-mario-fly.gif', alt: 'Raccoon Mario', className: 'hero-sprite pixel' },
-      { src: '/images/smb3/title/title-screen.gif', alt: 'Super Mario Bros. 3', className: 'hero-sprite hero-sprite--title pixel' },
+      { src: '/images/smb3/title/MarioBannerZac.png', alt: 'Zachary Long — Mario Banner', className: 'hero-sprite hero-sprite--title' },
     ],
     siteTitle: 'Zachary Long',
     subtitle: 'Data Analyst &bull; Creator &bull; Explorer',
@@ -80,9 +80,9 @@ export const config: ThemeConfig = {
 
   menu: [
     { href: '/resume', sprite: '/images/smb3/mario/raccoon-mario-fly.gif', label: 'Desert Land', sub: '(Resume)' },
-    { href: '/library', sprite: '/images/smb3/mario/frog-mario-swim.gif', label: 'Water Land', sub: '(Recent Books)' },
-    { href: '/theater', sprite: '/images/smb3/mario/tanooki-mario-float.gif', label: 'Sky Land', sub: '(Recent Films)' },
-    { href: '/creations', sprite: '/images/smb3/mario/hammer-mario-throw.gif', label: 'Pipe Land', sub: '(Videos)' },
+    { href: '/library', sprite: '/images/smb3/mario/frog-mario-swim.gif', label: 'Water Land', sub: '(Recent Books on Goodreads)' },
+    { href: '/theater', sprite: '/images/smb3/mario/tanooki-mario-float.gif', label: 'Sky Land', sub: '(Recent Films on Letterboxd)' },
+    { href: '/creations', sprite: '/images/smb3/mario/hammer-mario-throw.gif', label: 'Pipe Land', sub: '(YouTube Video Reviews & Data Podcast)' },
   ],
 
   socialItems: {

@@ -405,7 +405,7 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--sp-6) var(--sp-4);
+  padding: var(--sp-12) var(--sp-4) var(--sp-6);
   gap: var(--sp-6);
 }
 
@@ -428,11 +428,15 @@ hr {
   animation: hero-float 2.5s ease-in-out infinite;
 }
 
-/* Title screen image treatment */
+/* Custom banner logo treatment */
 .hero-sprite--title {
-  transform: scale(1.2);
+  transform: none;
+  max-width: 420px;
+  width: 90vw;
+  height: auto;
   animation: none;
   filter: drop-shadow(3px 3px 0 #000000);
+  image-rendering: auto;
 }
 
 .hero-sprite--mog {
@@ -755,7 +759,7 @@ hr {
    ========================================================== */
 @media (min-width: 1024px) {
   .landing {
-    padding: 0;
+    padding: var(--sp-10) 0 0;
     gap: 0;
     position: relative;
     min-height: 100vh;
@@ -783,7 +787,8 @@ hr {
   }
 
   .hero-sprite--title {
-    transform: scale(1.5);
+    transform: none;
+    max-width: 520px;
   }
 
   @keyframes hero-float {
@@ -1368,7 +1373,8 @@ hr {
   }
 
   .hero-sprite--title {
-    transform: scale(1);
+    transform: none;
+    max-width: 280px;
   }
 
   @keyframes hero-float {
