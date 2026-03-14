@@ -2,8 +2,10 @@
  * Uncomment ONE of the lines below to change themes.
  * Also update src/config/theme.ts to match.
  *
+ * Cinematic = Cinematic Fantasy (primary)
  * SMB3 = Super Mario Bros. 3
  * FF6  = Final Fantasy VI
  */
-@import './smb3.css';
+@import './cinematic.css';
+/* @import './smb3.css'; */
 /* @import './ff6.css'; */

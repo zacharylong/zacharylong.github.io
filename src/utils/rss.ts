@@ -117,8 +117,8 @@ export async function fetchGoodreadsBooks(
     if (!res.ok) return [];
     const xml = await res.text();
     return extractItems(xml).map((item) => ({
-      title: extractTag(item, 'title'),
-      author: extractTag(item, 'author_name'),
+      title: decodeEntities(extractTag(item, 'title')),
+      author: decodeEntities(extractTag(item, 'author_name')),
       link: extractTag(item, 'link'),
       imageUrl: extractTag(item, 'book_large_image_url') || extractTag(item, 'book_image_url'),
       rating: parseInt(extractTag(item, 'user_rating')) || 0,
@@ -140,7 +140,7 @@ export async function fetchLetterboxdFilms(
     return extractItems(xml).map((item) => {
       const posterHtml = extractTag(item, 'description');
       return {
-        title: extractTag(item, 'letterboxd:filmTitle') || extractTag(item, 'title'),
+        title: decodeEntities(extractTag(item, 'letterboxd:filmTitle') || extractTag(item, 'title')),
         year: extractTag(item, 'letterboxd:filmYear'),
         link: extractTag(item, 'link'),
         rating: parseFloat(extractTag(item, 'letterboxd:memberRating')) || 0,

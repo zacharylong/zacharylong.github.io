@@ -1,6 +1,6 @@
 /**
  * Theme configuration interface.
- * Both FF6 and SMB3 themes implement this contract.
+ * FF6, SMB3, and Cinematic themes implement this contract.
  * Pages import from ../theme.ts and use these values
  * instead of hardcoding theme-specific strings.
  */
@@ -47,7 +47,7 @@ export interface ThemeConfig {
     themeColor: string;
   };
 
-  audio: {
+  audio?: {
     storageKey: string;
     bgmPath: string;
     cursorSfxPath: string;
@@ -63,6 +63,7 @@ export interface ThemeConfig {
     siteTitle: string;
     subtitle: string;
     introHtml: string;
+    tagline?: string;
   };
 
   pages: {
@@ -71,6 +72,9 @@ export interface ThemeConfig {
     theater: PageMeta;
     creations: PageMeta & { pageHeading: string };
     notFound: NotFoundPage;
+    books?: PageMeta;
+    films?: PageMeta;
+    videos?: PageMeta & { pageHeading: string };
   };
 
   menu: MenuItem[];
@@ -81,4 +85,9 @@ export interface ThemeConfig {
   };
 
   prompt: string;
+
+  footer?: {
+    copyright: string;
+    easterEggTitle?: string;
+  };
 }

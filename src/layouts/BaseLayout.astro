@@ -17,6 +17,7 @@ const {
 } = Astro.props;
 
 const isLanding = Astro.url.pathname === '/';
+const hasAudio = !!theme.audio?.bgmPath;
 ---
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ const isLanding = Astro.url.pathname === '/';
   <meta name="theme-color" content={theme.meta.themeColor} />
   <title>{title}</title>
 
-  <!-- Preconnect for pixel font -->
+  <!-- Preconnect for fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -43,10 +44,12 @@ const isLanding = Astro.url.pathname === '/';
 </head>
 <body
   data-theme={theme.name}
-  data-audio-key={theme.audio.storageKey}
-  data-bgm={theme.audio.bgmPath}
-  data-sfx-cursor={theme.audio.cursorSfxPath}
-  data-sfx-select={theme.audio.selectSfxPath}
+  {...(hasAudio ? {
+    'data-audio-key': theme.audio!.storageKey,
+    'data-bgm': theme.audio!.bgmPath,
+    'data-sfx-cursor': theme.audio!.cursorSfxPath,
+    'data-sfx-select': theme.audio!.selectSfxPath,
+  } : {})}
 >
   <!-- Background -->
   <div class="starfield" aria-hidden="true"></div>
@@ -56,117 +59,129 @@ const isLanding = Astro.url.pathname === '/';
     <nav class="site-nav">
       <a href="/" class="nav-back">{theme.nav.backLinkText}</a>
       {location && <span class="nav-title">{location}</span>}
-      <button class="audio-toggle" id="audioToggle" data-playing="false" aria-label="Toggle music">
-        <span class="audio-icon" id="audioIcon">♪</span>
-        <span id="audioLabel">OFF</span>
-      </button>
+      {hasAudio && (
+        <button class="audio-toggle" id="audioToggle" data-playing="false" aria-label="Toggle music">
+          <span class="audio-icon" id="audioIcon">♪</span>
+          <span id="audioLabel">OFF</span>
+        </button>
+      )}
     </nav>
   )}
 
   <!-- Page content -->
   <slot />
 
-  <!-- Audio toggle on landing page (positioned fixed) -->
-  {isLanding && (
+  <!-- Audio toggle on landing page (only for audio-enabled themes) -->
+  {isLanding && hasAudio && (
     <button class="audio-toggle" id="audioToggle" data-playing="false" aria-label="Toggle music">
       <span class="audio-icon" id="audioIcon">♪</span>
       <span id="audioLabel">OFF</span>
     </button>
   )}
 
-  <!-- Audio System -->
+  <!-- Konami code easter egg -->
   <script is:inline>
     (function() {
-      // Read theme config from data attributes
-      var body = document.body;
-      var STORAGE_KEY = body.dataset.audioKey || 'audio-pref';
-      var BGM_PATH = body.dataset.bgm || '';
-      var SFX_CURSOR = body.dataset.sfxCursor || '';
-      var SFX_SELECT = body.dataset.sfxSelect || '';
-
-      // Audio state
-      var bgm = null;
-      var isPlaying = false;
-
-      function initAudio() {
-        var toggle = document.getElementById('audioToggle');
-        if (!toggle || !BGM_PATH) return;
-
-        toggle.addEventListener('click', function() {
-          if (!bgm) {
-            bgm = new Audio(BGM_PATH);
-            bgm.loop = true;
-            bgm.volume = 0.3;
+      var seq = [38,38,40,40,37,39,37,39,66,65];
+      var pos = 0;
+      document.addEventListener('keydown', function(e) {
+        if (e.keyCode === seq[pos]) {
+          pos++;
+          if (pos === seq.length) {
+            pos = 0;
+            document.body.classList.toggle('legacy-mode');
           }
+        } else {
+          pos = 0;
+        }
+      });
+    })();
+  </script>
 
-          if (isPlaying) {
-            bgm.pause();
-            isPlaying = false;
-            localStorage.setItem(STORAGE_KEY, 'off');
-          } else {
-            bgm.play().catch(function() {});
-            isPlaying = true;
-            localStorage.setItem(STORAGE_KEY, 'on');
-          }
-          updateToggleUI();
-        });
+  <!-- Audio System (only for themes with audio) -->
+  {hasAudio && (
+    <script is:inline>
+      (function() {
+        var body = document.body;
+        var STORAGE_KEY = body.dataset.audioKey || 'audio-pref';
+        var BGM_PATH = body.dataset.bgm || '';
+        var SFX_CURSOR = body.dataset.sfxCursor || '';
+        var SFX_SELECT = body.dataset.sfxSelect || '';
 
-        // Auto-play if user previously had it on
-        if (BGM_PATH && localStorage.getItem(STORAGE_KEY) === 'on') {
-          document.addEventListener('click', function autoplay() {
+        var bgm = null;
+        var isPlaying = false;
+
+        function initAudio() {
+          var toggle = document.getElementById('audioToggle');
+          if (!toggle || !BGM_PATH) return;
+
+          toggle.addEventListener('click', function() {
             if (!bgm) {
               bgm = new Audio(BGM_PATH);
               bgm.loop = true;
               bgm.volume = 0.3;
             }
-            bgm.play().then(function() {
+
+            if (isPlaying) {
+              bgm.pause();
+              isPlaying = false;
+              localStorage.setItem(STORAGE_KEY, 'off');
+            } else {
+              bgm.play().catch(function() {});
               isPlaying = true;
-              updateToggleUI();
-            }).catch(function() {});
-            document.removeEventListener('click', autoplay);
-          }, { once: true });
+              localStorage.setItem(STORAGE_KEY, 'on');
+            }
+            updateToggleUI();
+          });
+
+          if (BGM_PATH && localStorage.getItem(STORAGE_KEY) === 'on') {
+            document.addEventListener('click', function autoplay() {
+              if (!bgm) {
+                bgm = new Audio(BGM_PATH);
+                bgm.loop = true;
+                bgm.volume = 0.3;
+              }
+              bgm.play().then(function() {
+                isPlaying = true;
+                updateToggleUI();
+              }).catch(function() {});
+              document.removeEventListener('click', autoplay);
+            }, { once: true });
+          }
         }
-      }
 
-      function updateToggleUI() {
-        var toggle = document.getElementById('audioToggle');
-        var icon = document.getElementById('audioIcon');
-        var label = document.getElementById('audioLabel');
-        if (!toggle) return;
+        function updateToggleUI() {
+          var toggle = document.getElementById('audioToggle');
+          var icon = document.getElementById('audioIcon');
+          var label = document.getElementById('audioLabel');
+          if (!toggle) return;
+          toggle.setAttribute('data-playing', isPlaying ? 'true' : 'false');
+          if (icon) icon.textContent = isPlaying ? '♫' : '♪';
+          if (label) label.textContent = isPlaying ? 'ON' : 'OFF';
+        }
 
-        toggle.setAttribute('data-playing', isPlaying ? 'true' : 'false');
-        if (icon) icon.textContent = isPlaying ? '♫' : '♪';
-        if (label) label.textContent = isPlaying ? 'ON' : 'OFF';
-      }
+        function playSFX(type) {
+          var path = type === 'select' ? SFX_SELECT : SFX_CURSOR;
+          if (!path) return;
+          var sfx = new Audio(path);
+          sfx.volume = 0.2;
+          sfx.play().catch(function() {});
+        }
 
-      // Menu SFX
-      function playSFX(type) {
-        var path = type === 'select' ? SFX_SELECT : SFX_CURSOR;
-        if (!path) return;
-        var sfx = new Audio(path);
-        sfx.volume = 0.2;
-        sfx.play().catch(function() {});
-      }
+        function initSFX() {
+          document.querySelectorAll('.ff-menu-item').forEach(function(item) {
+            item.addEventListener('mouseenter', function() { playSFX('cursor'); });
+            item.addEventListener('click', function() { playSFX('select'); });
+          });
+        }
 
-      // Attach SFX to menu items
-      function initSFX() {
-        document.querySelectorAll('.ff-menu-item').forEach(function(item) {
-          item.addEventListener('mouseenter', function() { playSFX('cursor'); });
-          item.addEventListener('click', function() { playSFX('select'); });
-        });
-      }
-
-      // Init
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          initAudio();
-          initSFX();
-        });
-      } else {
-        initAudio();
-        initSFX();
-      }
-    })();
-  </script>
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function() { initAudio(); initSFX(); });
+        } else {
+          initAudio(); initSFX();
+        }
+      })();
+    </script>
+  )}
 </body>
 </html>

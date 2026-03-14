@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
+import { fetchGoodreadsBooks, ratingToStars } from '../utils/rss';
+
+const pageConfig = theme.pages.books ?? theme.pages.library;
+
+const GOODREADS_ID = '43383319';
+const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-reading', 5);
+const recentlyRead = await fetchGoodreadsBooks(GOODREADS_ID, 'read', 12);
+---
+
+<BaseLayout title="Zachary Long | Books" location={pageConfig.location}>
+  <main class="page-content container">
+
+    <header class="page-header">
+      <h1>{pageConfig.title}</h1>
+      <p class="page-header-sub" set:html={pageConfig.headerSub} />
+    </header>
+
+    <!-- Currently Reading -->
+    {currentlyReading.length > 0 && (
+      <section class="resume-section">
+        <h2>Currently Reading</h2>
+        <div class="feed-grid">
+          {currentlyReading.map((book) => (
+            <div class="feed-card">
+              <a href={book.link} target="_blank" rel="noopener">
+                {book.imageUrl && (
+                  <img
+                    src={book.imageUrl}
+                    alt={book.title}
+                    class="feed-card-img"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                )}
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{book.title}</div>
+                  <div class="feed-card-meta">{book.author}</div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Recently Read -->
+    {recentlyRead.length > 0 ? (
+      <section class="resume-section">
+        <h2>Recently Read</h2>
+        <div class="feed-grid">
+          {recentlyRead.map((book) => (
+            <div class="feed-card">
+              <a href={book.link} target="_blank" rel="noopener">
+                {book.imageUrl && (
+                  <img
+                    src={book.imageUrl}
+                    alt={book.title}
+                    class="feed-card-img"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                )}
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{book.title}</div>
+                  <div class="feed-card-meta">{book.author}</div>
+                  {book.rating > 0 && (
+                    <div class="feed-card-rating">{ratingToStars(book.rating)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    ) : (
+      <div class="feed-empty">
+        <div class="ff-box">
+          <p>The shelves are being stocked...</p>
+          <p style="margin-top: var(--sp-3);">
+            Visit my <a href="https://www.goodreads.com/zacharylong" target="_blank" rel="noopener">Goodreads</a> to see what I'm reading.
+          </p>
+        </div>
+      </div>
+    )}
+
+    <!-- Favorite Passages -->
+    <section class="resume-section">
+      <h2>Favorite Passages</h2>
+      <div class="ff-box">
+        <p class="quote">
+          &ldquo;Life before death. Strength before weakness. Journey before destination.&rdquo;
+        </p>
+        <p class="quote-attr">&mdash; The First Ideal of the Knights Radiant</p>
+        <hr />
+        <p class="quote">
+          &ldquo;First In, Last Out.&rdquo;
+        </p>
+        <p class="quote-attr">&mdash; Motto of the Bridgeburners</p>
+      </div>
+    </section>
+
+    <!-- Goodreads link -->
+    <div style="text-align: center; margin-top: var(--sp-8);">
+      <a
+        href="https://www.goodreads.com/zacharylong"
+        target="_blank"
+        rel="noopener"
+        class="cin-more-link"
+      >
+        View full library on Goodreads &rarr;
+      </a>
+    </div>
+
+  </main>
+</BaseLayout>

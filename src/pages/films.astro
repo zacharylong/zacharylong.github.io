@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
+import { fetchLetterboxdFilms, ratingToStars } from '../utils/rss';
+
+const pageConfig = theme.pages.films ?? theme.pages.theater;
+
+const recentFilms = await fetchLetterboxdFilms('zarrsadus', 18);
+
+function extractPoster(html: string): string {
+  const match = html.match(/src="([^"]+)"/);
+  return match ? match[1] : '';
+}
+---
+
+<BaseLayout title="Zachary Long | Films" location={pageConfig.location}>
+  <main class="page-content container">
+
+    <header class="page-header">
+      <h1>{pageConfig.title}</h1>
+      <p class="page-header-sub" set:html={pageConfig.headerSub} />
+    </header>
+
+    {recentFilms.length > 0 ? (
+      <section>
+        <div class="feed-grid">
+          {recentFilms.map((film) => {
+            const poster = extractPoster(film.posterHtml);
+            return (
+              <div class="feed-card">
+                <a href={film.link} target="_blank" rel="noopener">
+                  {poster && (
+                    <img
+                      src={poster}
+                      alt={film.title}
+                      class="feed-card-img"
+                      loading="lazy"
+                      referrerpolicy="no-referrer"
+                    />
+                  )}
+                  <div class="feed-card-body">
+                    <div class="feed-card-title">
+                      {film.title}
+                      {film.year && <span style="color: var(--ff-text-grey);"> ({film.year})</span>}
+                    </div>
+                    {film.rating > 0 && (
+                      <div class="feed-card-rating">{ratingToStars(film.rating)}</div>
+                    )}
+                    {film.review && (
+                      <div class="feed-card-review">{film.review}</div>
+                    )}
+                    {film.watchedDate && (
+                      <div class="feed-card-date">
+                        Watched {new Date(film.watchedDate).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}
+                      </div>
+                    )}
+                  </div>
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    ) : (
+      <div class="feed-empty">
+        <div class="ff-box">
+          <p>The curtain hasn't risen yet...</p>
+          <p style="margin-top: var(--sp-3);">
+            Visit my <a href="https://letterboxd.com/zarrsadus/diary/" target="_blank" rel="noopener">Letterboxd diary</a> to see what I'm watching.
+          </p>
+        </div>
+      </div>
+    )}
+
+    <!-- Letterboxd link -->
+    <div style="text-align: center; margin-top: var(--sp-8);">
+      <a
+        href="https://letterboxd.com/zarrsadus/diary/"
+        target="_blank"
+        rel="noopener"
+        class="cin-more-link"
+      >
+        View full diary on Letterboxd &rarr;
+      </a>
+    </div>
+
+  </main>
+</BaseLayout>
