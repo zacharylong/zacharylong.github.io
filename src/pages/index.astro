@@ -12,9 +12,15 @@ const FILM_REVIEW_CHANNEL = 'UChJ39K5hJI7ARTTeB-KGOWQ';
 
 const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-reading', 3);
 const recentFilms = await fetchLetterboxdFilms('zarrsadus', 3);
-const podcastEpisodes = await fetchYouTubeVideos(PODCAST_CHANNEL, 1);
+const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 15);
 const bookReviewVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 3);
 const filmReviewVideos = await fetchYouTubeVideos(FILM_REVIEW_CHANNEL, 3);
+
+// Filter out YouTube Shorts (typically have #shorts in title or very short descriptions)
+const podcastEpisodes = allPodcastVideos.filter((v) =>
+  !v.title.toLowerCase().includes('#short') &&
+  !v.title.toLowerCase().includes('#shorts')
+).slice(0, 3);
 
 function extractPoster(html: string): string {
   const match = html.match(/src="([^"]+)"/);
@@ -34,7 +40,6 @@ function truncateDesc(desc: string, maxLen: number = 140): string {
   return desc.slice(0, maxLen).replace(/\s+\S*$/, '') + '...';
 }
 
-const latestPodcast = podcastEpisodes[0];
 ---
 
 <BaseLayout title="Zachary Long | Data, Books & Films" showNav={false}>
@@ -78,41 +83,33 @@ const latestPodcast = podcastEpisodes[0];
             </div>
           </div>
 
-          <!-- Right: Latest Podcast Episode -->
+          <!-- Right: Latest Podcast Episodes -->
           <div class="cin-pro-featured">
-            <div class="cin-pro-featured-label">Latest Podcast</div>
-            {latestPodcast ? (
-              <div class="cin-pro-podcast-card">
-                <a href={latestPodcast.link} target="_blank" rel="noopener">
-                  <img
-                    src={latestPodcast.thumbnailUrl}
-                    alt={latestPodcast.title}
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                  />
-                  <div class="cin-pro-podcast-body">
-                    <div class="feed-card-title">{latestPodcast.title}</div>
-                    {latestPodcast.description && (
-                      <div class="feed-card-desc">{truncateDesc(latestPodcast.description)}</div>
-                    )}
-                    {latestPodcast.publishedDate && (
-                      <div class="feed-card-date">{formatDate(latestPodcast.publishedDate)}</div>
-                    )}
+            <div class="cin-pro-featured-label">Everyday Data with PnZ</div>
+            {podcastEpisodes.length > 0 ? (
+              <div class="cin-pro-podcast-grid">
+                {podcastEpisodes.map((ep) => (
+                  <div class="cin-pro-podcast-card">
+                    <a href={ep.link} target="_blank" rel="noopener">
+                      <img
+                        src={ep.thumbnailUrl}
+                        alt={ep.title}
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                      />
+                      <div class="cin-pro-podcast-body">
+                        <div class="feed-card-title">{ep.title}</div>
+                        {ep.publishedDate && (
+                          <div class="feed-card-date">{formatDate(ep.publishedDate)}</div>
+                        )}
+                      </div>
+                    </a>
                   </div>
-                </a>
+                ))}
               </div>
             ) : (
               <div class="ff-box" style="text-align: center; padding: var(--sp-8);">
                 <p style="color: var(--ff-text-dim);">Everyday Data with PnZ</p>
-                <a
-                  href="https://www.youtube.com/@EverydayDataWithPnZ"
-                  target="_blank"
-                  rel="noopener"
-                  class="cin-more-link"
-                  style="margin-top: var(--sp-4);"
-                >
-                  Watch on YouTube &rarr;
-                </a>
               </div>
             )}
             <div style="text-align: center; margin-top: var(--sp-4);">
@@ -215,48 +212,6 @@ const latestPodcast = podcastEpisodes[0];
       <div class="container">
         <h2 class="cin-section-title">Reviews</h2>
 
-        <!-- Zac On Films | Everything Film Club -->
-        <div class="cin-channel-group">
-          <div class="cin-channel-header">
-            <span class="cin-channel-name">Zac On Films | Everything Film Club</span>
-            <a
-              href="https://www.youtube.com/channel/UChJ39K5hJI7ARTTeB-KGOWQ"
-              target="_blank"
-              rel="noopener"
-              class="cin-channel-link"
-            >
-              Watch on YouTube &rarr;
-            </a>
-          </div>
-          {filmReviewVideos.length > 0 ? (
-            <div class="cin-featured-grid cin-stagger">
-              {filmReviewVideos.slice(0, 3).map((video) => (
-                <div class="feed-card">
-                  <a href={video.link} target="_blank" rel="noopener">
-                    <img
-                      src={video.thumbnailUrl}
-                      alt={video.title}
-                      class="feed-card-img"
-                      loading="lazy"
-                      referrerpolicy="no-referrer"
-                    />
-                    <div class="feed-card-body">
-                      <div class="feed-card-title">{video.title}</div>
-                      {video.publishedDate && (
-                        <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
-                      )}
-                    </div>
-                  </a>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div class="ff-box" style="text-align: center; padding: var(--sp-6);">
-              <p style="color: var(--ff-text-dim);">New film reviews coming soon.</p>
-            </div>
-          )}
-        </div>
-
         <!-- Sci-Fi & Fantasy Book Reviews -->
         <div class="cin-channel-group">
           <div class="cin-channel-header">
@@ -295,6 +250,48 @@ const latestPodcast = podcastEpisodes[0];
           ) : (
             <div class="ff-box" style="text-align: center; padding: var(--sp-6);">
               <p style="color: var(--ff-text-dim);">New book reviews coming soon.</p>
+            </div>
+          )}
+        </div>
+
+        <!-- Zac On Films | Everything Film Club -->
+        <div class="cin-channel-group">
+          <div class="cin-channel-header">
+            <span class="cin-channel-name">Zac On Films | Everything Film Club</span>
+            <a
+              href="https://www.youtube.com/channel/UChJ39K5hJI7ARTTeB-KGOWQ"
+              target="_blank"
+              rel="noopener"
+              class="cin-channel-link"
+            >
+              Watch on YouTube &rarr;
+            </a>
+          </div>
+          {filmReviewVideos.length > 0 ? (
+            <div class="cin-featured-grid cin-stagger">
+              {filmReviewVideos.slice(0, 3).map((video) => (
+                <div class="feed-card">
+                  <a href={video.link} target="_blank" rel="noopener">
+                    <img
+                      src={video.thumbnailUrl}
+                      alt={video.title}
+                      class="feed-card-img"
+                      loading="lazy"
+                      referrerpolicy="no-referrer"
+                    />
+                    <div class="feed-card-body">
+                      <div class="feed-card-title">{video.title}</div>
+                      {video.publishedDate && (
+                        <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                      )}
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="ff-box" style="text-align: center; padding: var(--sp-6);">
+              <p style="color: var(--ff-text-dim);">New film reviews coming soon.</p>
             </div>
           )}
         </div>

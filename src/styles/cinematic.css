@@ -939,19 +939,12 @@ hr {
    PROFESSIONAL SPOTLIGHT — Hero follow-up section
    ========================================================== */
 .cin-pro-spotlight {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-10);
   align-items: center;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .cin-pro-spotlight {
-    grid-template-columns: 280px 1fr;
-    gap: var(--sp-10);
-  }
 }
 
 .cin-pro-info {
@@ -1051,6 +1044,7 @@ hr {
 .cin-pro-featured {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .cin-pro-featured-label {
@@ -1066,6 +1060,18 @@ hr {
 @media (min-width: 768px) {
   .cin-pro-featured-label {
     text-align: left;
+  }
+}
+
+.cin-pro-podcast-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 768px) {
+  .cin-pro-podcast-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1091,7 +1097,7 @@ hr {
 
 .cin-pro-podcast-card img {
   width: 100%;
-  height: 200px;
+  height: 160px;
   object-fit: cover;
   border-bottom: 1px solid var(--ff-border-lo);
 }
