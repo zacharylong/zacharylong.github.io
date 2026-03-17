@@ -5,7 +5,7 @@ export const config: ThemeConfig = {
 
   meta: {
     description:
-      'Zachary Long — Books, films, and the worlds that stay with us.',
+      'Zachary Long — Data analytics, books, films, and the worlds that stay with us.',
     themeColor: '#0f1a14',
   },
 
@@ -16,17 +16,12 @@ export const config: ThemeConfig = {
   landing: {
     heroSprites: [],
     siteTitle: 'Zachary Long',
-    subtitle: 'Books &bull; Films &bull; Data',
-    tagline: 'Exploring books, films, and the worlds that stay with us.',
+    subtitle: 'Data &bull; Books &bull; Films',
+    tagline: 'Turning data into insight. Exploring the worlds that stay with us.',
     introHtml: `<p class="intro-text">
-      I help organizations turn data into actionable insights
-      people trust &mdash; using analytics, storytelling, and
-      human-centered design.
-    </p>
-    <p class="intro-text" style="margin-top: var(--sp-3);">
       Off the clock, I&rsquo;m a sci-fi/fantasy book reviewer
-      obsessed with worldbuilding, a world-cinema writer with
-      a soft spot for East Asian film, and a podcast host
+      obsessed with worldbuilding, a film critic with
+      a soft spot for East Asian cinema, and a podcast host
       exploring what AI changes for work, culture, and
       everyday life.
     </p>`,

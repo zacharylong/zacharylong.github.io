@@ -2,15 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { theme } from '../config/theme';
 import { fetchGoodreadsBooks, fetchLetterboxdFilms, fetchYouTubeVideos, ratingToStars } from '../utils/rss';
+import resumeData from '../data/resume.json';
 
 // Fetch data at build time
 const GOODREADS_ID = '43383319';
+const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
 const BOOK_REVIEW_CHANNEL = 'UCtTpv51SwEz7hGc11H9kbLA';
+const FILM_REVIEW_CHANNEL = 'UChJ39K5hJI7ARTTeB-KGOWQ';
 
 const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-reading', 3);
-const recentBooks = await fetchGoodreadsBooks(GOODREADS_ID, 'read', 4);
-const recentFilms = await fetchLetterboxdFilms('zarrsadus', 4);
-const recentVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 3);
+const recentFilms = await fetchLetterboxdFilms('zarrsadus', 3);
+const podcastEpisodes = await fetchYouTubeVideos(PODCAST_CHANNEL, 1);
+const bookReviewVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 3);
+const filmReviewVideos = await fetchYouTubeVideos(FILM_REVIEW_CHANNEL, 3);
 
 function extractPoster(html: string): string {
   const match = html.match(/src="([^"]+)"/);
@@ -24,9 +28,16 @@ function formatDate(dateStr: string): string {
     });
   } catch { return ''; }
 }
+
+function truncateDesc(desc: string, maxLen: number = 140): string {
+  if (!desc || desc.length <= maxLen) return desc || '';
+  return desc.slice(0, maxLen).replace(/\s+\S*$/, '') + '...';
+}
+
+const latestPodcast = podcastEpisodes[0];
 ---
 
-<BaseLayout title="Zachary Long | Books, Films & Data" showNav={false}>
+<BaseLayout title="Zachary Long | Data, Books & Films" showNav={false}>
   <main>
 
     <!-- ===== HERO ===== -->
@@ -36,85 +47,131 @@ function formatDate(dateStr: string): string {
         <h1 class="cin-hero-title">{theme.landing.siteTitle}</h1>
         <p class="cin-hero-tagline">{theme.landing.tagline || theme.landing.subtitle}</p>
         <nav class="cin-hero-nav" aria-label="Quick navigation">
+          <a href="/resume" class="cin-hero-link">Resume</a>
+          <span class="cin-hero-dot" aria-hidden="true"></span>
+          <a href="#podcast" class="cin-hero-link">Podcast</a>
+          <span class="cin-hero-dot" aria-hidden="true"></span>
           <a href="/books" class="cin-hero-link">Books</a>
           <span class="cin-hero-dot" aria-hidden="true"></span>
           <a href="/films" class="cin-hero-link">Films</a>
-          <span class="cin-hero-dot" aria-hidden="true"></span>
-          <a href="/videos" class="cin-hero-link">Videos</a>
         </nav>
       </div>
       <span class="cin-hero-scroll" aria-hidden="true">scroll</span>
     </section>
 
-    <!-- ===== LATEST ===== -->
-    <section class="cin-section">
+    <!-- ===== PROFESSIONAL SPOTLIGHT ===== -->
+    <section class="cin-section" id="podcast">
       <div class="container">
-        <h2 class="cin-section-title">Latest</h2>
-        <div class="cin-featured-grid cin-stagger">
-          {recentVideos.slice(0, 3).map((video) => (
-            <div class="feed-card">
-              <a href={video.link} target="_blank" rel="noopener">
-                <img
-                  src={video.thumbnailUrl}
-                  alt={video.title}
-                  class="feed-card-img"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                />
-                <div class="feed-card-body">
-                  <span class="cin-card-type">Video</span>
-                  <div class="feed-card-title">{video.title}</div>
-                  {video.publishedDate && (
-                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
-                  )}
-                </div>
+        <div class="cin-pro-spotlight">
+
+          <!-- Left: Photo + Title + CTAs -->
+          <div class="cin-pro-info">
+            <div class="cin-pro-photo">
+              <img src="/images/zachary-long.jpeg" alt="Zachary Long" />
+            </div>
+            <div class="cin-pro-name">{resumeData.name}</div>
+            <div class="cin-pro-title">{resumeData.title}</div>
+            <p class="cin-pro-tagline">{resumeData.tagline}</p>
+            <div class="cin-pro-ctas">
+              <a href="/resume" class="cin-cta-btn cin-cta-btn--primary">View Resume</a>
+              <a href={resumeData.links.linkedin} target="_blank" rel="noopener" class="cin-cta-btn">LinkedIn</a>
+            </div>
+          </div>
+
+          <!-- Right: Latest Podcast Episode -->
+          <div class="cin-pro-featured">
+            <div class="cin-pro-featured-label">Latest Podcast</div>
+            {latestPodcast ? (
+              <div class="cin-pro-podcast-card">
+                <a href={latestPodcast.link} target="_blank" rel="noopener">
+                  <img
+                    src={latestPodcast.thumbnailUrl}
+                    alt={latestPodcast.title}
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                  <div class="cin-pro-podcast-body">
+                    <div class="feed-card-title">{latestPodcast.title}</div>
+                    {latestPodcast.description && (
+                      <div class="feed-card-desc">{truncateDesc(latestPodcast.description)}</div>
+                    )}
+                    {latestPodcast.publishedDate && (
+                      <div class="feed-card-date">{formatDate(latestPodcast.publishedDate)}</div>
+                    )}
+                  </div>
+                </a>
+              </div>
+            ) : (
+              <div class="ff-box" style="text-align: center; padding: var(--sp-8);">
+                <p style="color: var(--ff-text-dim);">Everyday Data with PnZ</p>
+                <a
+                  href="https://www.youtube.com/@EverydayDataWithPnZ"
+                  target="_blank"
+                  rel="noopener"
+                  class="cin-more-link"
+                  style="margin-top: var(--sp-4);"
+                >
+                  Watch on YouTube &rarr;
+                </a>
+              </div>
+            )}
+            <div style="text-align: center; margin-top: var(--sp-4);">
+              <a
+                href="https://www.youtube.com/@EverydayDataWithPnZ"
+                target="_blank"
+                rel="noopener"
+                class="cin-more-link"
+              >
+                All episodes &rarr;
               </a>
             </div>
-          ))}
+          </div>
+
         </div>
       </div>
     </section>
 
     <div class="cin-section-divider" aria-hidden="true"></div>
 
-    <!-- ===== BOOKS & FILMS SPLIT ===== -->
+    <!-- ===== CURRENTLY READING & RECENTLY WATCHED ===== -->
     <section class="cin-section">
       <div class="container">
         <div class="cin-split-grid">
 
-          <!-- Books Column -->
+          <!-- Currently Reading -->
           <div class="cin-split-col">
-            <h2 class="cin-split-heading"><a href="/books">Books</a></h2>
+            <h2 class="cin-split-heading"><a href="/books">Currently Reading</a></h2>
             <p class="cin-split-desc">Science fiction, fantasy, and everything in between.</p>
             <div class="cin-split-cards cin-stagger">
-              {recentBooks.slice(0, 3).map((book) => (
-                <div class="cin-compact-card">
-                  <a href={book.link} target="_blank" rel="noopener">
-                    {book.imageUrl && (
-                      <img
-                        src={book.imageUrl}
-                        alt={book.title}
-                        loading="lazy"
-                        referrerpolicy="no-referrer"
-                      />
-                    )}
-                    <div class="cin-compact-card-body">
-                      <div class="cin-compact-card-title">{book.title}</div>
-                      <div class="cin-compact-card-meta">{book.author}</div>
-                      {book.rating > 0 && (
-                        <div class="feed-card-rating">{ratingToStars(book.rating)}</div>
+              {currentlyReading.length > 0 ? (
+                currentlyReading.map((book) => (
+                  <div class="cin-compact-card">
+                    <a href={book.link} target="_blank" rel="noopener">
+                      {book.imageUrl && (
+                        <img
+                          src={book.imageUrl}
+                          alt={book.title}
+                          loading="lazy"
+                          referrerpolicy="no-referrer"
+                        />
                       )}
-                    </div>
-                  </a>
-                </div>
-              ))}
+                      <div class="cin-compact-card-body">
+                        <div class="cin-compact-card-title">{book.title}</div>
+                        <div class="cin-compact-card-meta">{book.author}</div>
+                      </div>
+                    </a>
+                  </div>
+                ))
+              ) : (
+                <p style="color: var(--ff-text-dim); font-size: 14px;">Between books at the moment...</p>
+              )}
             </div>
             <a href="/books" class="cin-more-link">View all books &rarr;</a>
           </div>
 
-          <!-- Films Column -->
+          <!-- Recently Watched -->
           <div class="cin-split-col">
-            <h2 class="cin-split-heading"><a href="/films">Films</a></h2>
+            <h2 class="cin-split-heading"><a href="/films">Recently Watched</a></h2>
             <p class="cin-split-desc">World cinema, genre favorites, and fresh watches.</p>
             <div class="cin-split-cards cin-stagger">
               {recentFilms.slice(0, 3).map((film) => {
@@ -153,64 +210,135 @@ function formatDate(dateStr: string): string {
 
     <div class="cin-section-divider" aria-hidden="true"></div>
 
-    <!-- ===== ABOUT ===== -->
+    <!-- ===== REVIEWS & CONTENT ===== -->
     <section class="cin-section">
       <div class="container">
-        <div class="cin-about-content">
-          <div class="cin-about-photo">
-            <img src="/images/zachary-long.jpeg" alt="Zachary Long" />
+        <h2 class="cin-section-title">Reviews</h2>
+
+        <!-- Zac On Films | Everything Film Club -->
+        <div class="cin-channel-group">
+          <div class="cin-channel-header">
+            <span class="cin-channel-name">Zac On Films | Everything Film Club</span>
+            <a
+              href="https://www.youtube.com/channel/UChJ39K5hJI7ARTTeB-KGOWQ"
+              target="_blank"
+              rel="noopener"
+              class="cin-channel-link"
+            >
+              Watch on YouTube &rarr;
+            </a>
           </div>
-          <div class="cin-about-text">
-            <h2>About</h2>
-            <Fragment set:html={theme.landing.introHtml} />
-            <div class="cin-about-links">
-              <a href="/resume">Resume</a>
-              <a href="https://www.linkedin.com/in/zaclong/" target="_blank" rel="noopener">LinkedIn</a>
-              <a href="https://github.com/zacharylong" target="_blank" rel="noopener">GitHub</a>
+          {filmReviewVideos.length > 0 ? (
+            <div class="cin-featured-grid cin-stagger">
+              {filmReviewVideos.slice(0, 3).map((video) => (
+                <div class="feed-card">
+                  <a href={video.link} target="_blank" rel="noopener">
+                    <img
+                      src={video.thumbnailUrl}
+                      alt={video.title}
+                      class="feed-card-img"
+                      loading="lazy"
+                      referrerpolicy="no-referrer"
+                    />
+                    <div class="feed-card-body">
+                      <div class="feed-card-title">{video.title}</div>
+                      {video.publishedDate && (
+                        <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                      )}
+                    </div>
+                  </a>
+                </div>
+              ))}
             </div>
+          ) : (
+            <div class="ff-box" style="text-align: center; padding: var(--sp-6);">
+              <p style="color: var(--ff-text-dim);">New film reviews coming soon.</p>
+            </div>
+          )}
+        </div>
+
+        <!-- Sci-Fi & Fantasy Book Reviews -->
+        <div class="cin-channel-group">
+          <div class="cin-channel-header">
+            <span class="cin-channel-name">Sci-Fi &amp; Fantasy Book Reviews</span>
+            <a
+              href="https://www.youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA"
+              target="_blank"
+              rel="noopener"
+              class="cin-channel-link"
+            >
+              Watch on YouTube &rarr;
+            </a>
           </div>
+          {bookReviewVideos.length > 0 ? (
+            <div class="cin-featured-grid cin-stagger">
+              {bookReviewVideos.slice(0, 3).map((video) => (
+                <div class="feed-card">
+                  <a href={video.link} target="_blank" rel="noopener">
+                    <img
+                      src={video.thumbnailUrl}
+                      alt={video.title}
+                      class="feed-card-img"
+                      loading="lazy"
+                      referrerpolicy="no-referrer"
+                    />
+                    <div class="feed-card-body">
+                      <div class="feed-card-title">{video.title}</div>
+                      {video.publishedDate && (
+                        <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                      )}
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="ff-box" style="text-align: center; padding: var(--sp-6);">
+              <p style="color: var(--ff-text-dim);">New book reviews coming soon.</p>
+            </div>
+          )}
+        </div>
+
+        <!-- Letterboxd -->
+        <div style="text-align: center; margin-top: var(--sp-4);">
+          <a
+            href="https://letterboxd.com/zarrsadus/diary/"
+            target="_blank"
+            rel="noopener"
+            class="cin-more-link"
+          >
+            Full diary on Letterboxd &rarr;
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ===== CURRENTLY READING ===== -->
-    {currentlyReading.length > 0 && (
-      <section class="cin-section">
-        <div class="container">
-          <h2 class="cin-section-title">Currently Reading</h2>
-          <div class="cin-currently-grid cin-stagger">
-            {currentlyReading.map((book) => (
-              <div class="cin-compact-card">
-                <a href={book.link} target="_blank" rel="noopener">
-                  {book.imageUrl && (
-                    <img
-                      src={book.imageUrl}
-                      alt={book.title}
-                      loading="lazy"
-                      referrerpolicy="no-referrer"
-                    />
-                  )}
-                  <div class="cin-compact-card-body">
-                    <div class="cin-compact-card-title">{book.title}</div>
-                    <div class="cin-compact-card-meta">{book.author}</div>
-                  </div>
-                </a>
-              </div>
+    <div class="cin-section-divider" aria-hidden="true"></div>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="cin-section">
+      <div class="container">
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+          <h2 style="margin-bottom: var(--sp-4);">About</h2>
+          <Fragment set:html={theme.landing.introHtml} />
+          <div class="cin-footer-social" style="margin-top: var(--sp-6); margin-bottom: 0;">
+            {theme.socialItems.items.map((item) => (
+              <a href={item.href} target="_blank" rel="noopener">{item.label}</a>
             ))}
           </div>
         </div>
-      </section>
-    )}
+      </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="cin-footer">
       <div class="container">
         <div class="cin-footer-content">
           <nav class="cin-footer-nav" aria-label="Footer navigation">
+            <a href="/resume">Resume</a>
             <a href="/books">Books</a>
             <a href="/films">Films</a>
             <a href="/videos">Videos</a>
-            <a href="/resume">Resume</a>
           </nav>
           <div class="cin-footer-social">
             {theme.socialItems.items.map((item) => (

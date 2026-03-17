@@ -936,6 +936,226 @@ hr {
 }
 
 /* ==========================================================
+   PROFESSIONAL SPOTLIGHT — Hero follow-up section
+   ========================================================== */
+.cin-pro-spotlight {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .cin-pro-spotlight {
+    grid-template-columns: 280px 1fr;
+    gap: var(--sp-10);
+  }
+}
+
+.cin-pro-info {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .cin-pro-info {
+    text-align: left;
+  }
+}
+
+.cin-pro-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ff-border-mid);
+  box-shadow: var(--cin-shadow-md);
+  margin: 0 auto var(--sp-4);
+}
+
+@media (min-width: 768px) {
+  .cin-pro-photo img {
+    margin: 0 0 var(--sp-4);
+  }
+}
+
+.cin-pro-name {
+  font-family: var(--cin-heading);
+  font-size: 20px;
+  color: var(--ff-text);
+  margin-bottom: var(--sp-1);
+  font-weight: 500;
+}
+
+.cin-pro-title {
+  font-family: var(--ff-body);
+  font-size: 14px;
+  color: var(--cin-sage);
+  margin-bottom: var(--sp-3);
+  font-weight: 400;
+}
+
+.cin-pro-tagline {
+  font-size: 14px;
+  color: var(--ff-text-dim);
+  line-height: 1.7;
+  margin-bottom: var(--sp-5);
+}
+
+.cin-pro-ctas {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .cin-pro-ctas {
+    justify-content: flex-start;
+  }
+}
+
+.cin-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--cin-heading);
+  font-size: 12px;
+  color: var(--cin-brass);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: var(--sp-2) var(--sp-5);
+  border: 1px solid var(--cin-brass-dim);
+  border-radius: var(--cin-radius);
+  transition: all var(--cin-transition);
+}
+
+.cin-cta-btn:hover {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: var(--cin-brass);
+  color: var(--cin-parchment);
+}
+
+.cin-cta-btn--primary {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: var(--cin-brass);
+}
+
+.cin-cta-btn--primary:hover {
+  background: rgba(201, 168, 76, 0.2);
+}
+
+/* Featured podcast card in spotlight */
+.cin-pro-featured {
+  display: flex;
+  flex-direction: column;
+}
+
+.cin-pro-featured-label {
+  font-family: var(--cin-heading);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cin-brass);
+  margin-bottom: var(--sp-4);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .cin-pro-featured-label {
+    text-align: left;
+  }
+}
+
+.cin-pro-podcast-card {
+  background: linear-gradient(180deg, var(--ff-box-top) 0%, var(--ff-box-bottom) 100%);
+  border: 1px solid var(--ff-border-lo);
+  border-radius: var(--cin-radius-lg);
+  overflow: hidden;
+  transition: border-color var(--cin-transition), box-shadow var(--cin-transition);
+  box-shadow: var(--cin-shadow-sm);
+}
+
+.cin-pro-podcast-card:hover {
+  border-color: var(--cin-brass-dim);
+  box-shadow: var(--cin-shadow-md);
+}
+
+.cin-pro-podcast-card a {
+  display: block;
+  text-decoration: none;
+  color: var(--ff-text);
+}
+
+.cin-pro-podcast-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--ff-border-lo);
+}
+
+.cin-pro-podcast-body {
+  padding: var(--sp-4);
+}
+
+.cin-pro-podcast-body .feed-card-title {
+  margin-bottom: var(--sp-2);
+}
+
+.cin-pro-podcast-body .feed-card-desc {
+  margin-top: 0;
+}
+
+/* ==========================================================
+   CHANNEL SECTIONS — YouTube content showcase
+   ========================================================== */
+.cin-channel-group {
+  margin-bottom: var(--sp-10);
+}
+
+.cin-channel-group:last-child {
+  margin-bottom: 0;
+}
+
+.cin-channel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.cin-channel-name {
+  font-family: var(--cin-heading);
+  font-size: 16px;
+  color: var(--ff-text);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .cin-channel-name {
+    font-size: 18px;
+  }
+}
+
+.cin-channel-link {
+  font-family: var(--cin-heading);
+  font-size: 11px;
+  color: var(--cin-brass);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color var(--cin-transition);
+}
+
+.cin-channel-link:hover {
+  color: var(--cin-parchment);
+}
+
+/* ==========================================================
    CINEMATIC FOOTER
    ========================================================== */
 .cin-footer {
@@ -1628,6 +1848,24 @@ hr {
 
   .cin-split-heading {
     font-size: 18px;
+  }
+
+  .cin-pro-photo img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cin-pro-name {
+    font-size: 18px;
+  }
+
+  .cin-cta-btn {
+    font-size: 11px;
+    padding: var(--sp-2) var(--sp-4);
+  }
+
+  .cin-channel-name {
+    font-size: 15px;
   }
 }
 
