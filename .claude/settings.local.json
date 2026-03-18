@@ -100,7 +100,10 @@
       "Bash(curl -sL \"https://mario.wiki.gallery/images/4/4f/SMB3_Empty_Block.png\" -o public/images/smb3/items/empty-block.png)",
       "Bash(git add src/config/themes/types.ts src/config/themes/ff6.ts src/config/themes/smb3.ts src/config/theme.ts src/styles/smb3.css src/styles/theme.css src/layouts/BaseLayout.astro src/pages/index.astro src/pages/resume.astro src/pages/library.astro src/pages/theater.astro src/pages/creations.astro src/pages/404.astro public/images/smb3/)",
       "Bash(npm run build)",
-      "Bash(git add src/config/theme.ts src/config/themes/types.ts src/config/themes/cinematic.ts src/layouts/BaseLayout.astro src/pages/404.astro src/pages/creations.astro src/pages/index.astro src/pages/library.astro src/pages/theater.astro src/pages/books.astro src/pages/films.astro src/pages/videos.astro src/styles/theme.css src/styles/cinematic.css src/utils/rss.ts)"
+      "Bash(git add src/config/theme.ts src/config/themes/types.ts src/config/themes/cinematic.ts src/layouts/BaseLayout.astro src/pages/404.astro src/pages/creations.astro src/pages/index.astro src/pages/library.astro src/pages/theater.astro src/pages/books.astro src/pages/films.astro src/pages/videos.astro src/styles/theme.css src/styles/cinematic.css src/utils/rss.ts)",
+      "WebSearch",
+      "Bash(grep -E '\\\\.\\(mjs|json|yml|yaml\\)$')",
+      "Bash(grep -E '\\\\.\\(astro|ts|js\\)$')"
     ]
   }
 }

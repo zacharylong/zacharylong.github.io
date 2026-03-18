@@ -30,6 +30,18 @@ export interface PageMeta {
   headerSub: string;
 }
 
+export interface PortalCard {
+  title: string;
+  description: string;
+  href: string;
+  featuredLabel?: string;
+}
+
+export interface CtaLink {
+  label: string;
+  href: string;
+}
+
 export interface NotFoundPage {
   title: string;
   heading: string;
@@ -64,6 +76,14 @@ export interface ThemeConfig {
     subtitle: string;
     introHtml: string;
     tagline?: string;
+    positioningStatement?: string;
+    ctaPrimary?: CtaLink;
+    ctaSecondary?: CtaLink;
+    ctaTertiary?: CtaLink;
+    portalCards?: PortalCard[];
+    loreLogicHeading?: string;
+    loreLogicHtml?: string;
+    credibilityLine?: string;
   };
 
   pages: {
@@ -75,6 +95,10 @@ export interface ThemeConfig {
     books?: PageMeta;
     films?: PageMeta;
     videos?: PageMeta & { pageHeading: string };
+    work?: PageMeta;
+    transmissions?: PageMeta & { pageHeading: string };
+    about?: PageMeta;
+    now?: PageMeta;
   };
 
   menu: MenuItem[];

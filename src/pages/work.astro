@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
+import resumeData from '../data/resume.json';
+import { fetchYouTubeVideos } from '../utils/rss';
+
+const pageConfig = theme.pages.work!;
+const currentRole = resumeData.experience[0];
+
+// Fetch a few podcast episodes for thought leadership
+const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
+const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 10);
+const podcastEpisodes = allPodcastVideos.filter((v) =>
+  !v.title.toLowerCase().includes('#short') &&
+  !v.title.toLowerCase().includes('#shorts')
+).slice(0, 3);
+
+function formatDate(dateStr: string): string {
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric',
+    });
+  } catch { return ''; }
+}
+---
+
+<BaseLayout title="Zachary Long | Work" location={pageConfig.location}>
+  <main class="page-content container">
+
+    <header class="page-header">
+      <h1>{pageConfig.title}</h1>
+      <p class="page-header-sub" set:html={pageConfig.headerSub} />
+    </header>
+
+    <!-- Positioning -->
+    <section class="resume-section" style="max-width: 680px; margin: 0 auto var(--sp-10);">
+      <p style="font-size: 18px; line-height: 1.8; color: var(--ff-text-dim); text-align: center;">
+        {resumeData.tagline}
+      </p>
+    </section>
+
+    <!-- Current Role -->
+    <section class="resume-section">
+      <h2>Current Role</h2>
+      <div class="ff-box">
+        <div class="exp-entry">
+          <div class="exp-header">
+            <div class="exp-title">{currentRole.title}</div>
+            <div class="exp-company">
+              {currentRole.url ? (
+                <a href={currentRole.url} target="_blank" rel="noopener">{currentRole.company}</a>
+              ) : (
+                currentRole.company
+              )}
+            </div>
+            <div class="exp-dates">{currentRole.dates}</div>
+          </div>
+          <ul class="exp-highlights">
+            {currentRole.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="resume-section">
+      <h2>Education</h2>
+      <div class="ff-box">
+        {resumeData.education.slice(0, 2).map((edu) => (
+          <div class="edu-entry">
+            <div class="edu-degree">{edu.degree}</div>
+            <div class="edu-school">{edu.school}</div>
+            <div class="edu-year">{edu.year}</div>
+            {edu.details && (
+              <p style="font-size: 13px; color: var(--ff-text-dim); margin-top: var(--sp-2); line-height: 1.6;">
+                {edu.details}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="resume-section">
+      <h2>Tools & Expertise</h2>
+      <div class="ff-box">
+        <div class="skills-grid">
+          {Object.entries(resumeData.skills).map(([category, skills]) => (
+            <div class="skill-category">
+              <h3>{category}</h3>
+              <div class="skill-tags">
+                {(skills as string[]).map((skill) => (
+                  <span class="skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Thought Leadership: Podcast -->
+    {podcastEpisodes.length > 0 && (
+      <section class="resume-section">
+        <h2>Thought Leadership</h2>
+        <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
+          Everyday Data with PnZ — a podcast exploring data analytics, AI, and the future of work.
+        </p>
+        <div class="feed-grid">
+          {podcastEpisodes.map((video) => (
+            <div class="feed-card">
+              <a href={video.link} target="_blank" rel="noopener">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  class="feed-card-img"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{video.title}</div>
+                  {video.publishedDate && (
+                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- CTAs -->
+    <section style="text-align: center; padding: var(--sp-10) 0;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-3);">
+        <a href="/resume" class="ath-cta ath-cta--primary">Full Resume</a>
+        <a href={resumeData.links.linkedin} target="_blank" rel="noopener" class="ath-cta ath-cta--secondary">LinkedIn</a>
+        <a href={resumeData.links.github} target="_blank" rel="noopener" class="ath-cta ath-cta--secondary">GitHub</a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

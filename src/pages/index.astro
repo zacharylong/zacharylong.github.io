@@ -16,7 +16,7 @@ const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 15);
 const bookReviewVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 3);
 const filmReviewVideos = await fetchYouTubeVideos(FILM_REVIEW_CHANNEL, 3);
 
-// Filter out YouTube Shorts (typically have #shorts in title or very short descriptions)
+// Filter out YouTube Shorts
 const podcastEpisodes = allPodcastVideos.filter((v) =>
   !v.title.toLowerCase().includes('#short') &&
   !v.title.toLowerCase().includes('#shorts')
@@ -35,322 +35,306 @@ function formatDate(dateStr: string): string {
   } catch { return ''; }
 }
 
-function truncateDesc(desc: string, maxLen: number = 140): string {
-  if (!desc || desc.length <= maxLen) return desc || '';
-  return desc.slice(0, maxLen).replace(/\s+\S*$/, '') + '...';
+function truncateTitle(title: string, maxLen: number = 60): string {
+  if (!title || title.length <= maxLen) return title || '';
+  return title.slice(0, maxLen).replace(/\s+\S*$/, '') + '\u2026';
 }
 
+// Live signals for portal cards
+const nowReading = currentlyReading[0];
+const latestFilm = recentFilms[0];
+const latestPodcast = podcastEpisodes[0];
+const latestBookReview = bookReviewVideos[0];
+const latestFilmReview = filmReviewVideos[0];
+
+const { landing } = theme;
 ---
 
 <BaseLayout title="Zachary Long | Data, Books & Films" showNav={false}>
   <main>
 
-    <!-- ===== HERO ===== -->
-    <section class="cin-hero fade-in">
-      <div class="cin-hero-overlay" aria-hidden="true"></div>
-      <div class="cin-hero-content">
-        <h1 class="cin-hero-title">{theme.landing.siteTitle}</h1>
-        <p class="cin-hero-tagline">{theme.landing.tagline || theme.landing.subtitle}</p>
-        <nav class="cin-hero-nav" aria-label="Quick navigation">
-          <a href="/resume" class="cin-hero-link">Resume</a>
-          <span class="cin-hero-dot" aria-hidden="true"></span>
-          <a href="#podcast" class="cin-hero-link">Podcast</a>
-          <span class="cin-hero-dot" aria-hidden="true"></span>
-          <a href="/books" class="cin-hero-link">Books</a>
-          <span class="cin-hero-dot" aria-hidden="true"></span>
-          <a href="/films" class="cin-hero-link">Films</a>
-        </nav>
-      </div>
-      <span class="cin-hero-scroll" aria-hidden="true">scroll</span>
-    </section>
+    <!-- ===== ZONE A: Identity Deck ===== -->
+    <section class="ath-identity">
+      <div class="ath-identity-inner">
 
-    <!-- ===== PROFESSIONAL SPOTLIGHT ===== -->
-    <section class="cin-section" id="podcast">
-      <div class="container">
-        <div class="cin-pro-spotlight">
-
-          <!-- Left: Photo + Title + CTAs -->
-          <div class="cin-pro-info">
-            <div class="cin-pro-photo">
-              <img src="/images/zachary-long.jpeg" alt="Zachary Long" />
-            </div>
-            <div class="cin-pro-name">{resumeData.name}</div>
-            <div class="cin-pro-title">{resumeData.title}</div>
-            <p class="cin-pro-tagline">{resumeData.tagline}</p>
-            <div class="cin-pro-ctas">
-              <a href="/resume" class="cin-cta-btn cin-cta-btn--primary">View Resume</a>
-              <a href={resumeData.links.linkedin} target="_blank" rel="noopener" class="cin-cta-btn">LinkedIn</a>
-            </div>
+        <!-- Left Column -->
+        <div class="ath-identity-left">
+          <h1>{landing.siteTitle}</h1>
+          <div class="ath-subtitle" set:html={landing.subtitle} />
+          <p class="ath-positioning">{landing.positioningStatement}</p>
+          <div class="ath-ctas">
+            {landing.ctaPrimary && (
+              <a href={landing.ctaPrimary.href} class="ath-cta ath-cta--primary">{landing.ctaPrimary.label}</a>
+            )}
+            {landing.ctaSecondary && (
+              <a href={landing.ctaSecondary.href} class="ath-cta ath-cta--secondary">{landing.ctaSecondary.label}</a>
+            )}
+            {landing.ctaTertiary && (
+              <a href={landing.ctaTertiary.href} class="ath-cta ath-cta--tertiary">{landing.ctaTertiary.label} &rarr;</a>
+            )}
           </div>
+        </div>
 
-          <!-- Right: Latest Podcast Episodes -->
-          <div class="cin-pro-featured">
-            <div class="cin-pro-featured-label">Everyday Data with PnZ</div>
-            {podcastEpisodes.length > 0 ? (
-              <div class="cin-pro-podcast-grid">
-                {podcastEpisodes.map((ep) => (
-                  <div class="cin-pro-podcast-card">
-                    <a href={ep.link} target="_blank" rel="noopener">
-                      <img
-                        src={ep.thumbnailUrl}
-                        alt={ep.title}
-                        loading="lazy"
-                        referrerpolicy="no-referrer"
-                      />
-                      <div class="cin-pro-podcast-body">
-                        <div class="feed-card-title">{ep.title}</div>
-                        {ep.publishedDate && (
-                          <div class="feed-card-date">{formatDate(ep.publishedDate)}</div>
-                        )}
-                      </div>
-                    </a>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div class="ff-box" style="text-align: center; padding: var(--sp-8);">
-                <p style="color: var(--ff-text-dim);">Everyday Data with PnZ</p>
+        <!-- Right Column -->
+        <div class="ath-identity-right">
+          <img
+            src="/images/zachary-long.jpeg"
+            alt="Zachary Long"
+            class="ath-portrait"
+          />
+
+          <div class="ath-console">
+            <div class="ath-console-title">Currently</div>
+            {nowReading && (
+              <div class="ath-console-item">
+                <span class="ath-console-label">Reading</span>
+                <span class="ath-console-value">
+                  <a href={nowReading.link} target="_blank" rel="noopener">{truncateTitle(nowReading.title, 40)}</a>
+                </span>
               </div>
             )}
-            <div style="text-align: center; margin-top: var(--sp-4);">
-              <a
-                href="https://www.youtube.com/@EverydayDataWithPnZ"
-                target="_blank"
-                rel="noopener"
-                class="cin-more-link"
-              >
-                All episodes &rarr;
+            {latestFilm && (
+              <div class="ath-console-item">
+                <span class="ath-console-label">Watched</span>
+                <span class="ath-console-value">
+                  <a href={latestFilm.link} target="_blank" rel="noopener">
+                    {latestFilm.title}{latestFilm.year ? ` (${latestFilm.year})` : ''}
+                    {latestFilm.rating > 0 ? ` ${ratingToStars(latestFilm.rating)}` : ''}
+                  </a>
+                </span>
+              </div>
+            )}
+            {latestPodcast && (
+              <div class="ath-console-item">
+                <span class="ath-console-label">Podcast</span>
+                <span class="ath-console-value">
+                  <a href={latestPodcast.link} target="_blank" rel="noopener">{truncateTitle(latestPodcast.title, 40)}</a>
+                </span>
+              </div>
+            )}
+          </div>
+
+          {landing.credibilityLine && (
+            <div class="ath-credibility">{landing.credibilityLine}</div>
+          )}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== ZONE B: The Four Wings ===== -->
+    {landing.portalCards && (
+      <section class="ath-wings ath-reveal">
+        <div class="ath-wings-grid">
+          {landing.portalCards.map((card, i) => {
+            // Inject live signals into each card
+            let signalText = '';
+            if (i === 0) signalText = resumeData.title + ' \u2022 ' + resumeData.experience[0].company;
+            if (i === 1 && nowReading) signalText = nowReading.title;
+            if (i === 2 && latestFilm) signalText = latestFilm.title + (latestFilm.year ? ` (${latestFilm.year})` : '');
+            if (i === 3 && latestPodcast) signalText = truncateTitle(latestPodcast.title, 50);
+
+            return (
+              <a href={card.href} class="ath-wing-card">
+                <div class="ath-wing-title">{card.title}</div>
+                <div class="ath-wing-desc">{card.description}</div>
+                {signalText && (
+                  <div class="ath-wing-signal">
+                    <span class="ath-wing-signal-label">{card.featuredLabel}</span>
+                    {truncateTitle(signalText, 55)}
+                  </div>
+                )}
+                <span class="ath-wing-arrow" aria-hidden="true">&rarr;</span>
               </a>
-            </div>
-          </div>
-
+            );
+          })}
         </div>
-      </div>
-    </section>
+      </section>
+    )}
 
-    <div class="cin-section-divider" aria-hidden="true"></div>
-
-    <!-- ===== CURRENTLY READING & RECENTLY WATCHED ===== -->
-    <section class="cin-section">
-      <div class="container">
-        <div class="cin-split-grid">
-
-          <!-- Currently Reading -->
-          <div class="cin-split-col">
-            <h2 class="cin-split-heading"><a href="/books">Currently Reading</a></h2>
-            <p class="cin-split-desc">Science fiction, fantasy, and everything in between.</p>
-            <div class="cin-split-cards cin-stagger">
-              {currentlyReading.length > 0 ? (
-                currentlyReading.map((book) => (
-                  <div class="cin-compact-card">
-                    <a href={book.link} target="_blank" rel="noopener">
-                      {book.imageUrl && (
-                        <img
-                          src={book.imageUrl}
-                          alt={book.title}
-                          loading="lazy"
-                          referrerpolicy="no-referrer"
-                        />
-                      )}
-                      <div class="cin-compact-card-body">
-                        <div class="cin-compact-card-title">{book.title}</div>
-                        <div class="cin-compact-card-meta">{book.author}</div>
-                      </div>
-                    </a>
-                  </div>
-                ))
-              ) : (
-                <p style="color: var(--ff-text-dim); font-size: 14px;">Between books at the moment...</p>
-              )}
-            </div>
-            <a href="/books" class="cin-more-link">View all books &rarr;</a>
-          </div>
-
-          <!-- Recently Watched -->
-          <div class="cin-split-col">
-            <h2 class="cin-split-heading"><a href="/films">Recently Watched</a></h2>
-            <p class="cin-split-desc">World cinema, genre favorites, and fresh watches.</p>
-            <div class="cin-split-cards cin-stagger">
-              {recentFilms.slice(0, 3).map((film) => {
-                const poster = extractPoster(film.posterHtml);
-                return (
-                  <div class="cin-compact-card">
-                    <a href={film.link} target="_blank" rel="noopener">
-                      {poster && (
-                        <img
-                          src={poster}
-                          alt={film.title}
-                          loading="lazy"
-                          referrerpolicy="no-referrer"
-                        />
-                      )}
-                      <div class="cin-compact-card-body">
-                        <div class="cin-compact-card-title">
-                          {film.title}
-                          {film.year && <span style="color: var(--ff-text-grey);"> ({film.year})</span>}
-                        </div>
-                        {film.rating > 0 && (
-                          <div class="feed-card-rating">{ratingToStars(film.rating)}</div>
-                        )}
-                      </div>
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-            <a href="/films" class="cin-more-link">View all films &rarr;</a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="cin-section-divider" aria-hidden="true"></div>
-
-    <!-- ===== REVIEWS & CONTENT ===== -->
-    <section class="cin-section">
-      <div class="container">
-        <h2 class="cin-section-title">Reviews</h2>
-
-        <!-- Sci-Fi & Fantasy Book Reviews -->
-        <div class="cin-channel-group">
-          <div class="cin-channel-header">
-            <span class="cin-channel-name">Sci-Fi &amp; Fantasy Book Reviews</span>
-            <a
-              href="https://www.youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA"
-              target="_blank"
-              rel="noopener"
-              class="cin-channel-link"
-            >
-              Watch on YouTube &rarr;
-            </a>
-          </div>
-          {bookReviewVideos.length > 0 ? (
-            <div class="cin-featured-grid cin-stagger">
-              {bookReviewVideos.slice(0, 3).map((video) => (
-                <div class="feed-card">
-                  <a href={video.link} target="_blank" rel="noopener">
-                    <img
-                      src={video.thumbnailUrl}
-                      alt={video.title}
-                      class="feed-card-img"
-                      loading="lazy"
-                      referrerpolicy="no-referrer"
-                    />
-                    <div class="feed-card-body">
-                      <div class="feed-card-title">{video.title}</div>
-                      {video.publishedDate && (
-                        <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
-                      )}
-                    </div>
-                  </a>
-                </div>
-              ))}
-            </div>
+    <!-- ===== ZONE C: Live Console Band ===== -->
+    <section class="ath-console-band ath-reveal">
+      <div class="ath-console-band-inner">
+        <div class="ath-console-slot">
+          <span class="ath-console-slot-label">Now Reading</span>
+          {nowReading ? (
+            <span class="ath-console-slot-value">
+              <a href={nowReading.link} target="_blank" rel="noopener">{nowReading.title}</a>
+            </span>
           ) : (
-            <div class="ff-box" style="text-align: center; padding: var(--sp-6);">
-              <p style="color: var(--ff-text-dim);">New book reviews coming soon.</p>
-            </div>
+            <span class="ath-console-slot-value" style="color: var(--ff-text-grey);">Between books</span>
+          )}
+          {nowReading?.author && <span class="ath-console-slot-meta">{nowReading.author}</span>}
+        </div>
+
+        <div class="ath-console-slot">
+          <span class="ath-console-slot-label">Recently Watched</span>
+          {latestFilm ? (
+            <span class="ath-console-slot-value">
+              <a href={latestFilm.link} target="_blank" rel="noopener">
+                {latestFilm.title}{latestFilm.year ? ` (${latestFilm.year})` : ''}
+              </a>
+            </span>
+          ) : (
+            <span class="ath-console-slot-value" style="color: var(--ff-text-grey);">Nothing recent</span>
+          )}
+          {latestFilm && latestFilm.rating > 0 && (
+            <span class="ath-console-slot-meta">{ratingToStars(latestFilm.rating)}</span>
           )}
         </div>
 
-        <!-- Zac On Films | Everything Film Club -->
-        <div class="cin-channel-group">
-          <div class="cin-channel-header">
-            <span class="cin-channel-name">Zac On Films | Everything Film Club</span>
-            <a
-              href="https://www.youtube.com/channel/UChJ39K5hJI7ARTTeB-KGOWQ"
-              target="_blank"
-              rel="noopener"
-              class="cin-channel-link"
-            >
-              Watch on YouTube &rarr;
-            </a>
-          </div>
-          {filmReviewVideos.length > 0 ? (
-            <div class="cin-featured-grid cin-stagger">
-              {filmReviewVideos.slice(0, 3).map((video) => (
-                <div class="feed-card">
-                  <a href={video.link} target="_blank" rel="noopener">
-                    <img
-                      src={video.thumbnailUrl}
-                      alt={video.title}
-                      class="feed-card-img"
-                      loading="lazy"
-                      referrerpolicy="no-referrer"
-                    />
-                    <div class="feed-card-body">
-                      <div class="feed-card-title">{video.title}</div>
-                      {video.publishedDate && (
-                        <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
-                      )}
-                    </div>
-                  </a>
-                </div>
-              ))}
-            </div>
+        <div class="ath-console-slot">
+          <span class="ath-console-slot-label">Latest Transmission</span>
+          {latestPodcast ? (
+            <span class="ath-console-slot-value">
+              <a href={latestPodcast.link} target="_blank" rel="noopener">{truncateTitle(latestPodcast.title, 50)}</a>
+            </span>
           ) : (
-            <div class="ff-box" style="text-align: center; padding: var(--sp-6);">
-              <p style="color: var(--ff-text-dim);">New film reviews coming soon.</p>
-            </div>
+            <span class="ath-console-slot-value" style="color: var(--ff-text-grey);">Coming soon</span>
+          )}
+          {latestPodcast?.publishedDate && (
+            <span class="ath-console-slot-meta">{formatDate(latestPodcast.publishedDate)}</span>
           )}
         </div>
-
-        <!-- Letterboxd -->
-        <div style="text-align: center; margin-top: var(--sp-4);">
-          <a
-            href="https://letterboxd.com/zarrsadus/diary/"
-            target="_blank"
-            rel="noopener"
-            class="cin-more-link"
-          >
-            Full diary on Letterboxd &rarr;
-          </a>
-        </div>
       </div>
     </section>
 
-    <div class="cin-section-divider" aria-hidden="true"></div>
+    <!-- ===== ZONE D: Lore + Logic ===== -->
+    {landing.loreLogicHtml && (
+      <section class="ath-lore ath-reveal">
+        <h2>{landing.loreLogicHeading || 'Lore + Logic'}</h2>
+        <Fragment set:html={landing.loreLogicHtml} />
+        <div class="ath-lore-divider" aria-hidden="true"></div>
+      </section>
+    )}
 
-    <!-- ===== ABOUT ===== -->
-    <section class="cin-section">
-      <div class="container">
-        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-          <h2 style="margin-bottom: var(--sp-4);">About</h2>
-          <Fragment set:html={theme.landing.introHtml} />
-          <div class="cin-footer-social" style="margin-top: var(--sp-6); margin-bottom: 0;">
-            {theme.socialItems.items.map((item) => (
-              <a href={item.href} target="_blank" rel="noopener">{item.label}</a>
-            ))}
+    <!-- ===== ZONE E: Featured Work ===== -->
+    <section class="ath-featured ath-reveal">
+      <div class="ath-featured-heading">Featured</div>
+      <div class="ath-featured-grid">
+
+        {/* Large card: Latest podcast episode */}
+        {latestPodcast && (
+          <div class="ath-featured-card">
+            <a href={latestPodcast.link} target="_blank" rel="noopener">
+              <img
+                src={latestPodcast.thumbnailUrl}
+                alt={latestPodcast.title}
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div class="ath-featured-card-body">
+                <span class="ath-featured-card-type">Podcast</span>
+                <div class="ath-featured-card-title">{latestPodcast.title}</div>
+                {latestPodcast.publishedDate && (
+                  <span class="ath-featured-card-meta">{formatDate(latestPodcast.publishedDate)}</span>
+                )}
+              </div>
+            </a>
           </div>
-        </div>
+        )}
+
+        {/* Book review */}
+        {latestBookReview && (
+          <div class="ath-featured-card">
+            <a href={latestBookReview.link} target="_blank" rel="noopener">
+              <img
+                src={latestBookReview.thumbnailUrl}
+                alt={latestBookReview.title}
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div class="ath-featured-card-body">
+                <span class="ath-featured-card-type">Book Review</span>
+                <div class="ath-featured-card-title">{latestBookReview.title}</div>
+                {latestBookReview.publishedDate && (
+                  <span class="ath-featured-card-meta">{formatDate(latestBookReview.publishedDate)}</span>
+                )}
+              </div>
+            </a>
+          </div>
+        )}
+
+        {/* Film review */}
+        {latestFilmReview && (
+          <div class="ath-featured-card">
+            <a href={latestFilmReview.link} target="_blank" rel="noopener">
+              <img
+                src={latestFilmReview.thumbnailUrl}
+                alt={latestFilmReview.title}
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div class="ath-featured-card-body">
+                <span class="ath-featured-card-type">Film Review</span>
+                <div class="ath-featured-card-title">{latestFilmReview.title}</div>
+                {latestFilmReview.publishedDate && (
+                  <span class="ath-featured-card-meta">{formatDate(latestFilmReview.publishedDate)}</span>
+                )}
+              </div>
+            </a>
+          </div>
+        )}
+
       </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="cin-footer">
-      <div class="container">
-        <div class="cin-footer-content">
-          <nav class="cin-footer-nav" aria-label="Footer navigation">
-            <a href="/resume">Resume</a>
-            <a href="/books">Books</a>
-            <a href="/films">Films</a>
-            <a href="/videos">Videos</a>
-          </nav>
-          <div class="cin-footer-social">
-            {theme.socialItems.items.map((item) => (
-              <a href={item.href} target="_blank" rel="noopener">{item.label}</a>
-            ))}
-          </div>
-          <p
-            class="cin-footer-copy"
-            title={theme.footer?.easterEggTitle || ''}
-          >
-            &copy; {theme.footer?.copyright || '2025 Zachary Long'}
-          </p>
+    <!-- ===== ZONE F: Footer ===== -->
+    <footer class="ath-footer">
+      <div class="ath-footer-inner">
+
+        <!-- Primary nav -->
+        <nav class="ath-footer-nav" aria-label="Footer navigation">
+          {theme.menu.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </nav>
+
+        <!-- External links -->
+        <div class="ath-footer-external">
+          {theme.socialItems.items.map((item) => (
+            <a href={item.href} target="_blank" rel="noopener">{item.label}</a>
+          ))}
         </div>
+
+        <!-- Statement -->
+        <p class="ath-footer-statement">
+          Systems thinker, storyteller, and lifelong learner. This site is where data meets narrative.
+        </p>
+
+        <!-- Copyright -->
+        <p
+          class="ath-footer-copy"
+          title={theme.footer?.easterEggTitle || ''}
+        >
+          &copy; {theme.footer?.copyright || '2026 Zachary Long'}
+        </p>
+
+        <!-- Hidden easter egg -->
+        <span
+          aria-hidden="true"
+          style="font-family: var(--ff-pixel); font-size: 5px; color: var(--ff-border-lo); opacity: 0.12; pointer-events: none; letter-spacing: 2px; margin-top: var(--sp-4);"
+        >ARRAKEEN ARCHIVE // ACCESS GRANTED</span>
+
       </div>
     </footer>
 
   </main>
+
+  <!-- Scroll reveal observer -->
+  <script is:inline>
+    (function() {
+      var els = document.querySelectorAll('.ath-reveal');
+      if (!els.length) return;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
 </BaseLayout>

@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
+import { fetchGoodreadsBooks, fetchLetterboxdFilms, fetchYouTubeVideos, ratingToStars } from '../utils/rss';
+
+const pageConfig = theme.pages.now!;
+
+const GOODREADS_ID = '43383319';
+const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
+
+const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-reading', 5);
+const recentFilms = await fetchLetterboxdFilms('zarrsadus', 5);
+const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 10);
+
+const podcastEpisodes = allPodcastVideos.filter((v) =>
+  !v.title.toLowerCase().includes('#short') &&
+  !v.title.toLowerCase().includes('#shorts')
+).slice(0, 3);
+
+function extractPoster(html: string): string {
+  const match = html.match(/src="([^"]+)"/);
+  return match ? match[1] : '';
+}
+
+function formatDate(dateStr: string): string {
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric',
+    });
+  } catch { return ''; }
+}
+---
+
+<BaseLayout title="Zachary Long | Now" location={pageConfig.location}>
+  <main class="page-content container">
+
+    <header class="page-header">
+      <h1>{pageConfig.title}</h1>
+      <p class="page-header-sub" set:html={pageConfig.headerSub} />
+    </header>
+
+    <section style="max-width: 700px; margin: 0 auto var(--sp-8);">
+      <p style="font-size: 14px; color: var(--ff-text-grey); text-align: center; font-family: var(--cin-mono); letter-spacing: 0.5px;">
+        This is a <a href="https://nownownow.com/about" target="_blank" rel="noopener" style="color: var(--cin-sage);">now page</a>.
+        Updated at build time from live feeds.
+      </p>
+    </section>
+
+    <!-- Currently Reading -->
+    <section class="resume-section">
+      <h2>Reading</h2>
+      {currentlyReading.length > 0 ? (
+        <div class="ff-box">
+          {currentlyReading.map((book) => (
+            <div style="display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3) 0; border-top: 1px solid var(--ff-border-lo);">
+              {book.imageUrl && (
+                <img
+                  src={book.imageUrl}
+                  alt={book.title}
+                  style="width: 48px; height: 72px; object-fit: cover; border-radius: 4px; flex-shrink: 0;"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              )}
+              <div>
+                <a href={book.link} target="_blank" rel="noopener" style="color: var(--ff-text); text-decoration: none; font-family: var(--cin-heading); font-size: 14px;">
+                  {book.title}
+                </a>
+                {book.author && (
+                  <div style="font-size: 13px; color: var(--ff-text-dim); margin-top: 2px;">{book.author}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p style="color: var(--ff-text-grey);">Between books at the moment.</p>
+      )}
+    </section>
+
+    <!-- Recently Watched -->
+    <section class="resume-section">
+      <h2>Watching</h2>
+      {recentFilms.length > 0 ? (
+        <div class="ff-box">
+          {recentFilms.map((film) => {
+            const poster = extractPoster(film.posterHtml);
+            return (
+              <div style="display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3) 0; border-top: 1px solid var(--ff-border-lo);">
+                {poster && (
+                  <img
+                    src={poster}
+                    alt={film.title}
+                    style="width: 48px; height: 72px; object-fit: cover; border-radius: 4px; flex-shrink: 0;"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                )}
+                <div>
+                  <a href={film.link} target="_blank" rel="noopener" style="color: var(--ff-text); text-decoration: none; font-family: var(--cin-heading); font-size: 14px;">
+                    {film.title}
+                    {film.year && <span style="color: var(--ff-text-grey);"> ({film.year})</span>}
+                  </a>
+                  <div style="font-size: 13px; margin-top: 2px;">
+                    {film.rating > 0 && <span style="color: var(--cin-brass);">{ratingToStars(film.rating)}</span>}
+                    {film.watchedDate && <span style="color: var(--ff-text-grey); margin-left: var(--sp-2); font-family: var(--cin-mono); font-size: 11px;">{formatDate(film.watchedDate)}</span>}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p style="color: var(--ff-text-grey);">Nothing recent.</p>
+      )}
+    </section>
+
+    <!-- Latest Transmissions -->
+    <section class="resume-section">
+      <h2>Making</h2>
+      {podcastEpisodes.length > 0 ? (
+        <div class="ff-box">
+          {podcastEpisodes.map((ep) => (
+            <div style="display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3) 0; border-top: 1px solid var(--ff-border-lo);">
+              <img
+                src={ep.thumbnailUrl}
+                alt={ep.title}
+                style="width: 80px; height: 45px; object-fit: cover; border-radius: 4px; flex-shrink: 0;"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div>
+                <a href={ep.link} target="_blank" rel="noopener" style="color: var(--ff-text); text-decoration: none; font-family: var(--cin-heading); font-size: 14px;">
+                  {ep.title}
+                </a>
+                {ep.publishedDate && (
+                  <div style="font-size: 11px; color: var(--ff-text-grey); font-family: var(--cin-mono); margin-top: 2px;">
+                    {formatDate(ep.publishedDate)}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p style="color: var(--ff-text-grey);">Nothing new yet.</p>
+      )}
+    </section>
+
+  </main>
+</BaseLayout>

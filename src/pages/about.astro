@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
+import resumeData from '../data/resume.json';
+
+const pageConfig = theme.pages.about!;
+---
+
+<BaseLayout title="Zachary Long | About" location={pageConfig.location}>
+  <main class="page-content container">
+
+    <header class="page-header">
+      <h1>{pageConfig.title}</h1>
+      <p class="page-header-sub" set:html={pageConfig.headerSub} />
+    </header>
+
+    <section style="max-width: 700px; margin: 0 auto;">
+
+      <!-- Photo + intro -->
+      <div style="text-align: center; margin-bottom: var(--sp-8);">
+        <img
+          src="/images/zachary-long.jpeg"
+          alt="Zachary Long"
+          class="ath-portrait"
+          style="width: 140px; height: 140px; margin-bottom: var(--sp-4);"
+        />
+        <h2 style="font-family: var(--cin-heading); font-size: 24px; margin-bottom: var(--sp-1);">{resumeData.name}</h2>
+        <p style="font-family: var(--cin-mono); font-size: 12px; color: var(--ff-text-grey); letter-spacing: 1px;">
+          {resumeData.title} &bull; {resumeData.location}
+        </p>
+      </div>
+
+      <!-- Bio -->
+      <div class="ff-box stack" style="margin-bottom: var(--sp-8);">
+        <p style="font-size: 16px; line-height: 1.8; color: var(--ff-text-dim);">
+          I&rsquo;m a Technical Business Analyst at SUNY Farmingdale, where I build dashboards,
+          automate reporting pipelines, and help leadership make faster decisions with data.
+          I hold an M.S. in Business Analytics &amp; AI from NYU Stern and a B.S. in Computer Science
+          from Auburn University.
+        </p>
+        <p style="font-size: 16px; line-height: 1.8; color: var(--ff-text-dim);">
+          Before data, I spent over a decade as a professional wedding photographer, ran a boutique
+          production company, and managed hotel operations at Marriott. That range taught me to
+          communicate across domains, read a room, and think about systems from the user&rsquo;s perspective.
+        </p>
+        <p style="font-size: 16px; line-height: 1.8; color: var(--ff-text-dim);">
+          Off the clock, I review sci-fi and fantasy books on YouTube, co-host a data podcast
+          (Everyday Data with PnZ), and track every film I watch on Letterboxd. I&rsquo;m drawn to stories
+          with scale and atmosphere &mdash; Dune, Malazan, Lord of the Rings &mdash; the kind of worldbuilding
+          that rewards patience and attention. That same instinct shapes how I approach analytics:
+          look at the whole system, find the signal, tell the story clearly.
+        </p>
+      </div>
+
+      <!-- Why this site -->
+      <div style="margin-bottom: var(--sp-8);">
+        <h2 style="font-family: var(--cin-heading); font-size: 18px; color: var(--cin-brass); text-align: center; margin-bottom: var(--sp-4);">
+          Why This Site
+        </h2>
+        <p style="font-size: 15px; line-height: 1.8; color: var(--ff-text-dim); text-align: center;">
+          This site exists because I don&rsquo;t think professional and personal have to live in separate boxes.
+          The same curiosity that drives my analytics work drives my reading list and film diary.
+          If you&rsquo;re here from LinkedIn, welcome &mdash; check the Workshop.
+          If you&rsquo;re here for book reviews, welcome &mdash; check the Stacks.
+          Either way, you&rsquo;re seeing the full picture.
+        </p>
+      </div>
+
+      <!-- Fun facts -->
+      {resumeData.funFacts && resumeData.funFacts.length > 0 && (
+        <div style="margin-bottom: var(--sp-8);">
+          <h2 style="font-family: var(--cin-heading); font-size: 18px; color: var(--cin-brass); text-align: center; margin-bottom: var(--sp-4);">
+            Beyond the Screen
+          </h2>
+          <ul class="fun-facts" style="list-style: none; padding: 0;">
+            {resumeData.funFacts.map((fact) => (
+              <li style="padding: var(--sp-2) 0; color: var(--ff-text-dim); font-size: 15px; text-align: center;">
+                {fact.link ? (
+                  <a href={fact.link} target="_blank" rel="noopener" style="color: var(--cin-sage);">
+                    {fact.text}
+                  </a>
+                ) : (
+                  fact.text
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Social links -->
+      <div style="text-align: center; padding: var(--sp-6) 0;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-2) var(--sp-4);">
+          {theme.socialItems.items.map((item) => (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener"
+              style="font-family: var(--cin-heading); font-size: 12px; color: var(--ff-text-dim); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s;"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { theme } from '../config/theme';
+import { fetchYouTubeVideos } from '../utils/rss';
+
+const pageConfig = theme.pages.transmissions ?? theme.pages.creations;
+
+const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
+const BOOK_REVIEW_CHANNEL = 'UCtTpv51SwEz7hGc11H9kbLA';
+const FILM_REVIEW_CHANNEL = 'UChJ39K5hJI7ARTTeB-KGOWQ';
+
+const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 15);
+const bookReviewVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 6);
+const filmReviewVideos = await fetchYouTubeVideos(FILM_REVIEW_CHANNEL, 6);
+
+// Filter out Shorts
+const podcastEpisodes = allPodcastVideos.filter((v) =>
+  !v.title.toLowerCase().includes('#short') &&
+  !v.title.toLowerCase().includes('#shorts')
+).slice(0, 6);
+
+function formatDate(dateStr: string): string {
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric',
+    });
+  } catch { return ''; }
+}
+
+function truncateDesc(desc: string, maxLen: number = 200): string {
+  if (!desc || desc.length <= maxLen) return desc || '';
+  return desc.slice(0, maxLen).replace(/\s+\S*$/, '') + '...';
+}
+---
+
+<BaseLayout title="Zachary Long | Transmissions" location={pageConfig.location}>
+  <main class="page-content container">
+
+    <header class="page-header">
+      <h1>{pageConfig.title}</h1>
+      <p class="page-header-sub" set:html={pageConfig.headerSub} />
+    </header>
+
+    <!-- Podcast Section -->
+    <section class="resume-section">
+      <h2>Everyday Data with PnZ</h2>
+      <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
+        A video podcast exploring data analytics, artificial intelligence,
+        and the intersection of technology and everyday life.
+      </p>
+      {podcastEpisodes.length > 0 ? (
+        <div class="feed-grid">
+          {podcastEpisodes.map((video) => (
+            <div class="feed-card">
+              <a href={video.link} target="_blank" rel="noopener">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  class="feed-card-img"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{video.title}</div>
+                  {video.description && (
+                    <div class="feed-card-desc">{truncateDesc(video.description)}</div>
+                  )}
+                  {video.publishedDate && (
+                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="feed-empty">
+          <div class="ff-box"><p>Loading episodes...</p></div>
+        </div>
+      )}
+      <div style="text-align: center; margin-top: var(--sp-4);">
+        <a href="https://www.youtube.com/@EverydayDataWithPnZ" target="_blank" rel="noopener" class="cin-more-link">
+          Watch all episodes on YouTube &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- Book Reviews Section -->
+    <section class="resume-section">
+      <h2>Sci-Fi &amp; Fantasy Book Reviews</h2>
+      <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
+        Video reviews and discussions of science fiction and fantasy books —
+        from epic series to hidden gems.
+      </p>
+      {bookReviewVideos.length > 0 ? (
+        <div class="feed-grid">
+          {bookReviewVideos.map((video) => (
+            <div class="feed-card">
+              <a href={video.link} target="_blank" rel="noopener">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  class="feed-card-img"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{video.title}</div>
+                  {video.publishedDate && (
+                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="feed-empty">
+          <div class="ff-box"><p>Loading reviews...</p></div>
+        </div>
+      )}
+      <div style="text-align: center; margin-top: var(--sp-4);">
+        <a href="https://www.youtube.com/channel/UCtTpv51SwEz7hGc11H9kbLA" target="_blank" rel="noopener" class="cin-more-link">
+          Watch all book reviews on YouTube &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- Film Reviews Section -->
+    <section class="resume-section">
+      <h2>Zac On Films | Everything Film Club</h2>
+      <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
+        Movie reviews, discussions, and deep dives into world cinema.
+      </p>
+      {filmReviewVideos.length > 0 ? (
+        <div class="feed-grid">
+          {filmReviewVideos.map((video) => (
+            <div class="feed-card">
+              <a href={video.link} target="_blank" rel="noopener">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  class="feed-card-img"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{video.title}</div>
+                  {video.publishedDate && (
+                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="feed-empty">
+          <div class="ff-box"><p>Loading reviews...</p></div>
+        </div>
+      )}
+      <div style="text-align: center; margin-top: var(--sp-4);">
+        <a href="https://www.youtube.com/channel/UChJ39K5hJI7ARTTeB-KGOWQ" target="_blank" rel="noopener" class="cin-more-link">
+          Watch all film reviews on YouTube &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- Photography Section -->
+    <section class="resume-section">
+      <h2>Photography</h2>
+      <div class="ff-box stack">
+        <p style="color: var(--ff-text-dim);">
+          For over a decade, I ran FengLong Photography — a boutique wedding
+          photography and videography company specializing in South Asian weddings.
+          3x Fearless Photographers award winner.
+        </p>
+        <div style="text-align: center;">
+          <a href="http://www.fenglongphoto.com/" target="_blank" rel="noopener" class="cin-more-link">
+            Visit FengLongPhoto.com &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -58,7 +58,16 @@ const hasAudio = !!theme.audio?.bgmPath;
   {showNav && !isLanding && (
     <nav class="site-nav">
       <a href="/" class="nav-back">{theme.nav.backLinkText}</a>
-      {location && <span class="nav-title">{location}</span>}
+      <div class="nav-links">
+        {theme.menu.filter(m => m.href !== '/').map((item) => (
+          <a
+            href={item.href}
+            class:list={['nav-link', { 'nav-link--active': Astro.url.pathname === item.href || Astro.url.pathname === item.href + '/' }]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
       {hasAudio && (
         <button class="audio-toggle" id="audioToggle" data-playing="false" aria-label="Toggle music">
           <span class="audio-icon" id="audioIcon">♪</span>
