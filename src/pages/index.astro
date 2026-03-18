@@ -54,7 +54,7 @@ const { landing } = theme;
   <main>
 
     <!-- ===== ZONE A: Identity Deck ===== -->
-    <section class="ath-identity">
+    <section class="ath-identity" aria-label="Introduction">
       <div class="ath-identity-inner">
 
         <!-- Left Column -->
@@ -79,8 +79,10 @@ const { landing } = theme;
         <div class="ath-identity-right">
           <img
             src="/images/zachary-long.jpeg"
-            alt="Zachary Long"
+            alt="Zachary Long — Technical Business Analyst and content creator"
             class="ath-portrait"
+            width="120"
+            height="120"
           />
 
           <div class="ath-console">
@@ -99,16 +101,7 @@ const { landing } = theme;
                 <span class="ath-console-value">
                   <a href={latestFilm.link} target="_blank" rel="noopener">
                     {latestFilm.title}{latestFilm.year ? ` (${latestFilm.year})` : ''}
-                    {latestFilm.rating > 0 ? ` ${ratingToStars(latestFilm.rating)}` : ''}
                   </a>
-                </span>
-              </div>
-            )}
-            {latestPodcast && (
-              <div class="ath-console-item">
-                <span class="ath-console-label">Podcast</span>
-                <span class="ath-console-value">
-                  <a href={latestPodcast.link} target="_blank" rel="noopener">{truncateTitle(latestPodcast.title, 40)}</a>
                 </span>
               </div>
             )}
@@ -124,30 +117,15 @@ const { landing } = theme;
 
     <!-- ===== ZONE B: The Four Wings ===== -->
     {landing.portalCards && (
-      <section class="ath-wings ath-reveal">
+      <section class="ath-wings ath-reveal" aria-label="Explore">
         <div class="ath-wings-grid">
-          {landing.portalCards.map((card, i) => {
-            // Inject live signals into each card
-            let signalText = '';
-            if (i === 0) signalText = resumeData.title + ' \u2022 ' + resumeData.experience[0].company;
-            if (i === 1 && nowReading) signalText = nowReading.title;
-            if (i === 2 && latestFilm) signalText = latestFilm.title + (latestFilm.year ? ` (${latestFilm.year})` : '');
-            if (i === 3 && latestPodcast) signalText = truncateTitle(latestPodcast.title, 50);
-
-            return (
-              <a href={card.href} class="ath-wing-card">
-                <div class="ath-wing-title">{card.title}</div>
-                <div class="ath-wing-desc">{card.description}</div>
-                {signalText && (
-                  <div class="ath-wing-signal">
-                    <span class="ath-wing-signal-label">{card.featuredLabel}</span>
-                    {truncateTitle(signalText, 55)}
-                  </div>
-                )}
-                <span class="ath-wing-arrow" aria-hidden="true">&rarr;</span>
-              </a>
-            );
-          })}
+          {landing.portalCards.map((card) => (
+            <a href={card.href} class="ath-wing-card">
+              <div class="ath-wing-title">{card.title}</div>
+              <div class="ath-wing-desc">{card.description}</div>
+              <span class="ath-wing-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          ))}
         </div>
       </section>
     )}
@@ -210,12 +188,12 @@ const { landing } = theme;
 
     <!-- ===== ZONE E: Featured Work ===== -->
     <section class="ath-featured ath-reveal">
-      <div class="ath-featured-heading">Featured</div>
+      <div class="ath-featured-heading">Latest</div>
       <div class="ath-featured-grid">
 
         {/* Large card: Latest podcast episode */}
         {latestPodcast && (
-          <div class="ath-featured-card">
+          <div class="ath-featured-card ath-featured-card--large">
             <a href={latestPodcast.link} target="_blank" rel="noopener">
               <img
                 src={latestPodcast.thumbnailUrl}
@@ -234,47 +212,44 @@ const { landing } = theme;
           </div>
         )}
 
-        {/* Book review */}
-        {latestBookReview && (
-          <div class="ath-featured-card">
-            <a href={latestBookReview.link} target="_blank" rel="noopener">
-              <img
-                src={latestBookReview.thumbnailUrl}
-                alt={latestBookReview.title}
-                loading="lazy"
-                referrerpolicy="no-referrer"
-              />
-              <div class="ath-featured-card-body">
-                <span class="ath-featured-card-type">Book Review</span>
-                <div class="ath-featured-card-title">{latestBookReview.title}</div>
-                {latestBookReview.publishedDate && (
-                  <span class="ath-featured-card-meta">{formatDate(latestBookReview.publishedDate)}</span>
-                )}
-              </div>
-            </a>
-          </div>
-        )}
+        {/* Small cards row */}
+        <div class="ath-featured-small-row">
+          {/* Book review */}
+          {latestBookReview && (
+            <div class="ath-featured-card ath-featured-card--small">
+              <a href={latestBookReview.link} target="_blank" rel="noopener">
+                <img
+                  src={latestBookReview.thumbnailUrl}
+                  alt={latestBookReview.title}
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="ath-featured-card-body">
+                  <span class="ath-featured-card-type">Book Review</span>
+                  <div class="ath-featured-card-title">{latestBookReview.title}</div>
+                </div>
+              </a>
+            </div>
+          )}
 
-        {/* Film review */}
-        {latestFilmReview && (
-          <div class="ath-featured-card">
-            <a href={latestFilmReview.link} target="_blank" rel="noopener">
-              <img
-                src={latestFilmReview.thumbnailUrl}
-                alt={latestFilmReview.title}
-                loading="lazy"
-                referrerpolicy="no-referrer"
-              />
-              <div class="ath-featured-card-body">
-                <span class="ath-featured-card-type">Film Review</span>
-                <div class="ath-featured-card-title">{latestFilmReview.title}</div>
-                {latestFilmReview.publishedDate && (
-                  <span class="ath-featured-card-meta">{formatDate(latestFilmReview.publishedDate)}</span>
-                )}
-              </div>
-            </a>
-          </div>
-        )}
+          {/* Film review */}
+          {latestFilmReview && (
+            <div class="ath-featured-card ath-featured-card--small">
+              <a href={latestFilmReview.link} target="_blank" rel="noopener">
+                <img
+                  src={latestFilmReview.thumbnailUrl}
+                  alt={latestFilmReview.title}
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="ath-featured-card-body">
+                  <span class="ath-featured-card-type">Film Review</span>
+                  <div class="ath-featured-card-title">{latestFilmReview.title}</div>
+                </div>
+              </a>
+            </div>
+          )}
+        </div>
 
       </div>
     </section>

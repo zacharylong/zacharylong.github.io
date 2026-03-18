@@ -21,6 +21,15 @@ function extractPoster(html: string): string {
       <p class="page-header-sub" set:html={pageConfig.headerSub} />
     </header>
 
+    <!-- Taste statement -->
+    <section style="max-width: 640px; margin: 0 auto var(--sp-8);">
+      <p style="font-size: 16px; line-height: 1.8; color: var(--ff-text-dim); text-align: center;">
+        I watch widely &mdash; East Asian cinema, arthouse, sci-fi, horror, the occasional blockbuster that earns it.
+        I care about atmosphere, composition, and directors who trust their audience. Villeneuve, Park Chan-wook,
+        Wong Kar-wai, Kurosawa. Everything gets logged on Letterboxd.
+      </p>
+    </section>
+
     {recentFilms.length > 0 ? (
       <section>
         <div class="feed-grid">

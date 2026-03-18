@@ -1297,10 +1297,13 @@ hr {
 
 .page-header-sub {
   font-family: var(--ff-body);
-  font-size: 13px;
+  font-size: 15px;
   color: var(--ff-text-dim);
   font-weight: 300;
-  letter-spacing: 0.5px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 /* ==========================================================
@@ -1443,6 +1446,54 @@ hr {
 .skill-tag:hover {
   border-color: var(--cin-sage);
   background: rgba(138, 122, 184, 0.15);
+}
+
+/* Case study cards */
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 768px) {
+  .case-study-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .case-study-grid .case-study-card:first-child {
+    grid-column: span 2;
+  }
+}
+
+.case-study-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.case-study-label {
+  font-family: var(--cin-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--cin-brass);
+}
+
+.case-study-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  margin-top: var(--sp-2);
+}
+
+.case-study-tags span {
+  font-family: var(--cin-mono);
+  font-size: 11px;
+  color: var(--ff-text-grey);
+  background: rgba(138, 122, 184, 0.08);
+  border: 1px solid var(--ff-border-lo);
+  border-radius: var(--cin-radius);
+  padding: 2px var(--sp-2);
 }
 
 /* Fun facts */
@@ -2243,11 +2294,11 @@ body.legacy-mode .ath-subtitle {
   background: linear-gradient(180deg, var(--ff-box-top) 0%, var(--ff-box-bottom) 100%);
   border: 1px solid var(--ff-border-lo);
   border-radius: var(--cin-radius-lg);
-  padding: var(--sp-6);
+  padding: var(--sp-8) var(--sp-6);
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   transition: all var(--cin-transition);
   position: relative;
   overflow: hidden;
@@ -2371,6 +2422,17 @@ body.legacy-mode .ath-subtitle {
   margin: 0 auto;
   padding: var(--sp-16) var(--sp-4);
   text-align: center;
+  position: relative;
+}
+
+.ath-lore::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--cin-brass);
+  margin: 0 auto var(--sp-8);
+  opacity: 0.6;
 }
 
 .ath-lore h2 {
@@ -2388,6 +2450,10 @@ body.legacy-mode .ath-subtitle {
   color: var(--ff-text-dim);
 }
 
+.ath-lore p + p {
+  margin-top: var(--sp-4);
+}
+
 .ath-lore-divider {
   width: 60px;
   height: 1px;
@@ -2400,6 +2466,7 @@ body.legacy-mode .ath-subtitle {
   max-width: 960px;
   margin: 0 auto;
   padding: var(--sp-10) var(--sp-4);
+  border-top: 1px solid var(--ff-border-lo);
 }
 
 .ath-featured-heading {
@@ -2413,29 +2480,35 @@ body.legacy-mode .ath-subtitle {
 }
 
 .ath-featured-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.ath-featured-card--large img {
+  height: 280px;
+}
+
+@media (min-width: 600px) {
+  .ath-featured-card--large img {
+    height: 340px;
+  }
+}
+
+.ath-featured-small-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--sp-4);
 }
 
 @media (min-width: 600px) {
-  .ath-featured-grid {
+  .ath-featured-small-row {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .ath-featured-grid .ath-featured-card:first-child {
-    grid-row: span 2;
   }
 }
 
-@media (min-width: 900px) {
-  .ath-featured-grid {
-    grid-template-columns: 1.3fr 1fr 1fr;
-  }
-
-  .ath-featured-grid .ath-featured-card:first-child {
-    grid-row: span 2;
-  }
+.ath-featured-card--small img {
+  height: 160px;
 }
 
 .ath-featured-card {
@@ -2447,9 +2520,9 @@ body.legacy-mode .ath-subtitle {
 }
 
 .ath-featured-card:hover {
-  border-color: var(--ff-border-hi);
+  border-color: var(--cin-brass);
   transform: translateY(-2px);
-  box-shadow: var(--cin-shadow-md);
+  box-shadow: 0 4px 24px rgba(201, 122, 60, 0.12);
 }
 
 .ath-featured-card a {
@@ -2462,17 +2535,6 @@ body.legacy-mode .ath-subtitle {
   height: 180px;
   object-fit: cover;
   border-bottom: 1px solid var(--ff-border-lo);
-}
-
-.ath-featured-card:first-child img {
-  height: 100%;
-  min-height: 180px;
-}
-
-@media (min-width: 600px) {
-  .ath-featured-card:first-child img {
-    height: 100%;
-  }
 }
 
 .ath-featured-card-body {

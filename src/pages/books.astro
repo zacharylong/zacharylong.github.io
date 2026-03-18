@@ -18,6 +18,15 @@ const recentlyRead = await fetchGoodreadsBooks(GOODREADS_ID, 'read', 12);
       <p class="page-header-sub" set:html={pageConfig.headerSub} />
     </header>
 
+    <!-- Taste statement -->
+    <section style="max-width: 640px; margin: 0 auto var(--sp-8);">
+      <p style="font-size: 16px; line-height: 1.8; color: var(--ff-text-dim); text-align: center;">
+        I gravitate toward epic fantasy, hard science fiction, and anything with deep worldbuilding &mdash;
+        the kind of books that build entire civilizations and reward patience. Sanderson, Erikson, Herbert,
+        Le Guin. If it has a map in the front, I&rsquo;m probably interested.
+      </p>
+    </section>
+
     <!-- Currently Reading -->
     {currentlyReading.length > 0 && (
       <section class="resume-section">

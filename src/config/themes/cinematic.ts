@@ -18,7 +18,7 @@ export const config: ThemeConfig = {
     siteTitle: 'Zachary Long',
     subtitle: 'Systems Thinker &bull; Storyteller',
     tagline: 'I build clarity with data\u2009\u2014\u2009and spend the rest of my time exploring books, films, and epic story worlds.',
-    positioningStatement: 'Technical Business Analyst in higher education, with a background in analytics, AI, and computer science. NYU Stern M.S. in Business Analytics & AI. Content creator covering sci-fi/fantasy books, world cinema, and the future of work.',
+    positioningStatement: 'Technical Business Analyst in higher education. NYU Stern M.S. in Analytics & AI. I build clarity with data by day and explore story worlds by night.',
     ctaPrimary: { label: 'Professional Work', href: '/work' },
     ctaSecondary: { label: 'Books & Films', href: '/books' },
     ctaTertiary: { label: 'Resume', href: '/resume' },
@@ -49,7 +49,7 @@ export const config: ThemeConfig = {
       },
     ],
     loreLogicHeading: 'Lore + Logic',
-    loreLogicHtml: `<p>I think in systems and care about the humans inside them. By day, I help institutions make faster, better decisions with analytics that leaders actually use. After hours, I\u2019m drawn to books and films with scale, atmosphere, and strong worldbuilding\u2009\u2014\u2009the kind of stories that build entire civilizations and ask what it means to live in them. This site is where both halves meet.</p>`,
+    loreLogicHtml: `<p>I think in systems and care about the humans inside them. By day, I help institutions make faster, better decisions with analytics that leaders actually use. After hours, I\u2019m drawn to books and films with scale, atmosphere, and strong worldbuilding\u2009\u2014\u2009Dune, Malazan, Lord of the Rings\u2009\u2014\u2009the kind of stories that build entire civilizations and ask what it means to live in them.</p><p>This site exists because I don\u2019t think professional and personal have to live in separate boxes. The same curiosity that drives my analytics work drives my reading list and film diary. If you\u2019re here from LinkedIn, welcome\u2009\u2014\u2009check the Workshop. If you\u2019re here for book reviews, welcome\u2009\u2014\u2009check the Stacks. Either way, you\u2019re seeing the full picture.</p>`,
     credibilityLine: 'NYU Stern \u2022 SUNY Farmingdale \u2022 Analytics & AI',
     introHtml: `<p class="intro-text">
       Off the clock, I&rsquo;m a sci-fi/fantasy book reviewer
@@ -69,55 +69,55 @@ export const config: ThemeConfig = {
     library: {
       location: 'The Stacks',
       title: 'Books',
-      headerSub: 'Science Fiction &bull; Fantasy &bull; Everything In Between',
+      headerSub: 'Epic fantasy, science fiction, and the worlds worth returning to.',
     },
     theater: {
       location: 'The Screening Room',
       title: 'Films',
-      headerSub: 'Recent Watches &bull; Ratings &bull; Reviews',
+      headerSub: 'World cinema, arthouse, blockbusters, and everything that moves me.',
     },
     creations: {
       location: 'Transmissions',
       title: 'Transmissions',
-      headerSub: 'Podcast &bull; Book Reviews &bull; Film Reviews',
+      headerSub: 'Conversations about data, AI, books, and the stories that shape how we see the world.',
       pageHeading: 'Transmissions',
     },
     books: {
       location: 'The Stacks',
       title: 'Books',
-      headerSub: 'Science Fiction &bull; Fantasy &bull; Everything In Between',
+      headerSub: 'Epic fantasy, science fiction, and the worlds worth returning to.',
     },
     films: {
       location: 'The Screening Room',
       title: 'Films',
-      headerSub: 'Recent Watches &bull; Ratings &bull; Reviews',
+      headerSub: 'World cinema, arthouse, blockbusters, and everything that moves me.',
     },
     videos: {
       location: 'Transmissions',
       title: 'Transmissions',
-      headerSub: 'Podcast &bull; Book Reviews &bull; Film Reviews',
+      headerSub: 'Conversations about data, AI, books, and the stories that shape how we see the world.',
       pageHeading: 'Transmissions',
     },
     work: {
       location: 'The Workshop',
       title: 'Work',
-      headerSub: 'Analytics &bull; AI &bull; Higher Education',
+      headerSub: 'Building clarity with data in higher education.',
     },
     transmissions: {
       location: 'Transmissions',
       title: 'Transmissions',
-      headerSub: 'Podcast &bull; Video Essays &bull; Reviews',
+      headerSub: 'Conversations about data, AI, books, and the stories that shape how we see the world.',
       pageHeading: 'Transmissions',
     },
     about: {
       location: 'About',
       title: 'About',
-      headerSub: 'The person behind the systems and stories.',
+      headerSub: 'Systems thinker, storyteller, lifelong learner.',
     },
     now: {
       location: 'Now',
       title: 'Now',
-      headerSub: 'What I\u2019m reading, watching, making, and thinking about.',
+      headerSub: 'What I\u2019m reading, watching, and making right now.',
     },
     notFound: {
       title: '404 \u2014 Lost in the Archive',

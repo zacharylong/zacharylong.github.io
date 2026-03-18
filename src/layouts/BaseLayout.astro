@@ -36,11 +36,22 @@ const hasAudio = !!theme.audio?.bgmPath;
   <!-- Favicon -->
   <link rel="icon" href="/images/favicon.ico" sizes="any" />
 
+  <!-- Canonical -->
+  <link rel="canonical" href={Astro.url.href} />
+
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:image" content={new URL('/images/zachary-long.jpeg', Astro.site).href} />
+  <meta property="og:site_name" content="Zachary Long" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL('/images/zachary-long.jpeg', Astro.site).href} />
 </head>
 <body
   data-theme={theme.name}

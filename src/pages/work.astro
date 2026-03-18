@@ -33,7 +33,7 @@ function formatDate(dateStr: string): string {
     </header>
 
     <!-- Positioning -->
-    <section class="resume-section" style="max-width: 680px; margin: 0 auto var(--sp-10);">
+    <section class="resume-section" style="max-width: 640px; margin: 0 auto var(--sp-10);">
       <p style="font-size: 18px; line-height: 1.8; color: var(--ff-text-dim); text-align: center;">
         {resumeData.tagline}
       </p>
@@ -63,6 +63,89 @@ function formatDate(dateStr: string): string {
         </div>
       </div>
     </section>
+
+    <!-- Case Studies -->
+    <section class="resume-section">
+      <h2>Selected Work</h2>
+      <div class="case-study-grid">
+
+        <div class="ff-box case-study-card">
+          <div class="case-study-label">Institutional Analytics</div>
+          <h3 style="font-family: var(--cin-heading); font-size: 16px; color: var(--ff-text); margin-bottom: var(--sp-2);">
+            Tableau &rarr; Power BI Migration
+          </h3>
+          <p style="font-size: 14px; line-height: 1.7; color: var(--ff-text-dim);">
+            Led the transition from Tableau to Power BI across SUNY Farmingdale&rsquo;s institutional research office.
+            Built enrollment, retention, and faculty dashboards on Ellucian Banner (Oracle/PL-SQL), reducing
+            ad hoc data requests by 50% and improving timeliness of executive decision-making.
+          </p>
+          <div class="case-study-tags">
+            <span>Power BI</span><span>DAX</span><span>Oracle/PL-SQL</span><span>Power Automate</span>
+          </div>
+        </div>
+
+        <div class="ff-box case-study-card">
+          <div class="case-study-label">NYU Stern Capstone</div>
+          <h3 style="font-family: var(--cin-heading); font-size: 16px; color: var(--ff-text); margin-bottom: var(--sp-2);">
+            Digital Marketing Analytics: MMM &amp; MTA
+          </h3>
+          <p style="font-size: 14px; line-height: 1.7; color: var(--ff-text-dim);">
+            Capstone project applying Marketing Mix Modeling and Multi-Touch Attribution to map the path to purchase.
+            Combined statistical modeling with real-world campaign data to quantify channel effectiveness
+            and optimize marketing spend allocation.
+          </p>
+          <div class="case-study-tags">
+            <span>Python</span><span>Machine Learning</span><span>MMM</span><span>MTA</span>
+          </div>
+        </div>
+
+        <div class="ff-box case-study-card">
+          <div class="case-study-label">Software Engineering</div>
+          <h3 style="font-family: var(--cin-heading); font-size: 16px; color: var(--ff-text); margin-bottom: var(--sp-2);">
+            Database Migration Tool
+          </h3>
+          <p style="font-size: 14px; line-height: 1.7; color: var(--ff-text-dim);">
+            Developed and deployed a C# migration tool to move content from Sitefinity CMS to Azure SQL,
+            serving multiple client stakeholders across 3 high-value IT projects with 95% client satisfaction.
+          </p>
+          <div class="case-study-tags">
+            <span>C#</span><span>.NET</span><span>Azure SQL</span><span>Sitefinity</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Thought Leadership: Podcast (moved up) -->
+    {podcastEpisodes.length > 0 && (
+      <section class="resume-section">
+        <h2>Thought Leadership</h2>
+        <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
+          Everyday Data with PnZ &mdash; conversations about data analytics, AI, and the future of work.
+        </p>
+        <div class="feed-grid">
+          {podcastEpisodes.map((video) => (
+            <div class="feed-card">
+              <a href={video.link} target="_blank" rel="noopener">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  class="feed-card-img"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="feed-card-body">
+                  <div class="feed-card-title">{video.title}</div>
+                  {video.publishedDate && (
+                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
+                  )}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Education -->
     <section class="resume-section">
@@ -101,37 +184,6 @@ function formatDate(dateStr: string): string {
         </div>
       </div>
     </section>
-
-    <!-- Thought Leadership: Podcast -->
-    {podcastEpisodes.length > 0 && (
-      <section class="resume-section">
-        <h2>Thought Leadership</h2>
-        <p style="color: var(--ff-text-dim); margin-bottom: var(--sp-4);">
-          Everyday Data with PnZ — a podcast exploring data analytics, AI, and the future of work.
-        </p>
-        <div class="feed-grid">
-          {podcastEpisodes.map((video) => (
-            <div class="feed-card">
-              <a href={video.link} target="_blank" rel="noopener">
-                <img
-                  src={video.thumbnailUrl}
-                  alt={video.title}
-                  class="feed-card-img"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                />
-                <div class="feed-card-body">
-                  <div class="feed-card-title">{video.title}</div>
-                  {video.publishedDate && (
-                    <div class="feed-card-date">{formatDate(video.publishedDate)}</div>
-                  )}
-                </div>
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
 
     <!-- CTAs -->
     <section style="text-align: center; padding: var(--sp-10) 0;">
