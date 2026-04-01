@@ -1,23 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { theme } from '../config/theme';
-import { fetchYouTubeVideos } from '../utils/rss';
+import { fetchYouTubeVideos, fetchYouTubePlaylist } from '../utils/rss';
 
 const pageConfig = theme.pages.transmissions ?? theme.pages.creations;
 
-const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
+const PODCAST_PLAYLIST_ID = 'PL-n0gsdniluxVKhlBj1exGLkbgS3ChXBT';
 const BOOK_REVIEW_CHANNEL = 'UCtTpv51SwEz7hGc11H9kbLA';
 const FILM_REVIEW_CHANNEL = 'UChJ39K5hJI7ARTTeB-KGOWQ';
 
-const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 15);
+const podcastEpisodes = await fetchYouTubePlaylist(PODCAST_PLAYLIST_ID, 6);
 const bookReviewVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 6);
 const filmReviewVideos = await fetchYouTubeVideos(FILM_REVIEW_CHANNEL, 6);
-
-// Filter out Shorts
-const podcastEpisodes = allPodcastVideos.filter((v) =>
-  !v.title.toLowerCase().includes('#short') &&
-  !v.title.toLowerCase().includes('#shorts')
-).slice(0, 6);
 
 function formatDate(dateStr: string): string {
   try {

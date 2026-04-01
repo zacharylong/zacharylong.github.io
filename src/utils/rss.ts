@@ -181,6 +181,33 @@ export async function fetchYouTubeVideos(
   }
 }
 
+export async function fetchYouTubePlaylist(
+  playlistId: string,
+  limit: number = 15
+): Promise<VideoItem[]> {
+  try {
+    const res = await fetch(
+      `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`
+    );
+    if (!res.ok) return [];
+    const xml = await res.text();
+    return extractEntries(xml).map((entry) => {
+      const videoId = extractTag(entry, 'yt:videoId');
+      return {
+        title: decodeEntities(extractTag(entry, 'title')),
+        videoId,
+        thumbnailUrl: extractAttr(entry, 'media:thumbnail', 'url')
+          || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+        description: decodeEntities(extractTag(entry, 'media:description')),
+        publishedDate: extractTag(entry, 'published'),
+        link: `https://www.youtube.com/watch?v=${videoId}`,
+      };
+    }).slice(0, limit);
+  } catch {
+    return [];
+  }
+}
+
 /** Convert numeric rating to FF6-style stars */
 export function ratingToStars(rating: number, maxStars: number = 5): string {
   const full = Math.floor(rating);

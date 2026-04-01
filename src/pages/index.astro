@@ -1,26 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { theme } from '../config/theme';
-import { fetchGoodreadsBooks, fetchLetterboxdFilms, fetchYouTubeVideos, ratingToStars } from '../utils/rss';
+import { fetchGoodreadsBooks, fetchLetterboxdFilms, fetchYouTubeVideos, fetchYouTubePlaylist, ratingToStars } from '../utils/rss';
 import resumeData from '../data/resume.json';
 
 // Fetch data at build time
 const GOODREADS_ID = '43383319';
-const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
+const PODCAST_PLAYLIST_ID = 'PL-n0gsdniluxVKhlBj1exGLkbgS3ChXBT';
 const BOOK_REVIEW_CHANNEL = 'UCtTpv51SwEz7hGc11H9kbLA';
 const FILM_REVIEW_CHANNEL = 'UChJ39K5hJI7ARTTeB-KGOWQ';
 
 const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-reading', 3);
 const recentFilms = await fetchLetterboxdFilms('zarrsadus', 3);
-const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 15);
+const podcastEpisodes = await fetchYouTubePlaylist(PODCAST_PLAYLIST_ID, 3);
 const bookReviewVideos = await fetchYouTubeVideos(BOOK_REVIEW_CHANNEL, 3);
 const filmReviewVideos = await fetchYouTubeVideos(FILM_REVIEW_CHANNEL, 3);
-
-// Filter out YouTube Shorts
-const podcastEpisodes = allPodcastVideos.filter((v) =>
-  !v.title.toLowerCase().includes('#short') &&
-  !v.title.toLowerCase().includes('#shorts')
-).slice(0, 3);
 
 function extractPoster(html: string): string {
   const match = html.match(/src="([^"]+)"/);

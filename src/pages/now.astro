@@ -1,21 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { theme } from '../config/theme';
-import { fetchGoodreadsBooks, fetchLetterboxdFilms, fetchYouTubeVideos, ratingToStars } from '../utils/rss';
+import { fetchGoodreadsBooks, fetchLetterboxdFilms, fetchYouTubePlaylist, ratingToStars } from '../utils/rss';
 
 const pageConfig = theme.pages.now!;
 
 const GOODREADS_ID = '43383319';
-const PODCAST_CHANNEL = 'UCMtZjTRg5zKLJLDA1Cx8xGQ';
+const PODCAST_PLAYLIST_ID = 'PL-n0gsdniluxVKhlBj1exGLkbgS3ChXBT';
 
 const currentlyReading = await fetchGoodreadsBooks(GOODREADS_ID, 'currently-reading', 5);
 const recentFilms = await fetchLetterboxdFilms('zarrsadus', 5);
-const allPodcastVideos = await fetchYouTubeVideos(PODCAST_CHANNEL, 10);
-
-const podcastEpisodes = allPodcastVideos.filter((v) =>
-  !v.title.toLowerCase().includes('#short') &&
-  !v.title.toLowerCase().includes('#shorts')
-).slice(0, 3);
+const podcastEpisodes = await fetchYouTubePlaylist(PODCAST_PLAYLIST_ID, 3);
 
 function extractPoster(html: string): string {
   const match = html.match(/src="([^"]+)"/);
